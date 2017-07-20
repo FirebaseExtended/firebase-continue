@@ -1,0 +1,32 @@
+// The contents of this file are to be included in another, more complete database
+// rules file during the Setup process. See this sample's README.
+
+// This node stores all notes created by users in Continote.
+"notes": {
+
+  // Notes are user specific, so here we store a list of user-private nodes.
+  "$uid": {
+    ".read": "$uid === auth.uid",
+    ".write": "$uid === auth.uid",
+
+    // A user can have many notes, so here we store a list of note nodes.
+    "$noteid": {
+      ".validate": "newData.hasChildren(['title', 'content'])",
+
+      // The title of this note.
+      "title": {
+        ".validate": "newData.isString()"
+      },
+
+      // The main content of this note.
+      "content": {
+        ".validate": "newData.isString()"
+      },
+
+      // Prevent extraneous data from being added to this note.
+      "$other": {
+        ".validate": false
+      }
+    }
+  }
+},

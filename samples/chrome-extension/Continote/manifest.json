@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+
+  "name": "Continote",
+  "description": "Sample Chrome extension using the Firebase Continue library.",
+  "version": "0.1.0",
+
+  "permissions": [
+    "notifications"
+  ],
+
+  "icons": {
+    "16": "images/icons/icon-16.png",
+    "48": "images/icons/icon-48.png",
+    "128": "images/icons/icon-128.png"
+  },
+
+  "background": {
+    "page": "background.html"
+  },
+
+  "browser_action": {
+    "default_popup": "main-popup.html",
+
+    "default_icon": {
+      "16": "images/icons/icon-16.png",
+      "24": "images/icons/icon-24.png",
+      "32": "images/icons/icon-32.png"
+    }
+  },
+
+  "content_security_policy": "script-src style-src img-src media-src object-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://cdn.firebase.com https://www.googleapis.com https://apis.google.com https://code.getmdl.io"
+}

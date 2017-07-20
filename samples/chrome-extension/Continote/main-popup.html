@@ -1,0 +1,173 @@
+<!doctype html>
+
+<!--
+  Copyright (c) 2017 Google Inc. All Rights Reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  use this file except in compliance with the License. You may obtain a copy
+  of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  License for the specific language governing permissions and limitations under
+  the License.
+-->
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Sample Chrome extension using the Firebase Continue library.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>
+      Continote - Firebase Continue Sample
+    </title>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-database.js"></script>
+
+    <!-- Necessary config file to set up Firebase. -->
+    <script src="scripts/config.js"></script>
+
+    <!-- Include constants for other scripts. -->
+    <script src="scripts/constants.js"></script>
+
+    <!-- Include utility functions. -->
+    <script src="scripts/utils.js"></script>
+
+    <!-- Include convenience helper class to simplify Firebase auth usage. -->
+    <script src="scripts/auth-helper.js"></script>
+
+    <!-- Material Design Lite styles -->
+    <link type="text/css" rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link type="text/css" rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link type="text/css" rel="stylesheet"
+          href="https://code.getmdl.io/1.3.0/material.amber-orange.min.css">
+
+    <!-- Main, local styles for this popup. -->
+    <link type="text/css" rel="stylesheet" href="styles/all-popups.css"/>
+  </head>
+
+  <body class="mdl-color--grey-100 mdl-color-text--grey-700">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+      <!-- Popup header -->
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+
+          <!-- Popup title -->
+          <div class="mdl-layout-title">
+            <span class="app-title">Continote</span> &mdash; Firebase Continue Sample
+          </div>
+        </div>
+      </header>
+
+      <!-- Main content area -->
+      <main class="mdl-layout__content">
+
+        <!-- Container holding all content for users who are signed in. -->
+        <div id="user-signed-in-content-container" class="hidden">
+          <!--
+            Container holding all content for users who have a note they may wish to continue
+            writing.
+          -->
+          <section id="user-has-note-to-continue-writing-container"
+                   class="mdl-grid mdl-grid--no-spacing mdl-shadow--2dp hidden">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+              <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">
+                  Continue Writing Note?
+                </h2>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <p>
+                  You were recently writing a note.
+                  <br />
+                  Would you like to continue writing in a new tab?
+                </p>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <button id="continue-writing-note-button"
+                        class="mdl-button mdl-button--raised mdl-button--colored
+                               mdl-js-button mdl-js-ripple-effect">
+                  <i class="material-icons">open_in_new</i>
+                  Open Note
+                </button>
+                <button id="dismiss-writing-note-button"
+                        class="mdl-button mdl-button--raised mdl-button--colored
+                               mdl-js-button mdl-js-ripple-effect">
+                  Dismiss
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section class="mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+              <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">
+                  Hello&nbsp;<span id="user-display-name">User display name here</span>
+                </h2>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <p>
+                  You are currently signed in as
+                  <span id="user-email">User email here</span>.
+                </p>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <button id="sign-out-button"
+                        class="mdl-button mdl-button--raised mdl-button--colored
+                               mdl-js-button mdl-js-ripple-effect">
+                  <i class="material-icons">account_circle</i>
+                  Sign Out
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Container holding all content for users who are not signed in. -->
+        <div id="user-signed-out-content-container" class="hidden">
+          <section class="mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+              <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">
+                  Sign in required
+                </h2>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <p>Please click to sign in below to use the Continote extension.</p>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <button id="sign-in-button"
+                        class="mdl-button mdl-button--raised mdl-button--colored
+                               mdl-js-button mdl-js-ripple-effect" autofocus>
+                  <i class="material-icons">open_in_new</i>
+                  Sign In
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+
+      </main>
+    </div>
+
+    <!-- Material Design Lite JavaScript -->
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+    <!-- Include the Firebase Continue library. -->
+    <script src="scripts/firebase-continue.js"></script>
+
+    <!-- Finally, include the main script to run in the popup. -->
+    <script src="scripts/main-popup.js"></script>
+  </body>
+</html>

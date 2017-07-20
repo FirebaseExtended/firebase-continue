@@ -1,0 +1,88 @@
+/**
+ * Copyright (c) 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the
+ * License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * These styles apply to all popup pages.
+ * Thy are based on the Material Design Lite samples provided here:
+ * https://getmdl.io/templates/index.html
+ */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+
+.app-title {
+  font-weight: bold;
+}
+
+.mdl-navigation {
+  text-transform: uppercase;
+}
+
+.mdl-layout__content {
+  padding: 32px;
+}
+
+.mdl-layout__content section {
+  max-width: 960px;
+}
+
+.mdl-card {
+  height: auto;
+  min-height: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.mdl-card > * {
+  height: auto;
+}
+
+.mdl-card .mdl-card__title {
+  padding: 20px 20px 0;
+}
+
+.mdl-card .mdl-card__supporting-text {
+  margin: 20px;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  padding: 0;
+}
+
+.mdl-card__actions {
+  margin: 0;
+  padding: 12px 20px;
+}
+
+a.current,
+a:hover {
+  font-weight: bold;
+}
+
+#view-source {
+  position: fixed;
+  display: block;
+  right: 0;
+  bottom: 0;
+  margin-right: 32px;
+  margin-bottom: 32px;
+  z-index: 900;
+}

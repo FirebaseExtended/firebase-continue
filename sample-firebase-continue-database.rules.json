@@ -1,0 +1,82 @@
+{
+  "rules": {
+
+    // Disallow all data reading and writing by default.
+    // This will be overridden in specific cases.
+    ".read": false,
+    ".write": false,
+
+    [TODO: YOUR-APPLICATION'S-OTHER-FIREBASE-REALTIME-DATABASE-RULES-HERE]
+
+    // This node holds all Firebase Continue specific data.
+    "firebaseContinue": {
+
+      // Firebase Continue has support for multiple applications using the same
+      // Firebase project, so we need to separate each application (in this
+      // sample's case, only "[TODO: YOUR-APPLICATION-NAME-HERE]") into its own
+      // child node directly under firebaseContinue here.
+      "$application": {
+
+        // Firebase Continue data is user specific. Furthermore, we only need
+        // to store at most one data point per user (per application): the data
+        // for the activity the user most recently may wish to continue elsewhere.
+        // Finally, a data point is essentially immutable: it can either be
+        // added or deleted, but the library never has a need to update it.
+        "$uid": {
+
+          // The ".read" and ".write" security rules first ensure that Firebase Continue
+          // data is user specific. Then, they ensure the data is for an application which you,
+          // the developer, have specifically listed here.
+          //
+          // Important Reminder: Remember to use the exact same application name when required
+          // while using the various Firebase Continue libraries.
+          //
+          // To support multiple applications within one Firebase project, simply modify the
+          // ".read" and ".write" rules below like so:
+          // ".read": "$uid === auth.uid && ($application === 'someappname' || $application === 'otherappname')",
+          // ".write": "$uid === auth.uid && ($application === 'someappname' || $application === 'otherappname')",
+          ".read": "$uid === auth.uid && $application === '[TODO: YOUR-APPLICATION-NAME-HERE]'",
+          ".write": "$uid === auth.uid && $application === '[TODO: YOUR-APPLICATION-NAME-HERE]'",
+
+          ".validate": "!data.exists() && newData.hasChildren(['metadata', 'url'])",
+
+          // This is the metadata for this Firebase Continue data point.
+          // It allows the library to determine relevancy.
+          // Note: the metadata should never need to be updated - data points
+          // are either added or removed altogether.
+          "metadata": {
+            ".validate": "newData.hasChildren(['addedAt'])",
+
+            // This is a timestamp denoting when the data point was added to
+            // Firebase. We ensure that this value is between now and 5 minutes
+            // in the past, since that is the window of time that
+            // Firebase Continue data is considered relevant.
+            "addedAt": {
+              ".validate": "newData.isNumber() && newData.val() >= (now - 300000) && newData.val() <= now"
+            },
+
+            // Prevent extraneous data from being added to the metadata.
+            "$other": {
+              ".validate": false
+            }
+          },
+
+          // This is the URL which, if navigated to by the user, would allow
+          // them to continue their activity elsewhere.
+          // The URL validation is from:
+          // https://firebase.google.com/docs/reference/security/database/regex#usage
+          // Note: the URL should never need to be updated - data points are
+          // either added or removed altogether.
+          "url": {
+            ".validate": "newData.isString() && newData.val().matches(/^(ht|f)tp(s?):\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*((0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\'\\/\\\\+&=%\\$#_]*)?$/)"
+          },
+
+          // Prevent extraneous data from being added to this data point.
+          "$other": {
+            ".validate": false
+          }
+        }
+      }
+    }
+  }
+}

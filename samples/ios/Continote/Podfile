@@ -1,0 +1,23 @@
+platform :ios, '8.0'
+
+target 'Continote' do
+  use_frameworks!
+
+  # Firebase (https://github.com/firebase/firebase-ios-sdk)
+  pod 'Firebase/Core', '~> 4.0.4'
+  pod 'Firebase/Auth', '~> 4.0.4'
+  pod 'Firebase/Database', '~> 4.0.4'
+
+  # FirebaseUI (https://github.com/firebase/FirebaseUI-iOS)
+  pod 'FirebaseUI/Auth', '~> 4.1.1'
+  pod 'FirebaseUI/Google', '~> 4.1.1'
+  pod 'FirebaseUI/Facebook', '~> 4.1.1'
+
+  # Material Components (https://github.com/material-components/material-components-ios/)
+  pod 'MaterialComponents/AppBar', '~> 26.0.0'
+  pod 'MaterialComponents/AppBar/ColorThemer', '~> 26.0.0'
+  pod 'MaterialComponents/Buttons', '~> 26.0.0'
+  pod 'MaterialComponents/Buttons/ColorThemer', '~> 26.0.0'
+  pod 'MaterialComponents/Typography', '~> 26.0.0'
+
+end

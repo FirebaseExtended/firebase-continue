@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="U83-hG-48i">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Continote" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJL-C1-alU" customClass="MDCRaisedButton">
+                                <rect key="frame" x="16" y="228.5" width="343" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="k1F-fY-jnA"/>
+                                </constraints>
+                                <state key="normal" title="My Notes">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="565-wk-S5f" kind="show" identifier="myNotes" id="bpc-I9-5FU"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auth label message." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttl-fy-Ghi">
+                                <rect key="frame" x="16" y="104" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ntc-tm-D6S" customClass="MDCRaisedButton">
+                                <rect key="frame" x="16" y="144.5" width="343" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="i8C-OA-a2Z"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="authButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="42R-Px-joq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ntc-tm-D6S" secondAttribute="trailing" id="1CX-YN-tx2"/>
+                            <constraint firstItem="Ntc-tm-D6S" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5ps-Ob-FbB"/>
+                            <constraint firstItem="ttl-fy-Ghi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FBN-s0-fDf"/>
+                            <constraint firstItem="BJL-C1-alU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QXt-QC-RH3"/>
+                            <constraint firstItem="ttl-fy-Ghi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="Qpw-lB-nzm"/>
+                            <constraint firstItem="Ntc-tm-D6S" firstAttribute="top" secondItem="ttl-fy-Ghi" secondAttribute="bottom" constant="20" id="YL9-Wf-DSN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BJL-C1-alU" secondAttribute="trailing" id="Z0P-CL-Sdm"/>
+                            <constraint firstItem="ttl-fy-Ghi" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="bqc-Hx-x1O"/>
+                            <constraint firstItem="ttl-fy-Ghi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="c5k-4I-N2m"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ttl-fy-Ghi" secondAttribute="trailing" id="fiB-Pa-2xI"/>
+                            <constraint firstItem="BJL-C1-alU" firstAttribute="top" secondItem="Ntc-tm-D6S" secondAttribute="bottom" constant="20" id="kBb-za-Iru"/>
+                            <constraint firstItem="Ntc-tm-D6S" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="rc1-vt-H4L"/>
+                            <constraint firstItem="BJL-C1-alU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="uNl-1S-6p9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ss3-KF-hIo"/>
+                    <connections>
+                        <outlet property="authButton" destination="Ntc-tm-D6S" id="csh-gL-X5x"/>
+                        <outlet property="authLabel" destination="ttl-fy-Ghi" id="v7a-Tm-opH"/>
+                        <outlet property="myNotesButton" destination="BJL-C1-alU" id="Bi3-7H-mLI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="886" y="689"/>
+        </scene>
+        <!--My Notes View Controller-->
+        <scene sceneID="Flx-uh-P4O">
+            <objects>
+                <viewController id="565-wk-S5f" customClass="MyNotesViewController" customModule="Continote" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gNG-nQ-XgJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zp4-JV-scn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Xvt-LO-jdP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWx-Yp-mjM">
+                                <rect key="frame" x="16" y="84" width="343" height="264"/>
+                                <mutableString key="text">Major TODO list for initial version (remove this when development picks up):  1. Finish this "My Notes" screen by adding a TableView of the signed in user's notes, with the option to add notes, delete notes, or tap to open and edit them.  2. Add "Edit Note" screen, for the user to write/edit an individual note. Within that screen the user could tap to "Continue Writing Elsewhere", which would use Firebase Continue.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QWx-Yp-mjM" firstAttribute="leading" secondItem="Xvt-LO-jdP" secondAttribute="leadingMargin" id="Cf6-ob-vnR"/>
+                            <constraint firstItem="QWx-Yp-mjM" firstAttribute="top" secondItem="gNG-nQ-XgJ" secondAttribute="bottom" constant="20" id="dZf-xy-st1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QWx-Yp-mjM" secondAttribute="trailing" id="god-dS-30j"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="temporaryTodoLabel" destination="QWx-Yp-mjM" id="IaP-cl-W1Q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ul0-vN-Nur" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1760.8" y="688.60569715142435"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TS4-jd-H5z">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U83-hG-48i" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dgO-E5-Pob">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="GrR-3u-IoH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OFV-3I-Od3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="20" y="688.60569715142435"/>
+        </scene>
+    </scenes>
+</document>

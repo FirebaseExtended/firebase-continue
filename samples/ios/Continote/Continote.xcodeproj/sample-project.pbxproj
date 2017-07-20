@@ -1,0 +1,417 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		14B0CC1936BFC3B33351006C /* Pods_Continote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E046B919A49E4850964E98 /* Pods_Continote.framework */; };
+		995CE1CA1EF8398F0067DDF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995CE1C91EF8398F0067DDF5 /* AppDelegate.swift */; };
+		995CE1CC1EF8398F0067DDF5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995CE1CB1EF8398F0067DDF5 /* MainViewController.swift */; };
+		995CE1CF1EF8398F0067DDF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 995CE1CD1EF8398F0067DDF5 /* Main.storyboard */; };
+		995CE1D11EF8398F0067DDF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 995CE1D01EF8398F0067DDF5 /* Assets.xcassets */; };
+		995CE1D41EF8398F0067DDF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 995CE1D21EF8398F0067DDF5 /* LaunchScreen.storyboard */; };
+		997D17B61F16A57200DD949D /* MyNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997D17B51F16A57200DD949D /* MyNotesViewController.swift */; };
+		9996E3091F0BEB0D00254CB1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9996E3081F0BEB0D00254CB1 /* GoogleService-Info.plist */; };
+		99E9772B1F0EB65500808120 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9772A1F0EB65500808120 /* BaseViewController.swift */; };
+		99E9772D1F0EC32300808120 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9772C1F0EC32300808120 /* Constants.swift */; };
+		99E9772F1F0ED02400808120 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9772E1F0ED02400808120 /* Utils.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6E20C9A1BE69B6EE6AFF2EAD /* Pods-Continote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Continote.release.xcconfig"; path = "Pods/Target Support Files/Pods-Continote/Pods-Continote.release.xcconfig"; sourceTree = "<group>"; };
+		995CE1C61EF8398F0067DDF5 /* Continote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Continote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		995CE1C91EF8398F0067DDF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; wrapsLines = 1; };
+		995CE1CB1EF8398F0067DDF5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		995CE1CE1EF8398F0067DDF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		995CE1D01EF8398F0067DDF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		995CE1D31EF8398F0067DDF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		995CE1D51EF8398F0067DDF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		997D17B51F16A57200DD949D /* MyNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNotesViewController.swift; sourceTree = "<group>"; };
+		9996E3081F0BEB0D00254CB1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		99E9772A1F0EB65500808120 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		99E9772C1F0EC32300808120 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		99E9772E1F0ED02400808120 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		A2E046B919A49E4850964E98 /* Pods_Continote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Continote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB61835141013748BED196CF /* Pods-Continote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Continote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Continote/Pods-Continote.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		995CE1C31EF8398F0067DDF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14B0CC1936BFC3B33351006C /* Pods_Continote.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		02F618DB00FB91BEB35DF186 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A2E046B919A49E4850964E98 /* Pods_Continote.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		995CE1BD1EF8398E0067DDF5 = {
+			isa = PBXGroup;
+			children = (
+				995CE1C81EF8398F0067DDF5 /* Continote */,
+				995CE1C71EF8398F0067DDF5 /* Products */,
+				BC9CFCE7FC83A72A64E06886 /* Pods */,
+				02F618DB00FB91BEB35DF186 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		995CE1C71EF8398F0067DDF5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				995CE1C61EF8398F0067DDF5 /* Continote.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		995CE1C81EF8398F0067DDF5 /* Continote */ = {
+			isa = PBXGroup;
+			children = (
+				995CE1D01EF8398F0067DDF5 /* Assets.xcassets */,
+				995CE1D51EF8398F0067DDF5 /* Info.plist */,
+				9996E3081F0BEB0D00254CB1 /* GoogleService-Info.plist */,
+				995CE1D21EF8398F0067DDF5 /* LaunchScreen.storyboard */,
+				995CE1CD1EF8398F0067DDF5 /* Main.storyboard */,
+				995CE1C91EF8398F0067DDF5 /* AppDelegate.swift */,
+				99E9772A1F0EB65500808120 /* BaseViewController.swift */,
+				99E9772C1F0EC32300808120 /* Constants.swift */,
+				995CE1CB1EF8398F0067DDF5 /* MainViewController.swift */,
+				997D17B51F16A57200DD949D /* MyNotesViewController.swift */,
+				99E9772E1F0ED02400808120 /* Utils.swift */,
+			);
+			path = Continote;
+			sourceTree = "<group>";
+		};
+		BC9CFCE7FC83A72A64E06886 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DB61835141013748BED196CF /* Pods-Continote.debug.xcconfig */,
+				6E20C9A1BE69B6EE6AFF2EAD /* Pods-Continote.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		995CE1C51EF8398F0067DDF5 /* Continote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 995CE1D81EF8398F0067DDF5 /* Build configuration list for PBXNativeTarget "Continote" */;
+			buildPhases = (
+				DFA1D9F2C6ABCB8372A37417 /* [CP] Check Pods Manifest.lock */,
+				995CE1C21EF8398F0067DDF5 /* Sources */,
+				995CE1C31EF8398F0067DDF5 /* Frameworks */,
+				995CE1C41EF8398F0067DDF5 /* Resources */,
+				961507F82B4EFCCD419FCA9D /* [CP] Embed Pods Frameworks */,
+				122C9364D38ED3D0035E6DA5 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Continote;
+			productName = Continote;
+			productReference = 995CE1C61EF8398F0067DDF5 /* Continote.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		995CE1BE1EF8398F0067DDF5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				TargetAttributes = {
+					995CE1C51EF8398F0067DDF5 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = EQHXZ8M8AV;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 995CE1C11EF8398F0067DDF5 /* Build configuration list for PBXProject "Continote" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 995CE1BD1EF8398E0067DDF5;
+			productRefGroup = 995CE1C71EF8398F0067DDF5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				995CE1C51EF8398F0067DDF5 /* Continote */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		995CE1C41EF8398F0067DDF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				995CE1D41EF8398F0067DDF5 /* LaunchScreen.storyboard in Resources */,
+				9996E3091F0BEB0D00254CB1 /* GoogleService-Info.plist in Resources */,
+				995CE1D11EF8398F0067DDF5 /* Assets.xcassets in Resources */,
+				995CE1CF1EF8398F0067DDF5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		122C9364D38ED3D0035E6DA5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Continote/Pods-Continote-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		961507F82B4EFCCD419FCA9D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Continote/Pods-Continote-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DFA1D9F2C6ABCB8372A37417 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		995CE1C21EF8398F0067DDF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				995CE1CC1EF8398F0067DDF5 /* MainViewController.swift in Sources */,
+				995CE1CA1EF8398F0067DDF5 /* AppDelegate.swift in Sources */,
+				99E9772D1F0EC32300808120 /* Constants.swift in Sources */,
+				99E9772F1F0ED02400808120 /* Utils.swift in Sources */,
+				997D17B61F16A57200DD949D /* MyNotesViewController.swift in Sources */,
+				99E9772B1F0EB65500808120 /* BaseViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		995CE1CD1EF8398F0067DDF5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				995CE1CE1EF8398F0067DDF5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		995CE1D21EF8398F0067DDF5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				995CE1D31EF8398F0067DDF5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		995CE1D61EF8398F0067DDF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		995CE1D71EF8398F0067DDF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		995CE1D91EF8398F0067DDF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB61835141013748BED196CF /* Pods-Continote.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = EQHXZ8M8AV;
+				INFOPLIST_FILE = Continote/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = [TODO: YOUR-IOS-BUNDLE-ID-HERE];
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		995CE1DA1EF8398F0067DDF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E20C9A1BE69B6EE6AFF2EAD /* Pods-Continote.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = EQHXZ8M8AV;
+				INFOPLIST_FILE = Continote/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = [TODO: YOUR-IOS-BUNDLE-ID-HERE];
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		995CE1C11EF8398F0067DDF5 /* Build configuration list for PBXProject "Continote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				995CE1D61EF8398F0067DDF5 /* Debug */,
+				995CE1D71EF8398F0067DDF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		995CE1D81EF8398F0067DDF5 /* Build configuration list for PBXNativeTarget "Continote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				995CE1D91EF8398F0067DDF5 /* Debug */,
+				995CE1DA1EF8398F0067DDF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 995CE1BE1EF8398F0067DDF5 /* Project object */;
+}
