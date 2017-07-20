@@ -7,7 +7,8 @@ their [Firebase](https://firebase.google.com/)-enabled Android and/or iOS
 app(s) and Chrome extension, the Firebase Continue libraries allow users to easily
 transition from the developer's mobile app(s) to the developer's web app. This
 transition allows the user to conveniently and nearly instantaneously continue their
-activity within the mobile app in the web app instead.
+activity within the mobile app in the web app instead, by means of a Chrome
+extension.
 
 Note: this is not an official Google product.
 
