@@ -455,7 +455,7 @@ var FirebaseContinue = (function() {
     /**
      * Handles when the user signs in or out.
      *
-     * This is also invoked right away by Firebase with theauth state when the
+     * This is also invoked right away by Firebase with the auth state when the
      * handler is registered with Firebase.
      * See: https://firebase.google.com/docs/reference/js/firebase.auth.Auth#onAuthStateChanged
      *
