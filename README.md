@@ -14,7 +14,8 @@ Note: this is not an official Google product.
 
 ### Example Use Case
 
-For a specific example (which refers to the Firebase Continue samples),
+For a specific example (which refers to the
+[Firebase Continue samples](samples)),
 if you were to use Firebase Continue for a note writing application called
 "Continote", a user could begin writing a note on their iOS or Android device using
 the Continote app while on the bus. Then, they could finish writing it in Chrome on
