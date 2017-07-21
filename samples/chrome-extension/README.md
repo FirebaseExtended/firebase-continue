@@ -91,8 +91,8 @@ this sample packaged and installed to try out:
     If you make any changes to the code of your Chrome extension, remember
     to repeat the "package and install" step of this setup guide with one difference:
     provide the "Pack Extension" dialog with your private key file that was generated
-    the first time you packaged and installed the extension. This is so that your
-    the packaging updates your existing Chrome extension, rather than creating
+    the first time you packaged and installed the extension. This is so that
+    the packaging updates your existing Chrome extension, instead of creating
     a new Chrome extension with a new ID.
 
 ## Usage
