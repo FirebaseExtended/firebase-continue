@@ -28,25 +28,6 @@ function AuthHelper(handleUserSignedIn, handleUserSignedOut) {
   'use strict';
 
   /**
-   * These are error messages that can be thrown as a direct result of an
-   * AuthHelper instance (via a Promise rejection).
-   *
-   * Note that other error messages are possible if, for example, a Firebase
-   * Auth Promise rejects itself.
-   *
-   * TODO: When we try to resolve errors, rather than simply printing them to
-   * the console, make this public so other scripts can react to these
-   * specific errors (if only by just a simple error message on screen).
-   *
-   * @type {!Object}
-   * @const
-   */
-  var errorMessages_ = {
-    userAlreadySignedIn: "User already signed in",
-    userAlreadySignedOut: "User already signed out"
-  };
-
-  /**
    * A reference to the current user object.
    *
    * This is kept up to date in the auth state changed handler below.
@@ -88,6 +69,21 @@ function AuthHelper(handleUserSignedIn, handleUserSignedOut) {
   };
 
   /**
+   * These are error messages that can be thrown as a direct result of an
+   * AuthHelper instance (via a Promise rejection).
+   *
+   * Note that other error messages are possible if, for example, a Firebase
+   * Auth Promise rejects itself.
+   *
+   * @type {!Object}
+   * @const
+   */
+  this.errorMessages = {
+    userAlreadySignedIn: "User already signed in",
+    userAlreadySignedOut: "User already signed out"
+  };
+
+  /**
    * Displays a popup for sign in purposes.
    *
    * See the documentation in signin-popup.js to understand why a secondary
@@ -98,10 +94,11 @@ function AuthHelper(handleUserSignedIn, handleUserSignedOut) {
    * @const
    */
   this.presentSignInPopup = function() {
+    var authHelper = this;
     return new Promise(function(resolve, reject) {
       // If the user is already signed in, reject immediately.
       if (currentUserIsSignedIn_()) {
-        return reject(errorMessages_.userAlreadySignedIn);
+        return reject(authHelper.errorMessages.userAlreadySignedIn);
       }
 
       // The user is not already signed in, so present the secondary signin
@@ -112,7 +109,7 @@ function AuthHelper(handleUserSignedIn, handleUserSignedOut) {
 
       return resolve();
     });
-  };
+  }.bind(this);
 
   /**
    * Signs the user in via Google.
@@ -122,10 +119,11 @@ function AuthHelper(handleUserSignedIn, handleUserSignedOut) {
    * @const
    */
   this.signInWithGoogle = function() {
+    var authHelper = this;
     return new Promise(function(resolve, reject) {
       // If the user is already signed in, reject immediately.
       if (currentUserIsSignedIn_()) {
-        return reject(errorMessages_.userAlreadySignedIn);
+        return reject(authHelper.errorMessages.userAlreadySignedIn);
       }
 
       // Set up and resolve with the authentication provider.
@@ -141,7 +139,7 @@ function AuthHelper(handleUserSignedIn, handleUserSignedOut) {
       // authentication provider.
       return firebase.auth().signInWithPopup(provider);
     });
-  };
+  }.bind(this);
 
   /**
    * Signs the user in via Facebook.
@@ -151,10 +149,11 @@ function AuthHelper(handleUserSignedIn, handleUserSignedOut) {
    * @const
    */
   this.signInWithFacebook = function() {
+    var authHelper = this;
     return new Promise(function(resolve, reject) {
       // If the user is already signed in, reject immediately.
       if (currentUserIsSignedIn_()) {
-        return reject(errorMessages_.userAlreadySignedIn);
+        return reject(authHelper.errorMessages.userAlreadySignedIn);
       }
 
       // Set up and resolve with the authentication provider.
@@ -165,7 +164,7 @@ function AuthHelper(handleUserSignedIn, handleUserSignedOut) {
       // authentication provider.
       return firebase.auth().signInWithPopup(provider);
     });
-  };
+  }.bind(this);
 
   /**
    * Signs the user out.
@@ -175,10 +174,11 @@ function AuthHelper(handleUserSignedIn, handleUserSignedOut) {
    * @const
    */
   this.signOut = function() {
+    var authHelper = this;
     return new Promise(function(resolve, reject) {
       // If the user is already signed out, reject immediately.
       if (!currentUserIsSignedIn_()) {
-        return reject(errorMessages_.userAlreadySignedOut);
+        return reject(authHelper.errorMessages.userAlreadySignedOut);
       }
 
       return resolve();
@@ -186,7 +186,7 @@ function AuthHelper(handleUserSignedIn, handleUserSignedOut) {
       // The user is signed in, so we can sign them out.
       return firebase.auth().signOut();
     });
-  };
+  }.bind(this);
 
   // Finally, finish initializing this instance.
   (function() {
