@@ -174,9 +174,14 @@
     // signed in, so we need to handle that case in the catch function
     // below - just in case.
     authHelper_.presentSignInPopup().catch(function(error) {
-      // TODO: Rather than outputting an error, notify the user that something
-      // went wrong so that they may try again.
-      console.error("Error during sign in: " + error);
+      switch (error) {
+        case authHelper_.errorMessages.userAlreadySignedIn:
+          // Do nothing, as the user is already signed in.
+          break;
+
+        default:
+          console.error("Error during sign in: " + error);
+      }
     });
   };
 
@@ -197,9 +202,14 @@
     // so we need to handle that case in the catch function
     // below - just in case.
     authHelper_.signOut().catch(function(error) {
-      // TODO: Rather than outputting an error, notify the user that something
-      // went wrong so that they may try again.
-      console.error("Error during sign out: " + error);
+      switch (error) {
+        case authHelper_.errorMessages.userAlreadySignedOut:
+          // Do nothing, as the user is already signed out.
+          break;
+
+        default:
+          console.error("Error during sign out: " + error);
+      }
     });
   };
 
@@ -221,8 +231,7 @@
           return firebaseContinueInstance.continueLatestActivity();
         })
         .catch(function(error) {
-          console.error("Error opening note to continue writing instance: " +
-              error);
+          console.error("Error opening note to continue writing: " + error);
         });
   };
 

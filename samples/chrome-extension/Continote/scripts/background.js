@@ -122,7 +122,32 @@
     userShouldSignIn: {
       id: "userShouldSignIn",
       title: "Sign In Required",
-      message: "Please click the Continote browser icon button to sign in."
+      message: "Please sign in to use the Continote extension.",
+      buttons: [
+        { title: "Sign In" }
+      ],
+      handleButtonClicked: function(buttonIndex) {
+        switch (buttonIndex) {
+
+          // Sign in button clicked.
+          case 0:
+            authHelper_.presentSignInPopup().catch(function(error) {
+              switch (error) {
+                case authHelper_.errorMessages.userAlreadySignedIn:
+                  // Do nothing, as the user is already signed in.
+                  break;
+
+                default:
+                  console.error("Error during sign in: " + error);
+              }
+            });
+            break;
+
+          // Unknown button clicked.
+          default:
+            console.error("Unknown button " + buttonIndex + " clicked");
+        }
+      }
     },
 
     /**
@@ -135,7 +160,43 @@
     userHasNoteToContinueWriting: {
       id: "userHasNoteToContinueWriting",
       title: "Continue Writing Your Note",
-      message: "Click the Continote browser icon button to continue writing."
+      message: "Would you like to continue writing your note?",
+      buttons: [
+        { title: "Open Note" },
+        { title: "Dismiss" }
+      ],
+      handleButtonClicked: function(buttonIndex) {
+        switch (buttonIndex) {
+
+          // Open note button clicked.
+          case 0:
+            FirebaseContinue.getInstanceFor(Constants.appName)
+                .then(function(firebaseContinueInstance) {
+                  return firebaseContinueInstance.continueLatestActivity();
+                })
+                .catch(function(error) {
+                  console.error(
+                      "Error opening note to continue writing: " + error);
+                });
+            break;
+
+          // Dismiss note button clicked.
+          case 1:
+            FirebaseContinue.getInstanceFor(Constants.appName)
+                .then(function(firebaseContinueInstance) {
+                  return firebaseContinueInstance.dismissLatestActivity();
+                })
+                .catch(function(error) {
+                  console.error(
+                      "Error dismissing note to continue writing: " + error);
+                });
+            break;
+
+          // Unknown button clicked.
+          default:
+            console.error("Unknown button " + buttonIndex + " clicked");
+        }
+      }
     }
   };
 
@@ -148,10 +209,10 @@
    * @const
    */
   var applyBrowserActionButtonState_ = function(state) {
-    chrome.browserAction.setTitle({title: state.title});
-    chrome.browserAction.setBadgeText({text: state.badgeText});
+    chrome.browserAction.setTitle({ title: state.title });
+    chrome.browserAction.setBadgeText({ text: state.badgeText });
     chrome.browserAction.setBadgeBackgroundColor({
-      color: state.badgeBackgroundColor});
+      color: state.badgeBackgroundColor });
   };
 
   /**
@@ -165,24 +226,32 @@
    * @const
    */
   var displayChromeNotification_ = function(withParameters) {
+    // See: https://developer.chrome.com/apps/notifications#type-NotificationOptions
+    var notificationOptions = {
+      // Default values which are the same for all notifications.
+      type: "basic",
+      iconUrl: "images/icons/icon-128.png",
+
+      // Specific to this notification.
+      title: withParameters.title,
+      message: withParameters.message
+    };
+
+    if (withParameters.buttons) {
+      notificationOptions.buttons = withParameters.buttons;
+    }
+
     chrome.notifications.create(
       // If a notification with this same id is already displayed, it will
       // be overridden by this new notification. This reduces UI clutter.
       withParameters.id,
-      {
-        // Default values which are the same for all notifications.
-        type: "basic",
-        iconUrl: "images/icons/icon-128.png",
-
-        // Specific to this notification.
-        title: withParameters.title,
-        message: withParameters.message
-      },
+      notificationOptions,
       function(notificationId) {
         // This callback is required before Chrome 42.
         // Do nothing here, since we set the notificationId ourselves above.
         // See: https://developer.chrome.com/extensions/notifications#method-create
-      });
+      }
+    );
   };
 
   /**
@@ -318,6 +387,28 @@
   };
 
   /**
+   * Handles when the user clicks a button in any Chrome notification displayed
+   * by this extension.
+   *
+   * See: https://developer.chrome.com/apps/notifications#event-onButtonClicked
+   *
+   * @function
+   * @param {!string} notificationId
+   * @param {!number} buttonIndex
+   * @const
+   */
+  var handleChromeNotificationButtonClicked_ = function(notificationId,
+                                                        buttonIndex) {
+    if (chromeNotifications_.hasOwnProperty(notificationId)) {
+      var notification = chromeNotifications_[notificationId];
+      if (notification.handleButtonClicked) {
+        // Invoke the button clicked callback for the specific notification.
+        notification.handleButtonClicked(buttonIndex);
+      }
+    }
+  };
+
+  /**
    * Initializes this extension's background processor.
    *
    * This is the main entry point of this background script.
@@ -326,6 +417,10 @@
    * @const
    */
   var init_ = function() {
+    // Register to handle all Chrome notification button clicks.
+    chrome.notifications.onButtonClicked.addListener(
+        handleChromeNotificationButtonClicked_);
+
     // Now that the page is ready, set up the Firebase Auth helper to listen
     // for sign in state changes.
     authHelper_ = new AuthHelper(handleUserSignedIn_, handleUserSignedOut_);
@@ -348,7 +443,8 @@
   window.addEventListener("load", init_);
 })();
 
-// Below are extra JSDoc definitions to describe objects this script uses.
+// Below are extra JSDoc definitions to describe the objects and
+// callback functions this script uses.
 
 /**
  * A state describing how the browser action icon button should look.
@@ -366,4 +462,17 @@
  * @property {!string} id
  * @property {!string} title
  * @property {!string} message
+ * @property {?Array.<Object>} buttons - See the "buttons" property of Chrome
+ * notification options at:
+ * https://developer.chrome.com/apps/notifications#type-NotificationOptions
+ * @property {?ChromeNotificationButtonClicked} handleButtonClicked
+ */
+
+/**
+ * This callback is only invoked when the user clicks a button within a
+ * Chrome notification.
+ *
+ * @callback ChromeNotificationButtonClicked
+ * @param {!number} buttonIndex - The index of the button that was clicked, in
+ * the context of the notification's "buttons" array.
  */
