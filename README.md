@@ -47,7 +47,8 @@ ready and released for each platform in the Releases page of this repo.
 ## Directory Structure
 
 The root of this repository is split into several subdirectories, one per
-platform that Firebase Continue supports (Android, iOS, and Chrome Extensions).
+platform that Firebase Continue supports
+([Android](android), [iOS](ios), and [Chrome extensions](chrome-extensions)).
 
 Please see the README in these subdirectories for specific installation and
 usage instructions, after following the [Initial Setup guide](#initial-setup)
@@ -57,7 +58,7 @@ There is one more subdirectory at [`samples/`](samples/) which holds a set of
 samples. See the [Samples section](#samples) below for more information.
 
 Finally, there is a
-[`sample-firebase-continue-database.rules`](sample-firebase-continue-database.rules)
+[`sample-firebase-continue-database.rules.json`](sample-firebase-continue-database.rules.json)
 file at the root of this repository.
 This is the suggested set of Firebase Realtime Database security and validation rules
 for use with Firebase Continue. More details on this are provided below in the
@@ -164,9 +165,13 @@ project to make use of the Firebase Continue libraries:
 A set of Firebase Continue samples, along with detailed setup instructions,
 can be found in the [`samples/`](samples/) subdirectory.
 
-There is a sample provided for each platform Firebase Continue supports, as well
-as a sample Firebase web app that includes the suggested Firebase Realtime
-Database security and validation rules after setting up and deploying it to your
+There is a sample provided for each platform Firebase Continue supports
+([Android](samples/android), [iOS](samples/ios), and
+[Chrome extensions](samples/chrome-extension)), as well
+as a [sample web app](samples/web)
+that includes the
+[suggested Firebase Realtime Database rules](sample-firebase-continue-database.rules.json)
+after setting up and deploying it to your
 Firebase project.
 
 ## Development Progress
