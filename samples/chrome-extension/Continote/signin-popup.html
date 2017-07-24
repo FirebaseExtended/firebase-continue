@@ -36,7 +36,7 @@
     <!-- Include utility functions. -->
     <script src="scripts/utils.js"></script>
 
-    <!-- Include convenience helper class to simplify Firebase auth usage. -->
+    <!-- Include convenience helper class to simplify Firebase Auth usage. -->
     <script src="scripts/auth-helper.js"></script>
 
     <!-- Material Design Lite styles -->
@@ -71,6 +71,8 @@
 
         <!-- Container holding all content for users who are signed in. -->
         <div id="user-signed-in-content-container" class="hidden">
+
+          <!-- Card with notice that the user is signed in. -->
           <section class="mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
             <div class="mdl-card mdl-cell mdl-cell--12-col">
               <div class="mdl-card__title">
@@ -90,6 +92,8 @@
 
         <!-- Container holding all content for users who are not signed in. -->
         <div id="user-signed-out-content-container" class="hidden">
+
+          <!-- Card with sign in methods. -->
           <section class="mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
             <div class="mdl-card mdl-cell mdl-cell--12-col">
               <div class="mdl-card__title">
