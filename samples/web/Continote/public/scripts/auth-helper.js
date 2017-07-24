@@ -15,10 +15,15 @@
  */
 
 /**
- * This class encapsulates Firebase Auth use within Continote.
+ * This class encapsulates Firebase Auth use within a page in the
+ * Continote web app.
  *
  * Remember to include this script in the <head> of a page if you plan on
  * using authentication within that page.
+ *
+ * Furthermore, make sure that page has a <div> element with an ID that matches
+ * the firebaseUiSignInContainerId_ constant below, to allow the user to
+ * sign in via FirebaseUI.
  *
  * @constructor
  * @param {!UserSignedInCallback} handleUserSignedIn
@@ -37,8 +42,57 @@ function AuthHelper(handleUserSignedIn, handleUserSignedOut) {
   var currentUser_ = null;
 
   /**
-   * Returns true iff the current user is signed into this extension, false
-   * otherwise.
+   * The FirebaseUI object to use for sign in purposes.
+   *
+   * See: https://github.com/firebase/firebaseui-web
+   *
+   * @type {!Object}
+   * @const
+   */
+  var firebaseUi_ = new firebaseui.auth.AuthUI(firebase.auth());
+
+  /**
+   * The FirebaseUI config object.
+   *
+   * See: https://github.com/firebase/firebaseui-web#configuration
+   *
+   * @type {!Object}
+   * @const
+   */
+  var firebaseUiConfig_ = {
+    "callbacks": {
+      "signInSuccess": function (user, credential, redirectUrl) {
+        // Do not redirect.
+        return false;
+      }
+    },
+    "signInFlow": "popup",
+    "signInOptions": [
+      {
+        provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        scopes: ["https://www.googleapis.com/auth/plus.login"]
+      },
+      {
+        provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        scopes: [
+          "public_profile",
+          "email"
+        ]
+      }
+    ]
+  };
+
+  /**
+   * FirebaseUI will be initialized within the element on the page with this ID.
+   *
+   * @type {!string}
+   * @const
+   */
+  var firebaseUiSignInContainerId_ = "firebaseui-container";
+
+  /**
+   * Returns true iff the current user is signed into this web app,
+   * false otherwise.
    *
    * @function
    * @returns {!boolean}
@@ -63,9 +117,18 @@ function AuthHelper(handleUserSignedIn, handleUserSignedOut) {
     // Keep track of the current user object.
     currentUser_ = user;
 
-    // Call the appropriate callback for the current auth state.
-    currentUserIsSignedIn_() ? handleUserSignedIn(currentUser_) :
-                               handleUserSignedOut();
+    // Configure FirebaseUI (if necessary) and then call the appropriate
+    // callback for the current auth state.
+    if (currentUserIsSignedIn_()) {
+      handleUserSignedIn(currentUser_);
+    } else {
+      // The current user is not signed in, so display a sign in UI using
+      // FirebaseUI.
+      firebaseUi_.reset();
+      firebaseUi_.start("#" + firebaseUiSignInContainerId_, firebaseUiConfig_);
+
+      handleUserSignedOut();
+    }
   };
 
   /**
@@ -79,92 +142,8 @@ function AuthHelper(handleUserSignedIn, handleUserSignedOut) {
    * @const
    */
   this.errorMessages = {
-    userAlreadySignedIn: "User already signed in",
     userAlreadySignedOut: "User already signed out"
   };
-
-  /**
-   * Displays a popup for sign in purposes.
-   *
-   * See the documentation in signin-popup.js to understand why a secondary
-   * popup is needed.
-   *
-   * @function
-   * @returns {!Promise}
-   * @const
-   */
-  this.presentSignInPopup = function() {
-    var authHelper = this;
-    return new Promise(function(resolve, reject) {
-      // If the user is already signed in, reject immediately.
-      if (currentUserIsSignedIn_()) {
-        return reject(authHelper.errorMessages.userAlreadySignedIn);
-      }
-
-      // The user is not already signed in, so present the secondary signin
-      // popup.
-      window.open(chrome.extension.getURL("signin-popup.html"),
-                  "Continote - Sign In",
-                  "width=500,height=350");
-
-      return resolve();
-    });
-  }.bind(this);
-
-  /**
-   * Signs the user in via Google.
-   *
-   * @function
-   * @returns {!Promise}
-   * @const
-   */
-  this.signInWithGoogle = function() {
-    var authHelper = this;
-    return new Promise(function(resolve, reject) {
-      // If the user is already signed in, reject immediately.
-      if (currentUserIsSignedIn_()) {
-        return reject(authHelper.errorMessages.userAlreadySignedIn);
-      }
-
-      // Set up and resolve with the authentication provider.
-      var provider = new firebase.auth.GoogleAuthProvider();
-      provider.setCustomParameters({
-        // Ask the user to choose which Google account they wish to use with
-        // Continote.
-        prompt: "select_account"
-      });
-      return resolve(provider);
-    }).then(function(provider) {
-      // The user is signed out, so we can sign them in with the supplied
-      // authentication provider.
-      return firebase.auth().signInWithPopup(provider);
-    });
-  }.bind(this);
-
-  /**
-   * Signs the user in via Facebook.
-   *
-   * @function
-   * @returns {!Promise}
-   * @const
-   */
-  this.signInWithFacebook = function() {
-    var authHelper = this;
-    return new Promise(function(resolve, reject) {
-      // If the user is already signed in, reject immediately.
-      if (currentUserIsSignedIn_()) {
-        return reject(authHelper.errorMessages.userAlreadySignedIn);
-      }
-
-      // Set up and resolve with the authentication provider.
-      var provider = new firebase.auth.FacebookAuthProvider();
-      return resolve(provider);
-    }).then(function(provider) {
-      // The user is signed out, so we can sign them in with the supplied
-      // authentication provider.
-      return firebase.auth().signInWithPopup(provider);
-    });
-  }.bind(this);
 
   /**
    * Signs the user out.
