@@ -168,6 +168,6 @@ initial, released v0.1.0 of this sample.
 
 ### Major Features Completed
 - [x] User authentication (via Firebase Authentication and FirebaseUI)
-- [ ] "My Notes" page, allowing signed in users to view a list of their notes with
+- [x] "My Notes" page, allowing signed in users to view a list of their notes with
 the option to add a note, delete a note, or open to edit a note
 - [ ] "Edit Note" page, allowing signed in users to edit a particular note

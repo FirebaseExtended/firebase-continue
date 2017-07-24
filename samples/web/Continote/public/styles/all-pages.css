@@ -89,16 +89,43 @@ a:hover {
   background-color: #3b5998 !important;
 }
 
-#view-source {
-  position: fixed;
-  display: block;
-  right: 0;
-  bottom: 0;
-  margin-right: 32px;
-  margin-bottom: 32px;
-  z-index: 900;
+#note-list {
+  margin: 0;
+  padding: 0;
+}
+
+#note-list .note-list-item .mdl-list__item-primary-content {
+  width: 50%;
+}
+
+#note-list .note-list-item {
+  height: auto;
+}
+
+#note-list .note-list-item .note-title {
+  font-weight: bold;
+}
+
+#note-list .note-list-item .note-actions {
+  width: 50%;
+  text-align: right;
+}
+
+#note-list .note-list-item .note-actions button {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.truncate-to-single-line {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 .hidden {
   display: none !important;
+}
+
+.placeholder {
+  font-style: italic;
 }

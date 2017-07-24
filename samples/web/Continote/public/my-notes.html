@@ -23,11 +23,12 @@
     <meta name="description" content="Continote web app.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-    <title>Continote - Firebase Continue Sample - Home</title>
+    <title>Continote - Firebase Continue Sample - My Notes</title>
 
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-database.js"></script>
 
     <!-- Necessary config file to set up Firebase. -->
     <script src="scripts/config.js"></script>
@@ -68,7 +69,7 @@
           <!-- Page title -->
           <div class="mdl-layout-title">
             <span class="app-title">Continote</span> &mdash;
-            Firebase Continue Sample &mdash; Home
+            Firebase Continue Sample &mdash; My Notes
           </div>
 
           <!-- Add spacer, to align navigation to the right. -->
@@ -76,11 +77,11 @@
 
           <!-- Main Navigation -->
           <nav class="mdl-navigation">
-            <a class="mdl-navigation__link current" href="/">
+            <a class="mdl-navigation__link" href="/">
               <i class="material-icons">home</i>
               Home
             </a>
-            <a class="mdl-navigation__link hidden show-only-to-signed-in-users"
+            <a class="mdl-navigation__link current hidden show-only-to-signed-in-users"
                href="/my-notes.html">
               <i class="material-icons">note</i>
               My Notes
@@ -95,55 +96,25 @@
         <!-- Container holding all content for users who are signed in. -->
         <div class="hidden show-only-to-signed-in-users">
 
-          <!-- Card with usage information. -->
+          <!-- Card with a list of current user's notes. -->
           <section class="mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
             <div class="mdl-card mdl-cell mdl-cell--12-col">
               <div class="mdl-card__title">
                 <h2 class="mdl-card__title-text">
-                  How to use the Continote web app
+                  My Notes
                 </h2>
               </div>
               <div class="mdl-card__supporting-text">
-                <ul>
-                  <li>
-                    Navigate using the links at the top of each page.
-                  </li>
-                  <li>
-                    Go to the "My Notes" page to add notes, delete notes, or open to edit notes.
-                  </li>
-                  <li>
-                    When you are done, you have the option of signing out below.
-                  </li>
+                <ul id="note-list" class="mdl-list">
+                  <!-- Notes will be added here. -->
                 </ul>
               </div>
-            </div>
-          </section>
-
-          <!--
-            Card with user information and option to sign out.
-            TODO: Instead of having a card within the main content, perhaps provide a sign out
-            button within the top navigation. If that change is made, remember to update the usage
-            information card above.
-          -->
-          <section class="mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-            <div class="mdl-card mdl-cell mdl-cell--12-col">
-              <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">
-                  Hello&nbsp;<span id="user-display-name">User display name here</span>
-                </h2>
-              </div>
-              <div class="mdl-card__supporting-text">
-                <p>
-                  You are currently signed in as
-                  <span id="user-email">User email here</span>.
-                </p>
-              </div>
               <div class="mdl-card__actions mdl-card--border">
-                <button id="sign-out-button"
+                <button id="write-new-note-button"
                         class="mdl-button mdl-button--raised mdl-button--colored
                                mdl-js-button mdl-js-ripple-effect" disabled>
-                  <i class="material-icons">account_circle</i>
-                  Sign Out
+                  <i class="material-icons">add</i>
+                  Write a new note
                 </button>
               </div>
             </div>
@@ -164,6 +135,6 @@
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
     <!-- Finally, include the main script to run in this page. -->
-    <script src="scripts/index.js"></script>
+    <script src="scripts/my-notes.js"></script>
   </body>
 </html>

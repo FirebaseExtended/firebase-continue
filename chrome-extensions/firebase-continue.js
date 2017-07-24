@@ -564,7 +564,7 @@ var FirebaseContinue = (function() {
 
         // Open the URL for the Activity so that the user can continue what
         // they wished to do.
-        chrome.tabs.create({url: copyOfActivity.url});
+        chrome.tabs.create({ url: copyOfActivity.url });
 
         return resolve();
       }).then(function() {
@@ -684,7 +684,7 @@ var FirebaseContinue = (function() {
 }());
 
 // Below are extra JSDoc definitions to describe the objects and
-// callback functions this Firebase Continue expects.
+// callback functions this Firebase Continue library expects.
 
 /**
  * An Activity the user may wish to continue doing,
@@ -701,6 +701,10 @@ var FirebaseContinue = (function() {
  * the provided "continueLatestActivity" method, rather than opening the URL
  * directly, so that Firebase Continue can guarantee correct functionality.
  *
+ * The schema defined for each Activity
+ * in sample-firebase-continue-database.rules.json
+ * should always match this type definition.
+ *
  * @typedef {Object} FirebaseContinue.Activity
  * @property {!string} url - If opened, this URL should allow the user
  * to continue what they were doing (i.e. their most recent "Activity" in the
@@ -711,6 +715,10 @@ var FirebaseContinue = (function() {
 /**
  * The metadata associated with an Activity,
  * as defined in the Firebase Realtime Database.
+ *
+ * The schema defined for each Activity Metadata
+ * in sample-firebase-continue-database.rules.json
+ * should always match this type definition.
  *
  * @typedef {Object} FirebaseContinue.ActivityMetadata
  * @property {!number} addedAt - When the Activity was added to Firebase.
