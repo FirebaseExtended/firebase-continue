@@ -41,6 +41,10 @@ body {
   max-width: 960px;
 }
 
+.mdl-layout__content section:not(:last-child) {
+  margin-bottom: 32px !important;
+}
+
 .mdl-card {
   height: auto;
   min-height: 0;
@@ -77,6 +81,14 @@ a:hover {
   font-weight: bold;
 }
 
+#firebaseui-container .firebaseui-idp-google {
+  background-color: #FFFFFF !important;
+}
+
+#firebaseui-container .firebaseui-idp-facebook {
+  background-color: #3b5998 !important;
+}
+
 #view-source {
   position: fixed;
   display: block;
@@ -85,4 +97,8 @@ a:hover {
   margin-right: 32px;
   margin-bottom: 32px;
   z-index: 900;
+}
+
+.hidden {
+  display: none !important;
 }
