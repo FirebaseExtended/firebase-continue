@@ -137,8 +137,8 @@ project to make use of the Firebase Continue libraries:
 
 3.  Copy the
     [`sample-firebase-continue-database.rules.json`](sample-firebase-continue-database.rules.json)
-    file from the root of this repository and paste a copy of it also
-    at the root.
+    file from the [root of this repository](/) and paste a copy of it also
+    [at the root](/).
 
 4.  Rename the `sample-firebase-continue-database.rules.json` copy to
     `database.rules.json`.
