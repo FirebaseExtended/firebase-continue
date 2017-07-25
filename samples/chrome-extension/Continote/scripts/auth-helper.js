@@ -90,7 +90,8 @@ function AuthHelper(handleUserSignedIn, handleUserSignedOut) {
    * popup is needed.
    *
    * @function
-   * @returns {!Promise}
+   * @returns {!Promise} - A Promise which either resolves with nothing,
+   * or rejects with an error message.
    * @const
    */
   this.presentSignInPopup = function() {
@@ -115,7 +116,8 @@ function AuthHelper(handleUserSignedIn, handleUserSignedOut) {
    * Signs the user in via Google.
    *
    * @function
-   * @returns {!Promise}
+   * @returns {!Promise} - A Promise which either resolves with nothing,
+   * or rejects with an error message.
    * @const
    */
   this.signInWithGoogle = function() {
@@ -145,7 +147,8 @@ function AuthHelper(handleUserSignedIn, handleUserSignedOut) {
    * Signs the user in via Facebook.
    *
    * @function
-   * @returns {!Promise}
+   * @returns {!Promise} - A Promise which either resolves with nothing,
+   * or rejects with an error message.
    * @const
    */
   this.signInWithFacebook = function() {
@@ -170,7 +173,8 @@ function AuthHelper(handleUserSignedIn, handleUserSignedOut) {
    * Signs the user out.
    *
    * @function
-   * @returns {!Promise}
+   * @returns {!Promise} - A Promise which either resolves with nothing,
+   * or rejects with an error message.
    * @const
    */
   this.signOut = function() {
