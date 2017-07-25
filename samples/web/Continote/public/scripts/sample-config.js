@@ -19,11 +19,6 @@
  *
  * Remember to include this script in the <head> of a page if you plan on using
  * Firebase within that page.
- *
- * TODO: Consider setting up a "common" folder for the Chrome extension sample
- * and the web app sample to share code, and putting this file there since it
- * currently has plenty of overlap (as of July 21, 2017).
- * If this change is made, remember to update the installation/setup guides!
  */
 (function() {
   'use strict';
