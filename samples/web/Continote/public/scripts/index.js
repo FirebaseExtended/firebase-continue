@@ -36,8 +36,6 @@
    * @const
    */
   var pageUi_ = {
-    userSignedInContentContainer: null,
-    userSignedOutContentContainer: null,
     userDisplayName: null,
     userEmail: null,
     signOutButton: null
@@ -52,11 +50,7 @@
    * @const
    */
   var handleUserSignedIn_ = function(user) {
-    // Hide the UI for signed out users.
-    Utils.hideElement(pageUi_.userSignedOutContentContainer);
-
-    // Show the UI for signed in users.
-    Utils.showElement(pageUi_.userSignedInContentContainer);
+    // Set up the UI for signed in users.
     pageUi_.userDisplayName.textContent = user.displayName;
     pageUi_.userEmail.textContent = user.email;
     Utils.enableButtonAndAddClickListener(
@@ -72,13 +66,9 @@
    * @const
    */
   var handleUserSignedOut_ = function() {
-    // Hide the UI for signed in users.
-    Utils.hideElement(pageUi_.userSignedInContentContainer);
+    // Tear down the UI for signed in users.
     Utils.disableButtonAndRemoveClickListener(
         pageUi_.signOutButton, handleSignOutButtonClicked_);
-
-    // Show the UI for signed out users.
-    Utils.showElement(pageUi_.userSignedOutContentContainer);
   };
 
   /**
@@ -119,10 +109,6 @@
    */
   var init_ = function() {
     // Hold references to various UI elements for later manipulation.
-    pageUi_.userSignedInContentContainer = document.getElementById(
-        "user-signed-in-content-container");
-    pageUi_.userSignedOutContentContainer = document.getElementById(
-        "user-signed-out-content-container");
     pageUi_.userDisplayName = document.getElementById("user-display-name");
     pageUi_.userEmail = document.getElementById("user-email");
     pageUi_.signOutButton = document.getElementById("sign-out-button");
