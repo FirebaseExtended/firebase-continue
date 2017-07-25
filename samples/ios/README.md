@@ -144,7 +144,7 @@ This sample is dependent on the following libraries/SDKs:
 - [FirebaseUI iOS v4.0.0+](https://github.com/firebase/FirebaseUI-iOS)
 
 ### Material Components
-- [Material Components iOS v26.0.0+](https://material.io/components/ios/)
+- [Material Components iOS v29.0.0+](https://material.io/components/ios/)
 
 ## Disclaimer
 

@@ -19,9 +19,11 @@ import FirebaseAuthUI
 import FirebaseFacebookAuthUI
 import FirebaseGoogleAuthUI
 import MaterialComponents.MaterialButtons
+import MaterialComponents.MaterialSnackbar
 
 /**
- This is the ViewController that is initially pushed onto this app's UINavigationController.
+ The ViewController that is initially pushed onto this app's UINavigationController.
+
  It presents the user with an initial screen to either sign in and then navigate to other screens,
  or sign out.
  */
@@ -34,7 +36,7 @@ class MainViewController: BaseViewController {
     customizedAuthUI.providers = Constants.Auth.providers
     customizedAuthUI.isSignInWithEmailHidden = true
     return customizedAuthUI
-    }()
+  }()
 
   // UI outlets
   @IBOutlet var authLabel: UILabel!
@@ -48,7 +50,7 @@ class MainViewController: BaseViewController {
     title = Constants.appName
 
     // Style all labels.
-    authLabel.applyAppTheme(for: .largeText)
+    authLabel.applyAppTheme(for: .subheadingText)
 
     // Style all buttons.
     authButton.applyAppTheme()
@@ -89,10 +91,7 @@ class MainViewController: BaseViewController {
    Presents the sign in screen to the user, if they are currently signed out.
    */
   func presentSignInScreen() {
-    guard !currentUserIsSignedIn() else {
-      print("Current user is already signed in.")
-      return
-    }
+    guard !currentUserIsSignedIn() else { return }
 
     // Present the sign in screen.
     present(authUI.authViewController(), animated: true)
@@ -102,24 +101,19 @@ class MainViewController: BaseViewController {
    Signs the user out, if they are currently signed in.
    */
   func signUserOut() {
-    guard currentUserIsSignedIn() else {
-      print("Current user is already signed out.")
-      return
-    }
+    guard currentUserIsSignedIn() else { return }
 
     do {
-      // Sign the user out.
+      // Try to sign the user out.
       try authUI.signOut()
-    } catch let error {
-      // TODO: fatalError is not a graceful way to handle errors.
-      // This error is most likely a network error, so retrying here
-      // makes sense.
-      fatalError("Error during sign out: \(error)")
+    } catch {
+      MDCSnackbarManager.show(Constants.Text.ErrorMessage.couldNotSignOut)
     }
   }
 
   /**
-   This method is called when the user taps the auth (i.e. "Sign In"/"Sign Out") button.
+   Handles when the user taps the auth (i.e. "Sign In"/"Sign Out") button.
+
    - Parameter sender: The object that called this action. This should only be the authButton.
    */
   @IBAction func authButtonAction(_ sender: Any) {
@@ -138,7 +132,6 @@ class MainViewController: BaseViewController {
  for clarity and a cleaner namespace.
  */
 private extension Constants {
-
   struct Auth {
     // These are the authentication methods this app allows.
     static let providers: [FUIAuthProvider] = [FUIGoogleAuth(), FUIFacebookAuth()]
@@ -146,15 +139,17 @@ private extension Constants {
 
   struct Text {
     static let signInMessage: String = "Please sign in below to use \(appName)."
-    static let welcomeMessage: String = "Hello %@!\nYou are currently signed in as %@."
+    static let welcomeMessage: String = "Hello %@!\nYou are currently signed in as %@"
 
     static let signInButtonTitle: String = "Sign In"
     static let signOutButtonTitle: String = "Sign Out"
 
-    static let myNotesButtonTitle: String = "My Notes"
+    struct ErrorMessage {
+      static let couldNotSignOut: String = "Could not sign out. Please try again."
+    }
   }
 
-  // These segue identifiers should match the identifiers defined in the Main storyboard.
+  // These segue identifiers must match the identifiers defined in the Main storyboard.
   enum Segue: String {
     case myNotes = "myNotes"
   }

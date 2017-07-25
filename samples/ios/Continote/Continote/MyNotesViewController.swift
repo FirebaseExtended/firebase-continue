@@ -17,85 +17,135 @@
 import UIKit
 import Firebase
 import FirebaseDatabaseUI
+import MaterialComponents.MaterialButtons
 
 /**
- This view controller presents the user with a list of their notes in Continote.
- From here the user can open or delete notes.
+ The view controller that presents the user with a list of their Notes in Continote.
+
+ From here the user can add, delete, or open to edit Notes.
  */
 class MyNotesViewController: BaseViewController {
 
-  // Firebase Realtime Database reference for the current user's note data within this application.
+  // Firebase Realtime Database reference for the current user's Notes within Continote.
   private var notesFirebaseDatabaseRef: DatabaseReference?
 
-  // The FirebaseUI data source to populate the TableView of notes for the current user.
-  private var notesTableViewDataSource: FUITableViewDataSource!
+  // The data source to populate the TableView of Notes for the current user.
+  private var myNotesTableViewDataSource: MyNotesTableViewDataSource?
 
   // UI outlets
-  @IBOutlet var temporaryTodoLabel: UILabel!
+  @IBOutlet var myNotesTableView: UITableView!
+  @IBOutlet var writeNewNoteButton: MDCRaisedButton!
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
     // Set up this screen's AppBar title.
-    title = Constants.screenTitle
+    title = Constants.Text.screenTitle
 
-    // Style all labels.
-    temporaryTodoLabel.applyAppTheme(for: .normalText)
+    // Style all buttons.
+    writeNewNoteButton.applyAppTheme()
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+
+    // Remove all bindings and database observers.
+    myNotesTableViewDataSource?.unbind()
+    myNotesTableViewDataSource = nil
+    notesFirebaseDatabaseRef?.removeAllObservers()
+    notesFirebaseDatabaseRef = nil
+  }
+
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let segueIdentifier = Constants.Segue(rawValue: segue.identifier!) else { return }
+
+    switch segueIdentifier {
+    case .editNote:
+      // We need to let the EditNoteViewController know which Note the user wishes to edit
+      // before the segue can be performed.
+      let cell = sender as! MyNotesTableViewCell
+      let editNoteViewController = segue.destination as! EditNoteViewController
+      editNoteViewController.keyOfNoteToEdit = cell.noteKey
+    }
   }
 
   override func handleUserSignedIn(_ user: User) {
     super.handleUserSignedIn(user)
 
-    // Set up our TableView up to sync with GoogleBroadcasts for the current user.
-    let currentUserId: String! = Auth.auth().user.uid
-    notesFirebaseDatabaseRef = Database.database().reference().child("notes").child(currentUserId)
-    notesTableViewDataSource =
-      notesTableView.bind(to: notesFirebaseDatabaseRef!) { tableView, indexPath, snap in
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell") as! NoteTableViewCell
-        let value:[String : AnyObject] = snap.value as? [String : AnyObject] ?? [:]
-        let url:String = value["url"] as! String
-        let addedAt:Int = value["originPushedAt"] as! Int
+    // Set up our TableView up to sync with the Notes for the current user from the Firebase
+    // Realtime Database.
+    notesFirebaseDatabaseRef = Database.database().reference().child("notes").child(user.uid)
+    myNotesTableViewDataSource = MyNotesTableViewDataSource(
+      query: notesFirebaseDatabaseRef!,
+      populateCell: { tableView, indexPath, snapshot in
+        // Get the data for this Note, as gathered from the Firebase Realtime Database, and parse
+        // it to create a Note struct for this cell.
+        let noteKey:String = snapshot.key
+        let note: Note? = Note(with: snapshot)
 
-        cell.label?.text = "App: \(app)\n" +
-          "Action: \(action)\n" +
-          "URL: \(url)\n" +
-          "Origin Pushed At: \(originPushedAtString)\n" +
-          "Destination Continued At: \(destinationContinuedAtString)"
-
-        // Style the delete button.
-        cell.deleteButton?.setTitleColor(UIColor.red, for: .normal)
-        cell.deleteButton?.backgroundColor = .clear
-        cell.deleteButton?.layer.cornerRadius = 5
-        cell.deleteButton?.layer.borderWidth = 1
-        cell.deleteButton?.layer.borderColor = UIColor.red.cgColor
-
-        // Terrible hack to pass along the key of what should be deleted.
-        cell.deleteButton?.accessibilityHint = snap.key
-        cell.deleteButton?.addTarget(
-          self, action: #selector(deleteButtonPressed), for: .touchUpInside)
+        // Get and then populate a cell in the TableView to use for this Note.
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyNotesTableViewCell")
+                    as! MyNotesTableViewCell
+        cell.noteKey = noteKey
+        cell.note = note
 
         return cell
-      }
+      })
 
-    // Now that the TableView is ready, display it.
-    notesTableView.isHidden = false
+    myNotesTableViewDataSource?.bind(to: myNotesTableView)
+
+    // Finally, show this screen's UI since everything is ready.
+    myNotesTableView.isHidden = false
+    writeNewNoteButton.isHidden = false
   }
 
   override func handleUserSignedOut() {
     super.handleUserSignedOut()
 
-    // Remove all database bindings and observers.
-    notesTableViewDataSource?.unbind()
-    notesTableViewDataSource = nil
-    notesFirebaseDatabaseRef?.removeAllObservers()
-    notesFirebaseDatabaseRef = nil
-
-    // Now that the data source is empty, reload the table to clear out its contents.
-    notesTableView.reloadData()
+    // Hide this screen's UI since the user must be signed in to see any Notes.
+    myNotesTableView.isHidden = true
+    writeNewNoteButton.isHidden = true
 
     // The user must be signed in to view this screen, so navigate away from it if the user is
     // signed out.
     navigationController?.popViewController(animated: true)
+  }
+
+  /**
+   Handles when the user taps the "write a new note" button.
+
+   Adds a new Note to the Firebase Realtime Database for the current user,
+   then opens that Note to allow the user to begin writing.
+
+   - Parameter sender: The object that called this action. This should only be the
+   writeNewNoteButton.
+   */
+  @IBAction func writeNewNoteButtonAction(_ sender: Any) {
+    guard let notesFirebaseDatabaseRef = notesFirebaseDatabaseRef else {
+      // This should never happen because the user must be signed in, but just in case.
+      return
+    }
+
+    // Add a new, empty Note to the Firebase Realtime Database for the current user.
+    let newNote: Note = Note(title: "", content: "")
+    let newNoteRef: DatabaseReference = notesFirebaseDatabaseRef.childByAutoId()
+    newNoteRef.setValue(newNote.asFirebaseData) { (error, ref) -> Void in
+      if error != nil {
+        MDCSnackbarManager.show(Constants.Text.ErrorMessage.couldNotCreateNewNote)
+        return
+      }
+
+      // Open the Edit Note screen with this Note by creating a temporary MyNotesTableViewCell
+      // and providing it the key for this new Note (so that the segue to the Edit Note screen
+      // can be performed). We do this so that the user may immediately Edit the Note, rather than
+      // having to wait for the TableView to update from Firebase Realtime Database events and then
+      // manually tap the cell for the Note.
+      // This is not very clean, but is sufficient for this sample app.
+      let temporaryCellForSegue: MyNotesTableViewCell = MyNotesTableViewCell()
+      temporaryCellForSegue.noteKey = ref.key
+      self.performSegue(withIdentifier: Constants.Segue.editNote.rawValue,
+                        sender: temporaryCellForSegue)
+    }
   }
 }
 
@@ -104,5 +154,16 @@ class MyNotesViewController: BaseViewController {
  for clarity and a cleaner namespace.
  */
 private extension Constants {
-  static let screenTitle: String = "My Notes"
+  struct Text {
+    static let screenTitle: String = "My Notes"
+
+    struct ErrorMessage {
+      static let couldNotCreateNewNote: String = "Could not create a new Note. Please try again."
+    }
+  }
+
+  // These segue identifiers must match the identifiers defined in the Main storyboard.
+  enum Segue: String {
+    case editNote = "editNote"
+  }
 }

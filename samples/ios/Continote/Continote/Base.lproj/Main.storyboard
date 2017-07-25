@@ -79,7 +79,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="886" y="689"/>
+            <point key="canvasLocation" x="818" y="689"/>
         </scene>
         <!--My Notes View Controller-->
         <scene sceneID="Flx-uh-P4O">
@@ -93,9 +93,98 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWx-Yp-mjM">
-                                <rect key="frame" x="16" y="84" width="343" height="264"/>
-                                <mutableString key="text">Major TODO list for initial version (remove this when development picks up):  1. Finish this "My Notes" screen by adding a TableView of the signed in user's notes, with the option to add notes, delete notes, or tap to open and edit them.  2. Add "Edit Note" screen, for the user to write/edit an individual note. Within that screen the user could tap to "Continue Writing Elsewhere", which would use Firebase Continue.</mutableString>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4x-Jg-azH" customClass="MDCRaisedButton">
+                                <rect key="frame" x="8" y="595" width="359" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="ao0-6o-ZcS"/>
+                                </constraints>
+                                <state key="normal" title="+ Write a new note">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="writeNewNoteButtonAction:" destination="565-wk-S5f" eventType="touchUpInside" id="aRu-Pa-IJ9"/>
+                                </connections>
+                            </button>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="71" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="azK-wo-DHi">
+                                <rect key="frame" x="0.0" y="64" width="375" height="523"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyNotesTableViewCell" rowHeight="71" id="tJj-F0-FRa" customClass="MyNotesTableViewCell" customModule="Continote" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="71"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tJj-F0-FRa" id="Uuy-po-Sf7">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ss1-nF-e3k">
+                                                    <rect key="frame" x="8" y="8" width="359" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hba-I1-7JV">
+                                                    <rect key="frame" x="8" y="41.5" width="359" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ss1-nF-e3k" firstAttribute="leading" secondItem="Uuy-po-Sf7" secondAttribute="leadingMargin" id="54A-g7-de0"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Hba-I1-7JV" secondAttribute="bottom" id="74j-7z-k7y"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Hba-I1-7JV" secondAttribute="trailing" id="Eng-nR-66o"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ss1-nF-e3k" secondAttribute="trailing" id="L7C-CN-47X"/>
+                                                <constraint firstItem="Hba-I1-7JV" firstAttribute="leading" secondItem="Uuy-po-Sf7" secondAttribute="leadingMargin" id="eHn-xP-DDt"/>
+                                                <constraint firstItem="ss1-nF-e3k" firstAttribute="top" secondItem="Uuy-po-Sf7" secondAttribute="topMargin" id="gHp-3H-cAe"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentLabel" destination="Hba-I1-7JV" id="osf-Ta-WxK"/>
+                                            <outlet property="titleLabel" destination="ss1-nF-e3k" id="rBM-mD-5YM"/>
+                                            <segue destination="QXd-XN-85B" kind="show" identifier="editNote" id="4c4-vp-PT4"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="g4x-Jg-azH" secondAttribute="trailing" constant="8" id="GUo-sT-sd5"/>
+                            <constraint firstItem="Zp4-JV-scn" firstAttribute="top" secondItem="azK-wo-DHi" secondAttribute="bottom" constant="80" id="HD0-YF-d8A"/>
+                            <constraint firstItem="Zp4-JV-scn" firstAttribute="top" secondItem="g4x-Jg-azH" secondAttribute="bottom" constant="8" id="Hyx-nG-TQp"/>
+                            <constraint firstAttribute="trailing" secondItem="azK-wo-DHi" secondAttribute="trailing" id="NIM-qI-deZ"/>
+                            <constraint firstItem="azK-wo-DHi" firstAttribute="leading" secondItem="Xvt-LO-jdP" secondAttribute="leading" id="had-OH-OZn"/>
+                            <constraint firstItem="azK-wo-DHi" firstAttribute="top" secondItem="gNG-nQ-XgJ" secondAttribute="bottom" id="qcj-rm-z01"/>
+                            <constraint firstItem="g4x-Jg-azH" firstAttribute="leading" secondItem="Xvt-LO-jdP" secondAttribute="leading" constant="8" id="xhh-Rg-6hi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="myNotesTableView" destination="azK-wo-DHi" id="2l8-M8-oDt"/>
+                        <outlet property="writeNewNoteButton" destination="g4x-Jg-azH" id="M2B-5V-RJ7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ul0-vN-Nur" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1628" y="688.60569715142435"/>
+        </scene>
+        <!--Edit Note View Controller-->
+        <scene sceneID="tvH-x2-R1p">
+            <objects>
+                <viewController id="QXd-XN-85B" customClass="EditNoteViewController" customModule="Continote" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WgR-hy-4De"/>
+                        <viewControllerLayoutGuide type="bottom" id="9yU-nN-WwM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fQz-v8-nFq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjU-nh-ze9">
+                                <rect key="frame" x="16" y="104" width="343" height="175"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="175" id="qvc-Sb-fyo"/>
+                                </constraints>
+                                <string key="text">Major TODO list for initial version (remove this when development picks up):  - Finish this "Edit Note" screen, for the user to write/edit an individual note. Within that screen the user could tap to "Continue Writing Elsewhere", which would use Firebase Continue.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -103,25 +192,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QWx-Yp-mjM" firstAttribute="leading" secondItem="Xvt-LO-jdP" secondAttribute="leadingMargin" id="Cf6-ob-vnR"/>
-                            <constraint firstItem="QWx-Yp-mjM" firstAttribute="top" secondItem="gNG-nQ-XgJ" secondAttribute="bottom" constant="20" id="dZf-xy-st1"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="QWx-Yp-mjM" secondAttribute="trailing" id="god-dS-30j"/>
+                            <constraint firstItem="jjU-nh-ze9" firstAttribute="top" secondItem="WgR-hy-4De" secondAttribute="bottom" constant="40" id="LOK-xY-ANm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jjU-nh-ze9" secondAttribute="trailing" id="YTL-8d-mQL"/>
+                            <constraint firstItem="jjU-nh-ze9" firstAttribute="leading" secondItem="fQz-v8-nFq" secondAttribute="leadingMargin" id="smb-1y-ZXY"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="temporaryTodoLabel" destination="QWx-Yp-mjM" id="IaP-cl-W1Q"/>
+                        <outlet property="temporaryTodoLabel" destination="jjU-nh-ze9" id="USf-Jz-yh9"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ul0-vN-Nur" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U39-FL-3vV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1760.8" y="688.60569715142435"/>
+            <point key="canvasLocation" x="2434" y="689"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TS4-jd-H5z">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U83-hG-48i" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dgO-E5-Pob">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dgO-E5-Pob">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

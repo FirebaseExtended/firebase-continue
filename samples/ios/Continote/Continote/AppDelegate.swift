@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-    // Setup Firebase
+    // Set up Firebase
     FirebaseApp.configure()
 
     return true
@@ -47,7 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   /**
-   Convenience method which helps complete the sign in process.
+   Handles opening a URL to complete the sign in process.
+
    - Parameter url: This is passed to FirebaseUI to complete the sign in process.
    - Parameter sourceApplication: This is passed to FirebaseUI to complete the sign in process.
    - Returns: true iff FirebaseAuthUI handled the url, false otherwise.
