@@ -336,7 +336,7 @@
             });
       }
 
-      // SEt up the Delete Note button.
+      // Set up the Delete Note button.
       var deleteNoteButton =
           elementInListForNote.querySelector(".delete-note-button");
       if (deleteNoteButton) {
