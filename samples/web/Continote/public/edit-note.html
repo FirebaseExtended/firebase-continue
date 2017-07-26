@@ -23,7 +23,7 @@
     <meta name="description" content="Continote web app.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-    <title>Continote - Firebase Continue Sample - My Notes</title>
+    <title>Continote - Firebase Continue Sample - Edit Note</title>
 
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-app.js"></script>
@@ -69,7 +69,7 @@
           <!-- Page title -->
           <div class="mdl-layout-title">
             <span class="app-title">Continote</span> &mdash;
-            Firebase Continue Sample &mdash; My Notes
+            Firebase Continue Sample &mdash; Edit Note
           </div>
 
           <!-- Add spacer, to align navigation to the right. -->
@@ -96,25 +96,60 @@
         <!-- Container holding all content for users who are signed in. -->
         <div class="hidden show-only-to-signed-in-users">
 
-          <!-- Card with a list of current user's notes. -->
+          <!-- Card with the note to edit. -->
           <section class="mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
             <div class="mdl-card mdl-cell mdl-cell--12-col">
               <div class="mdl-card__title">
                 <h2 class="mdl-card__title-text">
-                  My Notes
+                  Edit Note
                 </h2>
               </div>
               <div class="mdl-card__supporting-text">
-                <ul id="note-list" class="mdl-list">
-                  <!-- Notes will be added here. -->
-                </ul>
+
+                <!-- Content to display if the note was found for the user. -->
+                <div id="note-editor" class="hidden show-only-when-note-found">
+
+                  <!-- Note title -->
+                  <div id="note-title-material-textfield"
+                       class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input id="note-title-input" class="mdl-textfield__input" type="text" disabled>
+                    <label class="mdl-textfield__label" for="note-title-input">Title</label>
+                  </div>
+
+                  <!-- Note content -->
+                  <div id="note-content-material-textfield"
+                       class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <textarea id="note-content-input" class="mdl-textfield__input" type="text"
+                              rows="10" disabled>
+                    </textarea>
+                    <label class="mdl-textfield__label" for="note-content-input">Content</label>
+                  </div>
+                </div>
+
+                <!-- Content to display if the note could not be found for the user. -->
+                <div class="show-only-when-note-not-found">
+                  <p>
+                    The note you were looking for could not be found.
+                  </p>
+                  <p>
+                    Go back to the My Notes page and try again.
+                  </p>
+                </div>
+
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <button id="write-new-note-button"
+                <button id="back-to-my-notes-button"
                         class="mdl-button mdl-button--raised mdl-button--colored
                                mdl-js-button mdl-js-ripple-effect" disabled>
-                  <i class="material-icons">add</i>
-                  Write a new note
+                  <i class="material-icons">reply</i>
+                  Back to My Notes
+                </button>
+                <button id="save-note-button"
+                        class="mdl-button mdl-button--raised mdl-button--colored
+                               mdl-js-button mdl-js-ripple-effect hidden
+                               show-only-when-note-found" disabled>
+                  <i class="material-icons">save</i>
+                  Save
                 </button>
               </div>
             </div>
@@ -144,6 +179,6 @@
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
     <!-- Finally, include the main script to run in this page. -->
-    <script src="scripts/my-notes.js"></script>
+    <script src="scripts/edit-note.js"></script>
   </body>
 </html>

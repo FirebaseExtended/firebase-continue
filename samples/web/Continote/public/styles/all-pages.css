@@ -116,6 +116,18 @@ a:hover {
   margin-bottom: 10px;
 }
 
+#note-editor .mdl-textfield {
+  width: 100%;
+}
+
+#note-editor #note-title-input {
+  font-weight: bold;
+}
+
+#save-note-button {
+  margin-left: 10px;
+}
+
 .truncate-to-single-line {
   white-space: nowrap !important;
   overflow: hidden !important;
