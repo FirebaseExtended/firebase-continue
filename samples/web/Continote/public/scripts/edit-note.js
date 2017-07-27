@@ -53,7 +53,7 @@
 
   /**
    * This is the class which, if applied to an element, means
-   * it should only be visible when the Note to edit has not been found for the
+   * it should only be visible when the Note to edit could not be found for the
    * current user.
    *
    * @type {!string}
@@ -121,9 +121,9 @@
         pageUi_.backToMyNotesButton, handleBackToMyNotesButtonClicked_);
     noteRef_ = null;
 
-    // Since the user is not signed in, there is trivially no Note they could
-    // be editing right now.
-    handleNoteToEditNotFound_();
+    // Just in case the Note to edit was previously found while on this page,
+    // reset all Note-related UI.
+    resetNoteUiToInitialState_();
   };
 
   /**
@@ -182,12 +182,10 @@
    * @const
    */
   var handleNoteToEditFound_ = function(note) {
-    // Use the Note values to prepopulate the Note editor's inputs.
-    setNoteEditorInputsToUseValuesFromNote_(note);
-
-    // The Note was found, so show and enable only the appropriate UI
+    // The Note to edit was found, so show and enable only the appropriate UI
     // elements.
-    Utils.hideAllElementsWithClassName(showOnlyWhenNoteNotFoundClass_);
+    resetNoteUiToInitialState_();
+    setNoteEditorInputsToUseValuesFromNote_(note);
     pageUi_.noteTitleMaterialTextField.MaterialTextfield.enable();
     pageUi_.noteContentMaterialTextField.MaterialTextfield.enable();
     Utils.enableButtonAndAddClickListener(
@@ -196,23 +194,42 @@
   };
 
   /**
-   * Handles when the Note the user wants to edit has not been found.
+   * Handles when the Note the user wants to edit could not be found.
    *
    * @function
    * @const
    */
   var handleNoteToEditNotFound_ = function() {
-    // Reset the Note editor's inputs.
-    setNoteEditorInputsToUseValuesFromNote_(null);
-
-    // The Note has not been found, so show and enable only the appropriate UI
+    // The Note could not be found, so show and enable only the appropriate UI
     // elements.
+    resetNoteUiToInitialState_();
+    Utils.showAllElementsWithClassName(showOnlyWhenNoteNotFoundClass_);
+  };
+
+  /**
+   * Resets all Note related UI elements (such as the Note editor inputs)
+   * to their initial state.
+   *
+   * The initial state is that no attempt has yet been
+   * made to get the Note from the Firebase Realtime Database, so neither the
+   * "showOnlyWhenNoteFoundClass_" nor "showOnlyWhenNoteNotFoundClass_"
+   * elements will be shown, and the Note editor inputs and save button will
+   * all be disabled.
+   *
+   * @function
+   * @const
+   */
+  var resetNoteUiToInitialState_ = function() {
+    // Hide all Note-event related elements.
     Utils.hideAllElementsWithClassName(showOnlyWhenNoteFoundClass_);
+    Utils.hideAllElementsWithClassName(showOnlyWhenNoteNotFoundClass_);
+
+    // Reset the Note editor inputs and disable the save note button.
+    setNoteEditorInputsToUseValuesFromNote_(null);
     pageUi_.noteTitleMaterialTextField.MaterialTextfield.disable();
     pageUi_.noteContentMaterialTextField.MaterialTextfield.disable();
     Utils.disableButtonAndRemoveClickListener(
         pageUi_.saveNoteButton, handleSaveNoteButtonClicked_);
-    Utils.showAllElementsWithClassName(showOnlyWhenNoteNotFoundClass_);
   };
 
   /**
@@ -280,6 +297,8 @@
     pageUi_.backToMyNotesButton = document.getElementById(
         "back-to-my-notes-button");
     pageUi_.snackbarContainer = document.getElementById("snackbar-container");
+
+    resetNoteUiToInitialState_();
 
     // Get the key of the Note that the user wishes to edit.
     // This is not robust at all, but it is sufficient for this sample web app.

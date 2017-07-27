@@ -26,17 +26,17 @@
     <title>Continote - Firebase Continue Sample - Edit Note</title>
 
     <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase-database.js"></script>
 
     <!-- Necessary config file to set up Firebase. -->
     <script src="scripts/config.js"></script>
 
     <!-- FirebaseUI helper library. See: https://github.com/firebase/firebaseui-web -->
-    <script src="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet"
-          href="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.css"/>
+          href="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.css"/>
 
     <!-- Include utility functions. -->
     <script src="scripts/utils.js"></script>
@@ -126,8 +126,8 @@
                   </div>
                 </div>
 
-                <!-- Content to display if the note could not be found for the user. -->
-                <div class="show-only-when-note-not-found">
+                <!-- Content to display if the note has could not be found for the user. -->
+                <div class="hidden show-only-when-note-not-found">
                   <p>
                     The note you were looking for could not be found.
                   </p>
