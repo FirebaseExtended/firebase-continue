@@ -18,12 +18,6 @@ This web app is simply the destination for users to continue writing notes withi
 Chrome, and deploying it includes applying the recommended Firebase Realtime
 Database security and validation rules to your Firebase project.
 
-**Important Notice**: This is currently a work-in-progress.
-Expect frequent updates as an initial, complete v0.1.0 is fleshed out.
-See [Development Progress](#development-progress) for details.
-This notice will be removed when v0.1.0 is officially ready and released
-in the Releases page of this repo.
-
 ## Table of Contents
 
 1. [Prerequisites](#prerequisites)
@@ -32,7 +26,6 @@ in the Releases page of this repo.
 4. [Compatibility](#compatibility)
 5. [Dependencies](#dependencies)
 6. [Disclaimer](#disclaimer)
-7. [Development Progress](#development-progress)
 
 ## Prerequisites
 
@@ -160,14 +153,3 @@ to use Firebase and FirebaseUI in a web app.
 
 The focus is *not*, however, to have a perfect user interface or user
 experience. Please keep that in mind when trying out this sample.
-
-## Development Progress
-
-This section will be removed when each of the items below are complete for an
-initial, released v0.1.0 of this sample.
-
-### Major Features Completed
-- [x] User authentication (via Firebase Authentication and FirebaseUI)
-- [x] "My Notes" page, allowing signed in users to view a list of their notes with
-the option to add a note, delete a note, or open to edit a note
-- [ ] "Edit Note" page, allowing signed in users to edit a particular note

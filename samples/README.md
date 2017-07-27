@@ -120,7 +120,7 @@ initial, released v0.1.0 of "Continote".
 See subdirectory README files for more specific v0.1.0 development progress lists.
 
 ### Samples Completed
-- [x] [Chrome extension sample](chrome-extension/)
+- [x] [Chrome extension sample](chrome-extension)
 - [ ] iOS sample
 - [ ] Android sample
-- [ ] Web sample
+- [x] [Web sample](web)
