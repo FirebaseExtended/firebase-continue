@@ -44,7 +44,8 @@
    */
   var pageUi_ = {
     noteList: null,
-    writeNewNoteButton: null
+    writeNewNoteButton: null,
+    snackbarContainer: null
   };
 
   /**
@@ -224,7 +225,7 @@
    */
   var addNoteToDatabase_ = function(note) {
     return new Promise(function(resolve, reject) {
-      var defaultErrorMessage = "Cannot add Note to database";
+      var defaultErrorMessage = "Could not add Note to database";
 
       if (!notesRef_ || !note || note.title === null || note.content === null) {
         // This should never happen, but just in case.
@@ -253,7 +254,7 @@
    */
   var deleteNoteFromDatabase_ = function(noteKey) {
     return new Promise(function(resolve, reject) {
-      var defaultErrorMessage = "Cannot delete Note from database";
+      var defaultErrorMessage = "Could not delete Note from database";
 
       if (!notesRef_ || !noteKey) {
         // This should never happen, but just in case.
@@ -285,7 +286,9 @@
       return;
     }
 
-    location.href = "/edit-note.html?noteKey=" + noteKey;
+    // Set the browser's location to go to the Edit Note page for the Note with
+    // the provided key.
+    window.location.href = "/edit-note.html?noteKey=" + noteKey;
   };
 
   /**
@@ -345,8 +348,16 @@
               event.preventDefault();
 
               // Delete the Note.
-              deleteNoteFromDatabase_(noteKey).catch(function(error) {
-                console.error("Error during Note deletion: " + error);
+              deleteNoteFromDatabase_(noteKey).then(function() {
+                // Notify the user that the Note was successfully deleted.
+                pageUi_.snackbarContainer.MaterialSnackbar.showSnackbar({
+                  message: "Note successfully deleted!"
+                });
+              }).catch(function() {
+                // Notify the user that the Note was not deleted.
+                pageUi_.snackbarContainer.MaterialSnackbar.showSnackbar({
+                  message: "Note could not be deleted. Please try again."
+                });
               });
             });
       }
@@ -402,6 +413,7 @@
     pageUi_.noteList = document.getElementById("note-list");
     pageUi_.writeNewNoteButton = document.getElementById(
         "write-new-note-button");
+    pageUi_.snackbarContainer = document.getElementById("snackbar-container");
 
     // Now that the page is ready, set up the Firebase Auth helper to listen
     // for sign in state changes, and to start FirebaseUI for a sign in UI
@@ -412,3 +424,16 @@
   // When the page is ready, call the init function.
   window.addEventListener("load", init_);
 })();
+
+// Below are extra JSDoc definitions to describe the objects this script uses.
+
+/**
+ * A Note for a user in the Continote application.
+ *
+ * The schema defined for each Note in sample-database.rules.json should always
+ * match this type definition.
+ *
+ * @typedef {Object} Note
+ * @property {!string} title - The title of the Note.
+ * @property {!string} content - The main content of the Note.
+ */
