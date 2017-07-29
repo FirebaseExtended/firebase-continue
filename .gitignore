@@ -2,6 +2,10 @@
 *.iml
 .idea
 
+# Android Studio
+captures/
+.externalNativeBuild
+
 # Gradle files
 .gradle/
 build/
