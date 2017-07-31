@@ -15,8 +15,12 @@
     <string name="app_name">Continote</string>
 
     <!-- Required for Facebook authentication via FirebaseUI. -->
-    <string name="facebook_application_id" translatable="false">483500672000667</string>
-    <string name="facebook_login_protocol_scheme" translatable="false">fb483500672000667</string>
+    <string name="facebook_application_id" translatable="false">
+        [TODO: YOUR-FACEBOOK-APP-ID-HERE]
+    </string>
+    <string name="facebook_login_protocol_scheme" translatable="false">
+        fb[TODO: YOUR-FACEBOOK-APP-ID-HERE]
+    </string>
 
     <!-- The text of the main auth message shown to the user in the MainActivity. -->
     <string name="auth_message_when_signed_out">
@@ -38,5 +42,5 @@
     <string name="error_sign_out_failed">
         Signing out failed. Please try again.
     </string>
-    
+
 </resources>

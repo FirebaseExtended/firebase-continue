@@ -59,6 +59,7 @@ Pods/
 
 # Local config
 database.rules.json
+samples/android/Continote/app/src/main/res/values/strings.xml
 samples/chrome-extension/Continote/scripts/config.js
 samples/ios/Continote/Continote/Info.plist
 samples/ios/Continote/Continote.xcodeproj/project.pbxproj
