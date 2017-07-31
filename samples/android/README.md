@@ -37,10 +37,63 @@ this sample to build and install to try out:
 
 1.  First, make sure you followed the [Prerequisites section](#prerequisites) above.
 
-2.  **TODO**
+2.  If you have not already done so, install
+    [Android Studio](https://developer.android.com/studio/index.html),
+    then use it to
+    [install Android SDKs v16 and v25](https://developer.android.com/studio/intro/update.html#sdk-manager),
+    as well as
+    [Android Build-Tools v25.0.0](https://developer.android.com/studio/releases/build-tools.html)
+    and the
+    [Google Play Services SDK](https://developers.google.com/android/guides/setup).
 
-**TODO**: Finish listing setup instructions here, including how to connect the app to
-the developer's Firebase project.
+3.  Go to the
+    [Firebase console for your Firebase project](https://console.firebase.google.com/).
+
+4.  Click to "Add Firebase to your Android app":
+
+    1.  In the dialog that opens, when asked for an "`Android package name`",
+        enter `com.google.firebasecontinue.sample.continote`.
+
+    2.  For "`App nickname (optional)`", enter `Continote`.
+
+    3.  For "`Debug signing certificate SHA-1 (optional)`", follow the guide found at
+        [https://developers.google.com/android/guides/client-auth](https://developers.google.com/android/guides/client-auth),
+        then enter the `debug certificate fingerprint` SHA-1 that was generated.
+
+    4.  Click the **Register App** button.
+
+    5.  Follow the instructions that should now be within the dialog to download the
+        `google-services.json` file and move that file to the correct directory
+        of [`Continote/app/`](Continote/app).
+
+    6.  Close the dialog as we do not need to perform the dialog's remaining step(s)
+        to set up this sample.
+
+5.  Copy the `sample-strings.xml` file from the
+    [`Continote/setup-file-templates/`](Continote/setup-file-templates)
+    directory and paste a copy of it in the
+    [`Continote/app/src/main/res/values/`](Continote/app/src/main/res/values)
+    directory.
+
+6.  Rename the `sample-strings.xml` copy to `strings.xml`.
+
+7.  Open `strings.xml` in a text editor and fill out the clearly marked
+    *[TODO: YOUR-VALUE-HERE]* details:
+
+    1.  Replace the two instances of *[TODO: YOUR-FACEBOOK-APP-ID-HERE]* with your
+        Facebook app's ID from the [Prerequisites section](#prerequisites) above.
+
+8.  Open Android Studio.
+
+9.  Click to "Open an existing Android Studio project".
+
+10. Within the file navigator dialog that pops up, choose the
+    [`Continote/`](Continote) directory.
+
+11. Done!
+
+    You should now be able to build and then install the sample on any compatible
+    Android device or simulator using Android Studio.
 
 ## Usage
 
@@ -56,24 +109,37 @@ note elsewhere (i.e. within Chrome). To make use of this, be sure to also instal
 
 ## Compatibility
 
-This sample app is compatible with the
-[same versions of Android as the Firebase Continue library itself](../../android/#compatibility).
+This sample app is compatible with devices and simulators running
+[Android 4.1+](https://developer.android.com/about/versions/android-4.1.html)
+with
+[Google Play services](https://play.google.com/store/apps/details?id=com.google.android.gms&hl=en)
+installed.
+
+In order to build and install this sample on an Android device or simulator,
+you must be using a computer with
+[Android Studio](https://developer.android.com/studio/index.html), Android SDK v16 and v25, and the
+[Android Build-Tools v25.0.0](https://developer.android.com/studio/releases/build-tools.html)
+installed.
 
 ## Dependencies
 
 This sample is dependent on the following libraries/SDKs:
 
 ### Firebase
-- **TODO**
+- [com.google.firebase:firebase-auth v11.0.0+](https://firebase.google.com/docs/android/setup#available_libraries)
+- [com.google.firebase:firebase-database v11.0.0+](https://firebase.google.com/docs/android/setup#available_libraries)
 
 ### Firebase Continue
 - [Firebase Continue for Android v0.1.0+](../../android)
 
 ### FirebaseUI
-- **TODO**
+- [FirebaseUI Android v2.0.0+](https://github.com/firebase/FirebaseUI-Android)
 
-### Material Components
-- **TODO**
+### Android Support Libraries
+- [com.android.support:appcompat-v7 v25.0.0+](https://developer.android.com/topic/libraries/support-library/packages.html#v7-appcompat)
+- [com.android.support:design v25.0.0+](https://material.io/components/android/docs/)
+- [com.android.support:support-annotations v25.0.0+](https://developer.android.com/studio/write/annotations.html)
+- [com.android.support.constraint:constraint-layout v1.0.0+](https://developer.android.com/training/constraint-layout/index.html)
 
 ## Disclaimer
 
@@ -90,7 +156,7 @@ This section will be removed when each of the items below are complete for an
 initial, released v0.1.0 of this sample.
 
 ### Major Features Completed
-- [ ] User authentication (via Firebase Authentication and FirebaseUI)
+- [x] User authentication (via Firebase Authentication and FirebaseUI)
 - [ ] "My Notes" screen, allowing signed in users to view a list of their notes with
 the option to add a note, delete a note, or open to edit a note
 - [ ] "Edit Note" screen, allowing signed in users to edit a particular note with the
