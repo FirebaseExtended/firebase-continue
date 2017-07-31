@@ -51,14 +51,14 @@ this sample to build and install to try out:
 
 4.  Click to "Add Firebase to your Android app":
 
-    1.  In the dialog that opens, when asked for an `Android package name`,
+    1.  In the dialog that opens, when asked for an "`Android package name`",
         enter `com.google.firebasecontinue.sample.continote`.
 
-    2.  For `App nickname (optional)`, enter `Continote`.
+    2.  For "`App nickname (optional)`", enter `Continote`.
 
-    3.  For `Debug signing certificate SHA-1 (optional)`, follow the guide here:
-        [https://developers.google.com/android/guides/client-auth](https://developers.google.com/android/guides/client-auth)
-        and enter the `debug certificate fingerprint` SHA-1 that was generated.
+    3.  For "`Debug signing certificate SHA-1 (optional)`", follow the guide found at
+        [https://developers.google.com/android/guides/client-auth](https://developers.google.com/android/guides/client-auth),
+        then enter the `debug certificate fingerprint` SHA-1 that was generated.
 
     4.  Click the **Register App** button.
 
