@@ -37,28 +37,56 @@ this sample to build and install to try out:
 
 1.  First, make sure you followed the [Prerequisites section](#prerequisites) above.
 
-2.  If you have not already done so, install [Android Studio](https://developer.android.com/studio/index.html), then use it to
-[install Android SDK v16 and v25](https://developer.android.com/studio/intro/update.html#sdk-manager),
-as well as [Android Build-Tools v25.0.0](https://developer.android.com/studio/releases/build-tools.html) and the
-[Google Play Services SDK](https://developers.google.com/android/guides/setup).
+2.  If you have not already done so, install
+    [Android Studio](https://developer.android.com/studio/index.html),
+    then use it to
+    [install Android SDKs v16 and v25](https://developer.android.com/studio/intro/update.html#sdk-manager),
+    as well as
+    [Android Build-Tools v25.0.0](https://developer.android.com/studio/releases/build-tools.html)
+    and the
+    [Google Play Services SDK](https://developers.google.com/android/guides/setup).
 
-3.  Copy the `sample-strings.xml` file from the
+3.  Go to the
+    [Firebase console for your Firebase project](https://console.firebase.google.com/).
+
+4.  Click to "Add Firebase to your Android app":
+
+    1.  In the dialog that opens, when asked for an `Android package name`,
+        enter `com.google.firebasecontinue.sample.continote`.
+
+    2.  For `App nickname (optional)`, enter `Continote`.
+
+    3.  For `Debug signing certificate SHA-1 (optional)`, follow the guide here:
+        [https://developers.google.com/android/guides/client-auth](https://developers.google.com/android/guides/client-auth)
+        and enter the `debug certificate fingerprint` SHA-1 that was generated.
+
+    4.  Click the **Register App** button.
+
+    5.  Follow the instructions that should now be within the dialog to download the
+        `google-services.json` file and move that file to the correct directory
+        of [`Continote/app/`](Continote/app).
+
+    6.  Close the dialog as we do not need to perform the dialog's remaining step(s)
+        to set up this sample.
+
+5.  Copy the `sample-strings.xml` file from the
+    [`Continote/setup-file-templates/`](Continote/setup-file-templates)
+    directory and paste a copy of it in the
     [`Continote/app/src/main/res/values/`](Continote/app/src/main/res/values)
-    directory and paste a copy of it also in
-    [`Continote/app/src/main/res/values/`](Continote/app/src/main/res/values).
+    directory.
 
-4.  Rename the `sample-strings.xml` copy to `strings.xml`.
+6.  Rename the `sample-strings.xml` copy to `strings.xml`.
 
-5.  Open `strings.xml` in a text editor and fill out the clearly marked
+7.  Open `strings.xml` in a text editor and fill out the clearly marked
     *[TODO: YOUR-VALUE-HERE]* details:
 
     1.  Replace the two instances of *[TODO: YOUR-FACEBOOK-APP-ID-HERE]* with your
         Facebook app's ID from the [Prerequisites section](#prerequisites) above.
 
-6. **TODO**
+8.  Done!
 
-**TODO**: Finish listing setup instructions here, including how to connect the app to
-the developer's Firebase project.
+    You should now be able to build and then install the sample on any compatible
+    Android device or simulator.
 
 ## Usage
 

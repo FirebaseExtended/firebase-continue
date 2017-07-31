@@ -17,6 +17,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
+
     defaultConfig {
         applicationId "com.google.firebasecontinue.sample.continote"
         minSdkVersion 16
@@ -24,6 +25,7 @@ android {
         versionCode 1
         versionName "0.1.0"
     }
+
     buildTypes {
         release {
             minifyEnabled false
