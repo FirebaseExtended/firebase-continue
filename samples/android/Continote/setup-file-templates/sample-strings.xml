@@ -17,7 +17,25 @@
 -->
 
 <resources>
-    <string name="app_name">Continote</string>
+    <string name="app_name">
+        Continote
+    </string>
+
+    <!-- Screen titles -->
+    <string name="title_activity_main">
+        Continote
+    </string>
+    <string name="title_activity_my_notes">
+        My Notes
+    </string>
+
+    <!-- Constants for Firebase Continue use throughout this app. -->
+    <string name="app_name_for_firebase_continue" translatable="false">
+        continote
+    </string>
+    <string name="continote_url_to_edit_note_with_key" translatable="false">
+        [TODO: YOUR-FIREBASE-HOSTING-URL-FOR-CONTINOTE-WEB-HERE]/edit-note.html?noteKey=%1$s
+    </string>
 
     <!-- Required for Facebook authentication via FirebaseUI. -->
     <string name="facebook_application_id" translatable="false">
@@ -43,9 +61,27 @@
         Sign Out
     </string>
 
+    <!-- The text of the myNotes button in the MainActivity. -->
+    <string name="my_notes_button_text">
+        My Notes
+    </string>
+
+    <!-- The text of the testFirebaseContinue button in the MyNotesActivity. -->
+    <string name="test_firebase_continue_button_text">
+        Test Firebase Continue
+    </string>
+
+    <!-- Various success messages. -->
+    <string name="broadcast_to_write_note_elsewhere_successful">
+        Please open Chrome now and use the Continote extension to continue writing.
+    </string>
+
     <!-- Various error messages. -->
     <string name="error_sign_out_failed">
         Signing out failed. Please try again.
+    </string>
+    <string name="error_broadcast_to_write_note_elsewhere_failed">
+        Something went wrong. Please try again.
     </string>
 
 </resources>

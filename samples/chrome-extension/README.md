@@ -31,8 +31,10 @@ this sample packaged and installed to try out:
 
 1.  First, make sure you followed the [Prerequisites section](#prerequisites) above.
 
-2.  Copy the `firebase-continue.js` Chrome extensions library from the
-    [`../../chrome-extensions`](../../chrome-extensions) directory and paste it in the
+2.  Copy the `firebase-continue.js` Chrome extensions library file
+    from the Chrome extensions library directory at
+    [`../../chrome-extensions/`](../../chrome-extensions)
+    and paste a copy of it in the
     [`Continote/scripts/`](Continote/scripts/) directory.
 
 3.  Copy the `sample-config.js` file from the

@@ -15,6 +15,12 @@
  */
 
 /**
+ * The Firebase Continue for Chrome Extensions library.
+ *
+ * Firebase Continue enables mobile developers to easily integrate activity
+ * transitioning from their mobile apps to the web by way of Chrome extensions.
+ * For more details, see: https://github.com/firebase/firebase-continue.
+ *
  * This wrapper object, and the inner FirebaseContinueInstance class,
  * encapsulate all Firebase Continue functionality available to Chrome
  * extensions.
@@ -39,6 +45,7 @@
  * a video).
  *
  * Please see the usage instructions in the relevant README file(s).
+ * There is also more specific documentation within the library itself below.
  *
  * TODO: Implement checks to ensure the Firebase, Firebase Auth, and Firebase
  * Realtime Database SDKs are included.

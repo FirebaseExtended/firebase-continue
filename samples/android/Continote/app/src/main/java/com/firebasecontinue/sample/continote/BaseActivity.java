@@ -12,9 +12,8 @@
  * limitations under the License.
  */
 
-package com.google.firebasecontinue.sample.continote;
+package com.firebasecontinue.sample.continote;
 
-import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
@@ -70,12 +69,15 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * See: https://developer.android.com/reference/android/support/design/widget/Snackbar.html
      */
-    @MainThread
-    protected void showSnackbar(@StringRes int messageRes) {
-        View rootView = findViewById(android.R.id.content);
-        if (rootView != null) {
-            Snackbar.make(rootView, messageRes, Snackbar.LENGTH_LONG).show();
-        }
+    protected void showSnackbar(@StringRes final int messageRes) {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                View rootView = findViewById(android.R.id.content);
+                if (rootView != null) {
+                    Snackbar.make(rootView, messageRes, Snackbar.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     /**
@@ -90,12 +92,16 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * Handles when the user signs in.
      *
+     * Override in subclasses to respond to this authentication state change.
+     *
      * @param user The user who is now signed in.
      */
-    protected abstract void handleUserSignedIn(@NonNull FirebaseUser user);
+    protected void handleUserSignedIn(@NonNull FirebaseUser user) {}
 
     /**
      * Handles when the user signs out.
+     *
+     * Override in subclasses to respond to this authentication state change.
      */
-    protected abstract void handleUserSignedOut();
+    protected void handleUserSignedOut() {}
 }

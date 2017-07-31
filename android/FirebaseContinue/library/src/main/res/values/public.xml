@@ -18,18 +18,7 @@
 
 <resources>
 
-    <!-- Base application theme -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:buttonStyle">@style/MyButtonStyle</item>
-        <item name="buttonStyle">@style/MyButtonStyle</item>
-    </style>
-
-    <style name="MyButtonStyle" parent="Base.Widget.AppCompat.Button.Colored">
-        <item name="android:layout_height">64dp</item>
-        <item name="android:textColor">@color/colorDarkText</item>
-    </style>
+    <!-- Mark all resources as private. -->
+    <public />
 
 </resources>
