@@ -13,7 +13,7 @@
 
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- Base application theme -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -32,8 +32,8 @@
     </style>
 
     <style name="MyButtonStyle" parent="Base.Widget.AppCompat.Button.Colored">
-        <item name="android:textColor">@color/colorDarkText</item>
         <item name="android:layout_height">64dp</item>
+        <item name="android:textColor">@color/colorDarkText</item>
     </style>
 
 </resources>

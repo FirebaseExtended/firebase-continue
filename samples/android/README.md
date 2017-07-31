@@ -42,7 +42,20 @@ this sample to build and install to try out:
 as well as [Android Build-Tools v25.0.0](https://developer.android.com/studio/releases/build-tools.html) and the
 [Google Play Services SDK](https://developers.google.com/android/guides/setup).
 
-3.  **TODO**
+3.  Copy the `sample-strings.xml` file from the
+    [`Continote/app/src/main/res/values/`](Continote/app/src/main/res/values)
+    directory and paste a copy of it also in
+    [`Continote/app/src/main/res/values/`](Continote/app/src/main/res/values).
+
+4.  Rename the `sample-strings.xml` copy to `strings.xml`.
+
+5.  Open `strings.xml` in a text editor and fill out the clearly marked
+    *[TODO: YOUR-VALUE-HERE]* details:
+
+    1.  Replace the two instances of *[TODO: YOUR-FACEBOOK-APP-ID-HERE]* with your
+        Facebook app's ID from the [Prerequisites section](#prerequisites) above.
+
+6. **TODO**
 
 **TODO**: Finish listing setup instructions here, including how to connect the app to
 the developer's Firebase project.
