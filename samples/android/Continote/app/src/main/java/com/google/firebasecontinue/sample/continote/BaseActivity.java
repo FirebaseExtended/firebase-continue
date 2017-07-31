@@ -34,7 +34,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     // Firebase-related
     @NonNull
-    private FirebaseAuth.AuthStateListener mHandleAuthStateChanged =
+    private final FirebaseAuth.AuthStateListener mHandleAuthStateChanged =
             new FirebaseAuth.AuthStateListener() {
                 @Override
                 public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {

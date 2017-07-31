@@ -44,9 +44,9 @@ public class MainActivity extends BaseActivity {
 
     // UI elements
     @Nullable
-    TextView authMessageTextView = null;
+    private TextView authMessageTextView = null;
     @Nullable
-    Button authButton = null;
+    private Button authButton = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
