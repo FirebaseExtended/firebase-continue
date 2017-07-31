@@ -80,7 +80,9 @@ public class MainActivity extends BaseActivity {
         /// Update the UI to reflect the user now being signed out.
 
         if (authMessageTextView != null) {
-            authMessageTextView.setText(R.string.auth_message_when_signed_out);
+            authMessageTextView.setText(
+                    getString(R.string.auth_message_when_signed_out,
+                              getString(R.string.app_name)));
         }
 
         if (authButton != null) {

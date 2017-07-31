@@ -26,10 +26,10 @@
 
     <!-- The text of the main auth message shown to the user in the MainActivity. -->
     <string name="auth_message_when_signed_out">
-        Please sign in below to use this app.
+        Please sign in below to use %1$s.
     </string>
     <string name="auth_message_when_signed_in">
-        Hello %1$s\nYou are currently signed in as %2$s.
+        Hello %1$s!\nYou are currently signed in as %2$s.
     </string>
 
     <!-- The text of the auth (i.e. "Sign In"/"Sign Out") button in the MainActivity. -->

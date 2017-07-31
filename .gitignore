@@ -71,3 +71,4 @@ samples/chrome-extension/Continote/scripts/firebase-continue.js
 
 # Misc.
 .DS_Store
+*.swp

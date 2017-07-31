@@ -83,10 +83,17 @@ this sample to build and install to try out:
     1.  Replace the two instances of *[TODO: YOUR-FACEBOOK-APP-ID-HERE]* with your
         Facebook app's ID from the [Prerequisites section](#prerequisites) above.
 
-8.  Done!
+8.  Open Android Studio.
+
+9.  Click to "Open an existing Android Studio project".
+
+10. Within the file navigator dialog that pops up, choose the
+    [`Continote/`](Continote) directory.
+
+11. Done!
 
     You should now be able to build and then install the sample on any compatible
-    Android device or simulator.
+    Android device or simulator using Android Studio.
 
 ## Usage
 
