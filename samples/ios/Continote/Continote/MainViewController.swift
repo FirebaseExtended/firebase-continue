@@ -60,11 +60,12 @@ class MainViewController: BaseViewController {
   override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
     guard let destination = Constants.Segue(rawValue: identifier) else { return false }
 
-    switch destination {
-    case .myNotes:
+    if destination == .myNotes {
       // The user should only be able to go to the notes screen if they are signed in.
       return currentUserIsSignedIn()
     }
+
+    return false
   }
 
   override func handleUserSignedIn(_ user: User) {

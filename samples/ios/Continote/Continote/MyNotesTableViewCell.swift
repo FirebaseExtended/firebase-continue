@@ -17,7 +17,7 @@
 import UIKit
 
 /**
- The MyNotesTableView within MyNotesViewController is filled with these cells (one per Note).
+ The TableView within MyNotesViewController is filled with these cells (one per Note).
  */
 class MyNotesTableViewCell: UITableViewCell {
 
@@ -29,14 +29,28 @@ class MyNotesTableViewCell: UITableViewCell {
   var note: Note? {
     didSet {
       // Populate this cell with the values from the Note.
-      titleLabel.applyAppTheme(for: .titleText)
-      titleLabel.setText(to: note?.title, or: "No Title", using: titleLabel.font)
-      contentLabel.applyAppTheme(for: .subheadingText)
-      contentLabel.setText(to: note?.content, or: "No Content", using: contentLabel.font)
+      titleLabel.setText(to: note?.title,
+                         or: "No Title",
+                         using: Constants.Theme.LabelKind.titleText.getFont())
+      contentLabel.setText(to: note?.content,
+                           or: "No Content",
+                           using: Constants.Theme.LabelKind.subheadingText.getFont())
     }
   }
 
   // UI outlets
   @IBOutlet var titleLabel: UILabel!
   @IBOutlet var contentLabel: UILabel!
+
+  override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+    // Style all labels.
+    titleLabel.applyAppTheme(for: .titleText)
+    contentLabel.applyAppTheme(for: .subheadingText)
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+  }
 }

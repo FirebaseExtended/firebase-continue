@@ -19,8 +19,10 @@ import Firebase
 import MaterialComponents.MaterialSnackbar
 
 /**
- This ViewController presents the user with a Note editor to edit a specific Note, if
+ The ViewController that presents the user with a Note editor to edit a specific Note, if
  said Note is found for the user.
+ 
+ TODO: Finish this ViewController.
  */
 class EditNoteViewController: BaseViewController {
 
@@ -29,10 +31,10 @@ class EditNoteViewController: BaseViewController {
   // user is confirmed to be signed in below. This is gathered separately on this screen,
   // rather than passed from MyNotesViewController, to ensure the user is presented with the
   // latest value for the Note (at the time of opening this screen).
-  var keyOfNoteToEdit: String!
+  var databaseKey: String!
 
   // Firebase Realtime Database reference for the current user's Note to edit, based on the key.
-  private var noteToEditFirebaseDatabaseRef: DatabaseReference?
+  private var databaseRef: DatabaseReference?
 
   // UI outlets
   @IBOutlet var temporaryTodoLabel: UILabel!
@@ -50,7 +52,7 @@ class EditNoteViewController: BaseViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
-    guard keyOfNoteToEdit != nil else {
+    guard databaseKey != nil else {
       // The key for the Note to edit must be set for the user to be on this screen.
       // This should never happen, but just in case.
       navigationController?.popViewController(animated: true)
@@ -65,16 +67,16 @@ class EditNoteViewController: BaseViewController {
     // Database. We only get this value once here to keep things simple.
     // The Note could change elsewhere while on this screen, thus saving could
     // overwrite any of those changes.
-    noteToEditFirebaseDatabaseRef =
-      Database.database().reference().child("notes").child(user.uid).child(keyOfNoteToEdit)
-    noteToEditFirebaseDatabaseRef?.observeSingleEvent(of: .value, with: { (snapshot) in
+    databaseRef = Database.database().reference(withPath: "notes/\(user.uid)/\(databaseKey)")
+    databaseRef?.observeSingleEvent(of: .value, with: { (snapshot) in
       if let noteToEdit = Note(with: snapshot) {
         // TODO: Note to edit found, so pass it to a "handleNoteToEditFound(noteToEdit)" handler.
       } else {
         // TODO: Note to edit not found, call a "handleNoteToEditNotFound()" handler.
       }
     }) { (error) in
-      // TODO: Note to edit not found, call a "handleNoteToEditNotFound()" handler.
+      // TODO: The user does not have permission to edit the Note. For simplicity we will treat
+      // this the same as the Note not being found, so call a "handleNoteToEditNotFound()" handler.
     }
   }
 

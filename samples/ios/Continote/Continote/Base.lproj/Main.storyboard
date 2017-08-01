@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="U83-hG-48i">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="U83-hG-48i">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -102,7 +102,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="writeNewNoteButtonAction:" destination="565-wk-S5f" eventType="touchUpInside" id="aRu-Pa-IJ9"/>
+                                    <action selector="newNoteButtonAction:" destination="565-wk-S5f" eventType="touchUpInside" id="u9Z-Pb-RhP"/>
                                 </connections>
                             </button>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="71" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="azK-wo-DHi">
@@ -159,8 +159,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="myNotesTableView" destination="azK-wo-DHi" id="2l8-M8-oDt"/>
-                        <outlet property="writeNewNoteButton" destination="g4x-Jg-azH" id="M2B-5V-RJ7"/>
+                        <outlet property="newNoteButton" destination="g4x-Jg-azH" id="wiu-KJ-hQK"/>
+                        <outlet property="tableView" destination="azK-wo-DHi" id="7uo-jI-CMu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ul0-vN-Nur" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -210,7 +210,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U83-hG-48i" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dgO-E5-Pob">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dgO-E5-Pob">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

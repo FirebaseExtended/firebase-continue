@@ -20,21 +20,21 @@ import FirebaseDatabaseUI
 import MaterialComponents.MaterialButtons
 
 /**
- The view controller that presents the user with a list of their Notes in Continote.
+ The ViewController that presents the user with a table of their Notes in Continote.
 
  From here the user can add, delete, or open to edit Notes.
  */
 class MyNotesViewController: BaseViewController {
 
   // Firebase Realtime Database reference for the current user's Notes within Continote.
-  private var notesFirebaseDatabaseRef: DatabaseReference?
+  private var notesRef: DatabaseReference?
 
   // The data source to populate the TableView of Notes for the current user.
-  private var myNotesTableViewDataSource: MyNotesTableViewDataSource?
+  private var dataSource: MyNotesTableViewDataSource?
 
   // UI outlets
-  @IBOutlet var myNotesTableView: UITableView!
-  @IBOutlet var writeNewNoteButton: MDCRaisedButton!
+  @IBOutlet var tableView: UITableView!
+  @IBOutlet var newNoteButton: MDCRaisedButton!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -43,29 +43,31 @@ class MyNotesViewController: BaseViewController {
     title = Constants.Text.screenTitle
 
     // Style all buttons.
-    writeNewNoteButton.applyAppTheme()
+    newNoteButton.applyAppTheme()
   }
 
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
 
     // Remove all bindings and database observers.
-    myNotesTableViewDataSource?.unbind()
-    myNotesTableViewDataSource = nil
-    notesFirebaseDatabaseRef?.removeAllObservers()
-    notesFirebaseDatabaseRef = nil
+    dataSource?.unbind()
+    dataSource = nil
+    notesRef?.removeAllObservers()
+    notesRef = nil
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    guard let segueIdentifier = Constants.Segue(rawValue: segue.identifier!) else { return }
+    guard let identifierString = segue.identifier,
+          let segueIdentifier = Constants.Segue(rawValue: identifierString) else { return }
 
-    switch segueIdentifier {
-    case .editNote:
+    if segueIdentifier == .editNote {
       // We need to let the EditNoteViewController know which Note the user wishes to edit
       // before the segue can be performed.
-      let cell = sender as! MyNotesTableViewCell
       let editNoteViewController = segue.destination as! EditNoteViewController
-      editNoteViewController.keyOfNoteToEdit = cell.noteKey
+      if let noteDatabaseKey:String = (sender as? MyNotesTableViewCell)?.noteKey ??
+                                      (sender as? String) {
+        editNoteViewController.databaseKey = noteDatabaseKey
+      }
     }
   }
 
@@ -74,9 +76,9 @@ class MyNotesViewController: BaseViewController {
 
     // Set up our TableView up to sync with the Notes for the current user from the Firebase
     // Realtime Database.
-    notesFirebaseDatabaseRef = Database.database().reference().child("notes").child(user.uid)
-    myNotesTableViewDataSource = MyNotesTableViewDataSource(
-      query: notesFirebaseDatabaseRef!,
+    notesRef = Database.database().reference(withPath: "notes/\(user.uid)")
+    dataSource = MyNotesTableViewDataSource(
+      query: notesRef!,
       populateCell: { tableView, indexPath, snapshot in
         // Get the data for this Note, as gathered from the Firebase Realtime Database, and parse
         // it to create a Note struct for this cell.
@@ -92,19 +94,19 @@ class MyNotesViewController: BaseViewController {
         return cell
       })
 
-    myNotesTableViewDataSource?.bind(to: myNotesTableView)
+    dataSource?.bind(to: tableView)
 
     // Finally, show this screen's UI since everything is ready.
-    myNotesTableView.isHidden = false
-    writeNewNoteButton.isHidden = false
+    tableView.isHidden = false
+    newNoteButton.isHidden = false
   }
 
   override func handleUserSignedOut() {
     super.handleUserSignedOut()
 
     // Hide this screen's UI since the user must be signed in to see any Notes.
-    myNotesTableView.isHidden = true
-    writeNewNoteButton.isHidden = true
+    tableView.isHidden = true
+    newNoteButton.isHidden = true
 
     // The user must be signed in to view this screen, so navigate away from it if the user is
     // signed out.
@@ -112,39 +114,35 @@ class MyNotesViewController: BaseViewController {
   }
 
   /**
-   Handles when the user taps the "write a new note" button.
+   Handles when the user taps the newNoteButton.
 
    Adds a new Note to the Firebase Realtime Database for the current user,
    then opens that Note to allow the user to begin writing.
 
-   - Parameter sender: The object that called this action. This should only be the
-   writeNewNoteButton.
+   - Parameter sender: The object that called this action. This should only be the newNoteButton.
    */
-  @IBAction func writeNewNoteButtonAction(_ sender: Any) {
-    guard let notesFirebaseDatabaseRef = notesFirebaseDatabaseRef else {
+  @IBAction func newNoteButtonAction(_ sender: Any) {
+    guard let notesRef = notesRef else {
       // This should never happen because the user must be signed in, but just in case.
       return
     }
 
     // Add a new, empty Note to the Firebase Realtime Database for the current user.
     let newNote: Note = Note(title: "", content: "")
-    let newNoteRef: DatabaseReference = notesFirebaseDatabaseRef.childByAutoId()
-    newNoteRef.setValue(newNote.asFirebaseData) { (error, ref) -> Void in
+    let newNoteRef: DatabaseReference = notesRef.childByAutoId()
+    newNoteRef.setValue(newNote.asFirebaseData) { [weak self] (error, ref) -> Void in
       if error != nil {
         MDCSnackbarManager.show(Constants.Text.ErrorMessage.couldNotCreateNewNote)
         return
       }
 
-      // Open the Edit Note screen with this Note by creating a temporary MyNotesTableViewCell
-      // and providing it the key for this new Note (so that the segue to the Edit Note screen
-      // can be performed). We do this so that the user may immediately Edit the Note, rather than
-      // having to wait for the TableView to update from Firebase Realtime Database events and then
-      // manually tap the cell for the Note.
-      // This is not very clean, but is sufficient for this sample app.
-      let temporaryCellForSegue: MyNotesTableViewCell = MyNotesTableViewCell()
-      temporaryCellForSegue.noteKey = ref.key
-      self.performSegue(withIdentifier: Constants.Segue.editNote.rawValue,
-                        sender: temporaryCellForSegue)
+      // Open the Edit Note screen with this Note.
+      // We do this so that the user may immediately edit the Note, rather than
+      // having to wait for the TableView to update from Firebase Realtime Database
+      // events and then manually tap the cell for the Note.
+      DispatchQueue.main.async {
+        self?.performSegue(withIdentifier: Constants.Segue.editNote.rawValue, sender: ref.key)
+      }
     }
   }
 }

@@ -72,20 +72,20 @@ extension UILabel {
    Sets this label's text to the provided value, or the provided placeholder if the value is
    nil or empty.
 
-   If the text is set to the provided value, the fontIfValueUsed font will be applied to the label.
-   Otherwise, if the placeholder is used, an italicized version of the font will be applied.
+   If the text is set to the provided value, the desiredFont will be applied to the label.
+   Otherwise, if the placeholder is used, an italicized version of the desiredFont will be applied.
 
    - Parameter value: The value to set the text to.
    - Parameter placeholder: The placeholder text to use if the value above is nil or empty.
-   - Parameter fontIfValueUsed: The font to use if the text is set to the provided value.
+   - Parameter desiredFont: The font to use if the text is set to the provided value.
    */
-  func setText(to value: String?, or placeholder: String, using fontIfValueUsed: UIFont) {
+  func setText(to value: String?, or placeholder: String, using desiredFont: UIFont) {
     if !(value ?? "").isEmpty {
       text = value;
-      font = fontIfValueUsed
+      font = desiredFont
     } else {
       text = placeholder;
-      font = MDCTypography.italicFont(from: fontIfValueUsed)
+      font = MDCTypography.italicFont(from: desiredFont)
     }
   }
 }

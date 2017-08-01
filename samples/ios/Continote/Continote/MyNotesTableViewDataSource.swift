@@ -20,9 +20,10 @@ import FirebaseDatabaseUI
 import MaterialComponents.MaterialSnackbar
 
 /**
- This is the data source used for the MyNotesTableView. We need to override FUITableViewDataSource
- in order to allow the user to edit (and then subsequently delete) rows (i.e. Notes) within the
- table.
+ The data source used for the TableView in MyNotesViewController.
+
+ We need to override FUITableViewDataSource in order to allow the user to edit
+ (and then subsequently delete) rows (i.e. Notes) within the table.
  */
 class MyNotesTableViewDataSource: FUITableViewDataSource {
 
@@ -34,8 +35,7 @@ class MyNotesTableViewDataSource: FUITableViewDataSource {
   override func tableView(_ tableView: UITableView,
                           commit editingStyle: UITableViewCellEditingStyle,
                           forRowAt indexPath: IndexPath) {
-    switch editingStyle {
-    case .delete:
+    if editingStyle == .delete {
       // Attempt to delete the corresponding Note from the Firebase Realtime Database.
       if (UInt(indexPath.row) < count) {
         snapshot(at: indexPath.row).ref.removeValue { (error, ref) in
@@ -45,11 +45,6 @@ class MyNotesTableViewDataSource: FUITableViewDataSource {
           }
         }
       }
-      break
-
-    default:
-      // Do nothing. This should never happen, but just in case.
-      break
     }
   }
 }
