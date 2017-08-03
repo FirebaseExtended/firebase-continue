@@ -2,10 +2,13 @@
 
 This directory contains the Firebase Continue for iOS library.
 
-To learn about Firebase Continue and the problems it helps developers solve,
+Firebase Continue enables mobile developers to easily integrate activity transitioning
+from their mobile apps to the web by way of Chrome extensions.
+
+To learn more about Firebase Continue and the problems it helps developers solve,
 please see the [README at the root of this repository](../).
 
-There is one notable difference between this and the Android library.
+There is one notable difference between this and the [Android library](../android).
 When possible, the Firebase Continue for iOS library will not only
 leverage Firebase to allow users to continue their activity within Chrome on any
 supported platform, but will also make use of
@@ -23,10 +26,11 @@ in the Releases page of this repo.
 1. [Prerequisites](#prerequisites)
 2. [Installation](#installation)
 3. [Usage Instructions](#usage-instructions)
-4. [Compatibility](#compatibility)
-5. [Dependencies](#dependencies)
-6. [Sample App](#sample-app)
-7. [Development Progress](#development-progress)
+4. [How to Build](#how-to-build)
+5. [Compatibility](#compatibility)
+6. [Dependencies](#dependencies)
+7. [Sample App](#sample-app)
+8. [Development Progress](#development-progress)
 
 ## Prerequisites
 
@@ -40,26 +44,30 @@ to use in your iOS app:
 
 1.  First, make sure you followed the [Prerequisites section](#prerequisites) above.
 
-2.  If you have not already added Firebase to your app, please do so.
+2.  Ensure your app can depend on all of this library's
+    [Dependencies](#dependencies)
+    without, for example, incompatible version numbers being an issue
+    (such as your app requiring Firebase Auth and Firebase Database v3.0.0,
+    which is lower than what is required by this library).
+
+3.  Ensure this library's [Compatibility](#compatibility) items suit your app.
+
+4.  If you have not already added Firebase to your app, please do so.
 
     See
     [https://firebase.google.com/docs/ios/setup](https://firebase.google.com/docs/ios/setup)
     for instructions on how to add Firebase, including the required
     Firebase Authentication and Firebase Realtime Database SDKs, to your app.
 
-3.  **TODO**
+5.  **TODO**
 
-4.  Finally, import all of this library's [Dependencies](#dependencies) and the
-    library itself ***before*** trying to use the library.
+6.  Import the library wherever you would like to use it in your app.
 
     For example, in Swift:
 
     ```swift
     // Other imports here
     ...
-
-    // Import the required Firebase SDKs.
-    import Firebase
 
     // Import the Firebase Continue library.
     import FirebaseContinue
@@ -79,9 +87,6 @@ to use in your iOS app:
     // Other imports here
     ...
 
-    // Import the required Firebase SDKs.
-    @import Firebase;
-
     // Import the Firebase Continue library.
     @import FirebaseContinue;
 
@@ -100,7 +105,7 @@ to use in your iOS app:
     @end
     ```
 
-5.  Done!
+7.  Done!
 
 **TODO**: Finish listing installation instructions here to include this library in an
 iOS app. In particular, provide instructions on how to use CocoaPods to
@@ -109,6 +114,13 @@ include it when released on CocoaPods, as well as how to include it manually.
 ## Usage Instructions
 
 **TODO**: List how to use each of the provided APIs here in a realistic way.
+
+## How to Build
+
+After completing the following steps, you will have properly built this library
+from its source:
+
+1.  **TODO**
 
 ## Compatibility
 

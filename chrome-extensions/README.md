@@ -2,7 +2,10 @@
 
 This directory contains the Firebase Continue for Chrome Extensions library.
 
-To learn about Firebase Continue and the problems it helps developers solve,
+Firebase Continue enables mobile developers to easily integrate activity transitioning
+from their mobile apps to the web by way of Chrome extensions.
+
+To learn more about Firebase Continue and the problems it helps developers solve,
 please see the [README at the root of this repository](../).
 
 ## Table of Contents
@@ -26,7 +29,15 @@ to use in your Chrome extension:
 
 1.  First, make sure you followed the [Prerequisites section](#prerequisites) above.
 
-2.  If you have not already added Firebase to your Chrome extension, please do so.
+2.  Ensure your Chrome extension can depend on all of this library's
+    [Dependencies](#dependencies)
+    without, for example, incompatible version numbers being an issue
+    (such as your extension requiring Firebase Auth and Firebase Database v3.0.0,
+    which is lower than what is required by this library).
+
+3.  Ensure this library's [Compatibility](#compatibility) items suit your extension.
+
+4.  If you have not already added Firebase to your Chrome extension, please do so.
 
     See
     [https://github.com/firebase/quickstart-js/tree/master/auth/chromextension](https://github.com/firebase/quickstart-js/tree/master/auth/chromextension)
@@ -38,16 +49,17 @@ to use in your Chrome extension:
     **TODO**: Write up a more in-depth "Using Firebase in a Chrome extension" guide.
     This could be a blog post which is linked here when published.
 
-3.  Copy the [`firebase-continue.js`](firebase-continue.js) Chrome extensions library
-    from here and place it somewhere for your extension to use.
+5.  Copy the `firebase-continue.js` Chrome extensions library file
+    from this directory and paste a copy of it somewhere for
+    your extension to use.
 
-    **TODO**: When v0.1.0 is released, and for all releases after that, provide
+    **TODO**: After v0.1.0 is released, and for all releases after that, provide
     CDN-hosted copies of each version. When a CDN-hosted copy is an option for
     developers, add a step to this installation guide to remind developers to
     update the `content_security_policy` in their extension's `manifest.json` file
     if they use said option instead of using a local copy of the library.
 
-4.  Finally, anywhere you want to use Firebase Continue, remember to include and
+6.  Finally, anywhere you want to use Firebase Continue, remember to include and
     initialize all of its [Dependencies](#dependencies) ***before*** including
     and then using the library itself.
 
@@ -81,7 +93,7 @@ to use in your Chrome extension:
     </html>
     ```
 
-5.  Done!
+7.  Done!
 
 ## Usage Instructions
 

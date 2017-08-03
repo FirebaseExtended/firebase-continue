@@ -52,7 +52,7 @@ this sample to build and install to try out:
 4.  Click to "Add Firebase to your Android app":
 
     1.  In the dialog that opens, when asked for an "`Android package name`",
-        enter `com.google.firebasecontinue.sample.continote`.
+        enter `com.firebasecontinue.sample.continote`.
 
     2.  For "`App nickname (optional)`", enter `Continote`.
 
@@ -80,17 +80,36 @@ this sample to build and install to try out:
 7.  Open `strings.xml` in a text editor and fill out the clearly marked
     *[TODO: YOUR-VALUE-HERE]* details:
 
-    1.  Replace the two instances of *[TODO: YOUR-FACEBOOK-APP-ID-HERE]* with your
+    1.  Replace *[TODO: YOUR-FIREBASE-HOSTING-URL-FOR-CONTINOTE-WEB-HERE]* with the
+        Firebase Hosting URL of the Continote sample web app your project from the
+        [Prerequisites section](#prerequisites) above.
+
+        For example: `https://SomeDeployedFirebaseProjectName.firebaseapp.com`
+
+    2.  Replace the two instances of *[TODO: YOUR-FACEBOOK-APP-ID-HERE]* with your
         Facebook app's ID from the [Prerequisites section](#prerequisites) above.
 
-8.  Open Android Studio.
+8.  [Build the Firebase Continue for Android library](../../android#how-to-build)
+    to generate a `FirebaseContinue-[VERSION-NUMBER].aar` compiled Android library
+    file (where `[VERSION-NUMBER]` is replaced with the version of Firebase Continue
+    this sample [depends on](#dependencies)).
 
-9.  Click to "Open an existing Android Studio project".
+    **TODO**: When a simpler release process is in place (where developers can
+    add a simple dependency to their build files without having to copy the library
+    locally as well), update this and the next part of the setup guide.
 
-10. Within the file navigator dialog that pops up, choose the
+9.  Copy the `FirebaseContinue-[VERSION-NUMBER].aar` compiled Android library file
+    from where it was built, and paste a copy of it in the
+    [`Continote/app/libs/`](Continote/app/libs) directory.
+
+10. Open Android Studio.
+
+11. Click to "Open an existing Android Studio project".
+
+12. Within the file navigator dialog that pops up, choose the
     [`Continote/`](Continote) directory.
 
-11. Done!
+13. Done!
 
     You should now be able to build and then install the sample on any compatible
     Android device or simulator using Android Studio.
