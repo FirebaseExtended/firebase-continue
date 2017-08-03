@@ -19,7 +19,8 @@ import Firebase
 import MaterialComponents.MaterialAppBar
 
 /**
- This is the abstract UIViewController which any other ViewController in this app must subclass.
+ The abstract UIViewController which all other ViewControllers in this app must subclass.
+
  It sets up various common UI elements (such as the top AppBar for navigation and title purposes),
  and listens for authentication state changes to pass along to subclasses.
  */
@@ -74,20 +75,24 @@ class BaseViewController: UIViewController {
   }
 
   /**
-   This method is called whenever a user signs in.
+   Handles when the user signs in.
+
    Override in a subclass to react to this event.
+
    - Parameter user: The user who is now signed in.
    */
   func handleUserSignedIn(_ user: User) {}
 
   /**
-   This method is called whenever a user signs out.
+   Handles when the user signs out.
+
    Override in a subclass to react to this event.
    */
   func handleUserSignedOut() {}
 
   /**
-   Convenience method for determining the current authentication state of the user.
+   Determines if the user is currently signed in.
+
    - Returns: true iff the current user is signed into this app, false otherwise.
    */
   func currentUserIsSignedIn() -> Bool {
@@ -95,11 +100,16 @@ class BaseViewController: UIViewController {
   }
 
   /**
+   Handles when the user's Auth state changes.
+   
    Firebase is provided this method as a callback for when the user signs in or out.
-   It is also invoked right away by Firebase with the initial auth state when the handler is
+
+   It is also invoked right away by Firebase with the initial Auth state when the handler is
    registered with Firebase.
+
    See: https://firebase.google.com/docs/reference/ios/firebaseauth/api/reference/Classes/FIRAuth#-addauthstatedidchangelistener
-   - Parameter auth: The auth instance which called this listener.
+
+   - Parameter auth: The Auth instance which called this listener.
    - Parameter user: The user who is now signed in, or nil if no user is signed in.
    */
   func handleAuthStateDidChange(auth: Auth, user: User?) {

@@ -19,6 +19,7 @@ import MaterialComponents.MDCColorScheme
 
 /**
  These constants are organized as part of a struct for clarity and a cleaner namespace.
+
  The constants predefined below are relevant to more than one screen within the app.
  For local constants, use a private extension within the file you need those extra constants.
  See the use of "private extension Constants" in MainViewController.swift for an example.
@@ -45,8 +46,11 @@ struct Constants {
       // Labels with text we wish to appear normal/standard (such as longer text content).
       case normalText
 
-      // Labels with text we wish to appear large (such as headings).
-      case largeText
+      // Labels with text we wish to appear as a title.
+      case titleText
+
+      // Labels with text we wish to appear as a subheading (such as a subsection under a title).
+      case subheadingText
 
       /**
        - Returns: The font to use for this kind of label.
@@ -55,8 +59,10 @@ struct Constants {
         switch self {
         case .normalText:
           return MDCTypography.body2Font()
-        case .largeText:
-          return MDCTypography.headlineFont()
+        case .titleText:
+          return MDCTypography.titleFont()
+        case .subheadingText:
+          return MDCTypography.subheadFont()
         }
       }
 
@@ -67,8 +73,10 @@ struct Constants {
         switch self {
         case .normalText:
           return MDCTypography.body2FontOpacity()
-        case .largeText:
-          return MDCTypography.headlineFontOpacity()
+        case .titleText:
+          return MDCTypography.titleFontOpacity()
+        case .subheadingText:
+          return MDCTypography.subheadFontOpacity()
         }
       }
     }

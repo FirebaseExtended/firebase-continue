@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		14B0CC1936BFC3B33351006C /* Pods_Continote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E046B919A49E4850964E98 /* Pods_Continote.framework */; };
+		99454BF61F2A694600E9FFA0 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99454BF51F2A694600E9FFA0 /* Note.swift */; };
+		99454BFC1F2AB7FC00E9FFA0 /* MyNotesTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99454BFB1F2AB7FC00E9FFA0 /* MyNotesTableViewDataSource.swift */; };
 		995CE1CA1EF8398F0067DDF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995CE1C91EF8398F0067DDF5 /* AppDelegate.swift */; };
 		995CE1CC1EF8398F0067DDF5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995CE1CB1EF8398F0067DDF5 /* MainViewController.swift */; };
 		995CE1CF1EF8398F0067DDF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 995CE1CD1EF8398F0067DDF5 /* Main.storyboard */; };
 		995CE1D11EF8398F0067DDF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 995CE1D01EF8398F0067DDF5 /* Assets.xcassets */; };
 		995CE1D41EF8398F0067DDF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 995CE1D21EF8398F0067DDF5 /* LaunchScreen.storyboard */; };
+		9971E7D11F2919E7009535C8 /* EditNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9971E7D01F2919E7009535C8 /* EditNoteViewController.swift */; };
 		997D17B61F16A57200DD949D /* MyNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997D17B51F16A57200DD949D /* MyNotesViewController.swift */; };
 		9996E3091F0BEB0D00254CB1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9996E3081F0BEB0D00254CB1 /* GoogleService-Info.plist */; };
+		999FFF9D1F27E916001B55E0 /* MyNotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999FFF9C1F27E916001B55E0 /* MyNotesTableViewCell.swift */; };
 		99E9772B1F0EB65500808120 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9772A1F0EB65500808120 /* BaseViewController.swift */; };
 		99E9772D1F0EC32300808120 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9772C1F0EC32300808120 /* Constants.swift */; };
 		99E9772F1F0ED02400808120 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9772E1F0ED02400808120 /* Utils.swift */; };
@@ -22,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		6E20C9A1BE69B6EE6AFF2EAD /* Pods-Continote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Continote.release.xcconfig"; path = "Pods/Target Support Files/Pods-Continote/Pods-Continote.release.xcconfig"; sourceTree = "<group>"; };
+		99454BF51F2A694600E9FFA0 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		99454BFB1F2AB7FC00E9FFA0 /* MyNotesTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNotesTableViewDataSource.swift; sourceTree = "<group>"; };
 		995CE1C61EF8398F0067DDF5 /* Continote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Continote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		995CE1C91EF8398F0067DDF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		995CE1CB1EF8398F0067DDF5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -29,8 +35,10 @@
 		995CE1D01EF8398F0067DDF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		995CE1D31EF8398F0067DDF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		995CE1D51EF8398F0067DDF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9971E7D01F2919E7009535C8 /* EditNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditNoteViewController.swift; sourceTree = "<group>"; };
 		997D17B51F16A57200DD949D /* MyNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNotesViewController.swift; sourceTree = "<group>"; };
 		9996E3081F0BEB0D00254CB1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		999FFF9C1F27E916001B55E0 /* MyNotesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNotesTableViewCell.swift; sourceTree = "<group>"; };
 		99E9772A1F0EB65500808120 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		99E9772C1F0EC32300808120 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		99E9772E1F0ED02400808120 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -87,8 +95,12 @@
 				995CE1C91EF8398F0067DDF5 /* AppDelegate.swift */,
 				99E9772A1F0EB65500808120 /* BaseViewController.swift */,
 				99E9772C1F0EC32300808120 /* Constants.swift */,
+				9971E7D01F2919E7009535C8 /* EditNoteViewController.swift */,
 				995CE1CB1EF8398F0067DDF5 /* MainViewController.swift */,
 				997D17B51F16A57200DD949D /* MyNotesViewController.swift */,
+				999FFF9C1F27E916001B55E0 /* MyNotesTableViewCell.swift */,
+				99454BFB1F2AB7FC00E9FFA0 /* MyNotesTableViewDataSource.swift */,
+				99454BF51F2A694600E9FFA0 /* Note.swift */,
 				99E9772E1F0ED02400808120 /* Utils.swift */,
 			);
 			path = Continote;
@@ -234,9 +246,13 @@
 			files = (
 				995CE1CC1EF8398F0067DDF5 /* MainViewController.swift in Sources */,
 				995CE1CA1EF8398F0067DDF5 /* AppDelegate.swift in Sources */,
+				99454BFC1F2AB7FC00E9FFA0 /* MyNotesTableViewDataSource.swift in Sources */,
+				9971E7D11F2919E7009535C8 /* EditNoteViewController.swift in Sources */,
 				99E9772D1F0EC32300808120 /* Constants.swift in Sources */,
 				99E9772F1F0ED02400808120 /* Utils.swift in Sources */,
+				99454BF61F2A694600E9FFA0 /* Note.swift in Sources */,
 				997D17B61F16A57200DD949D /* MyNotesViewController.swift in Sources */,
+				999FFF9D1F27E916001B55E0 /* MyNotesTableViewCell.swift in Sources */,
 				99E9772B1F0EB65500808120 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
