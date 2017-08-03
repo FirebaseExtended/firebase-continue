@@ -12,8 +12,9 @@
  * limitations under the License.
  */
 
-package com.google.firebasecontinue.sample.continote;
+package com.firebasecontinue.sample.continote;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ import java.util.List;
 
 /**
  * The Activity that the user initially sees.
+ *
  * It presents the user with an initial screen to either sign in and then navigate to other screens,
  * or sign out.
  */
@@ -47,6 +49,8 @@ public class MainActivity extends BaseActivity {
     private TextView authMessageTextView = null;
     @Nullable
     private Button authButton = null;
+    @Nullable
+    private Button myNotesButton = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +61,13 @@ public class MainActivity extends BaseActivity {
         // Gather the UI elements for this Activity for future manipulation.
         authMessageTextView = (TextView) findViewById(R.id.authMessageTextView);
         authButton = (Button) findViewById(R.id.authButton);
+        myNotesButton = (Button) findViewById(R.id.myNotesButton);
     }
 
     @Override
     protected void handleUserSignedIn(@NonNull FirebaseUser user) {
+        super.handleUserSignedIn(user);
+
         // Update the UI to reflect the user now being signed in.
 
         if (authMessageTextView != null) {
@@ -73,11 +80,17 @@ public class MainActivity extends BaseActivity {
         if (authButton != null) {
             authButton.setText(R.string.auth_button_text_when_signed_in);
         }
+
+        if (myNotesButton != null) {
+            myNotesButton.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     protected void handleUserSignedOut() {
-        /// Update the UI to reflect the user now being signed out.
+        super.handleUserSignedOut();
+
+        // Update the UI to reflect the user now being signed out.
 
         if (authMessageTextView != null) {
             authMessageTextView.setText(
@@ -87,6 +100,10 @@ public class MainActivity extends BaseActivity {
 
         if (authButton != null) {
             authButton.setText(R.string.auth_button_text_when_signed_out);
+        }
+
+        if (myNotesButton != null) {
+            myNotesButton.setVisibility(View.GONE);
         }
     }
 
@@ -120,6 +137,20 @@ public class MainActivity extends BaseActivity {
                             .setTheme(R.style.AppTheme)
                             .build(),
                     0);
+        }
+    }
+
+    /**
+     * Handles when the user taps the myNotesButton.
+     *
+     * @param v The View that called this triggered this handler.
+     *          This should only be the myNotesButton itself.
+     */
+    public void handleMyNotesButtonTapped(View v) {
+        if (currentUserIsSignedIn()) {
+            // The current user is signed in, so allow them to go to the My Notes screen.
+            Intent intent = new Intent(this, MyNotesActivity.class);
+            startActivity(intent);
         }
     }
 }

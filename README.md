@@ -182,9 +182,9 @@ initial, released v0.1.0 of Firebase Continue for each supported platform.
 See subdirectory README files for more specific v0.1.0 development progress lists.
 
 ### Libraries Completed
-- [x] [Chrome extensions library](chrome-extensions/)
+- [x] [Chrome extensions library](chrome-extensions)
 - [ ] iOS library
-- [ ] Android library
+- [x] [Android library](android)
 
 ### Samples Completed
 See the
