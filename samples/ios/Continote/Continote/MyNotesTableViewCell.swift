@@ -30,10 +30,10 @@ class MyNotesTableViewCell: UITableViewCell {
     didSet {
       // Populate this cell with the values from the Note.
       titleLabel.setText(to: note?.title,
-                         or: "No Title",
+                         withPlaceholder: "No Title",
                          using: Constants.Theme.LabelKind.titleText.getFont())
       contentLabel.setText(to: note?.content,
-                           or: "No Content",
+                           withPlaceholder: "No Content",
                            using: Constants.Theme.LabelKind.subheadingText.getFont())
     }
   }

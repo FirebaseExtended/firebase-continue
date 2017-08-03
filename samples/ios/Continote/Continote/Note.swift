@@ -33,7 +33,7 @@ struct Note {
 
   // The Firebase Realtime Database representation of this Note.
   // This could be used to add or set a Note value in the database.
-  let asFirebaseData: [String : AnyObject]
+  let firebaseData: [String : AnyObject]
 
   /**
    Initializes a Note with the provided values.
@@ -44,7 +44,7 @@ struct Note {
   init(title: String, content: String) {
     self.title = title
     self.content = content
-    self.asFirebaseData = [
+    firebaseData = [
       "title": self.title as AnyObject,
       "content": self.content as AnyObject
     ]

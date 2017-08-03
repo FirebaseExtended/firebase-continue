@@ -35,14 +35,14 @@ class MyNotesTableViewDataSource: FUITableViewDataSource {
   override func tableView(_ tableView: UITableView,
                           commit editingStyle: UITableViewCellEditingStyle,
                           forRowAt indexPath: IndexPath) {
-    if editingStyle == .delete {
-      // Attempt to delete the corresponding Note from the Firebase Realtime Database.
-      if (UInt(indexPath.row) < count) {
-        snapshot(at: indexPath.row).ref.removeValue { (error, ref) in
-          if error != nil {
-            MDCSnackbarManager.show(Constants.Text.ErrorMessage.couldNotDeleteNote)
-            return
-          }
+    guard editingStyle == .delete else { return }
+
+    // Attempt to delete the corresponding Note from the Firebase Realtime Database.
+    if (UInt(indexPath.row) < count) {
+      snapshot(at: indexPath.row).ref.removeValue { (error, ref) in
+        if error != nil {
+          MDCSnackbarManager.show(Constants.Text.ErrorMessage.couldNotDeleteNote)
+          return
         }
       }
     }

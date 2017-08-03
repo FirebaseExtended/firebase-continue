@@ -79,7 +79,7 @@ extension UILabel {
    - Parameter placeholder: The placeholder text to use if the value above is nil or empty.
    - Parameter desiredFont: The font to use if the text is set to the provided value.
    */
-  func setText(to value: String?, or placeholder: String, using desiredFont: UIFont) {
+  func setText(to value: String?, withPlaceholder placeholder: String, using desiredFont: UIFont) {
     if !(value ?? "").isEmpty {
       text = value;
       font = desiredFont

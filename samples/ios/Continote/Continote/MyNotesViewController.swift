@@ -58,16 +58,18 @@ class MyNotesViewController: BaseViewController {
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let identifierString = segue.identifier,
-          let segueIdentifier = Constants.Segue(rawValue: identifierString) else { return }
+          let segueIdentifier = Constants.Segue(rawValue: identifierString),
+          segueIdentifier == .editNote else { return }
 
-    if segueIdentifier == .editNote {
-      // We need to let the EditNoteViewController know which Note the user wishes to edit
-      // before the segue can be performed.
-      let editNoteViewController = segue.destination as! EditNoteViewController
-      if let noteDatabaseKey:String = (sender as? MyNotesTableViewCell)?.noteKey ??
-                                      (sender as? String) {
-        editNoteViewController.databaseKey = noteDatabaseKey
-      }
+    // We need to let the EditNoteViewController know which Note the user wishes to edit
+    // before the segue can be performed.
+    let editNoteViewController = segue.destination as! EditNoteViewController
+
+    // Set the databaseKey based on the object passed in.
+    if let cell = sender as? MyNotesTableViewCell {
+      editNoteViewController.databaseKey = cell.noteKey
+    } else if let key = sender as? String {
+      editNoteViewController.databaseKey = key
     }
   }
 
@@ -122,15 +124,12 @@ class MyNotesViewController: BaseViewController {
    - Parameter sender: The object that called this action. This should only be the newNoteButton.
    */
   @IBAction func newNoteButtonAction(_ sender: Any) {
-    guard let notesRef = notesRef else {
-      // This should never happen because the user must be signed in, but just in case.
-      return
-    }
+    guard let notesRef = notesRef else { return }
 
     // Add a new, empty Note to the Firebase Realtime Database for the current user.
     let newNote: Note = Note(title: "", content: "")
     let newNoteRef: DatabaseReference = notesRef.childByAutoId()
-    newNoteRef.setValue(newNote.asFirebaseData) { [weak self] (error, ref) -> Void in
+    newNoteRef.setValue(newNote.firebaseData) { [weak self] (error, ref) -> Void in
       if error != nil {
         MDCSnackbarManager.show(Constants.Text.ErrorMessage.couldNotCreateNewNote)
         return
