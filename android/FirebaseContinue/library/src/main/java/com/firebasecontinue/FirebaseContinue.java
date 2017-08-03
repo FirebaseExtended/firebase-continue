@@ -72,10 +72,10 @@ public final class FirebaseContinue {
             @Override
             public DatabaseReference call() throws Exception {
                 // First, ensure the inputs could be valid.
-                if (activityUrl == null) {
-                    throw new IllegalArgumentException("activityUrl must be non-null");
-                } else if (applicationName == null) {
-                    throw new IllegalArgumentException("applicationName must be non-null");
+                if (activityUrl == null || activityUrl.trim().length() == 0) {
+                    throw new IllegalArgumentException("activityUrl is invalid");
+                } else if (applicationName == null || applicationName.trim().length() == 0) {
+                    throw new IllegalArgumentException("applicationName is invalid");
                 }
 
                 // Next, ensure the current user is signed in.
