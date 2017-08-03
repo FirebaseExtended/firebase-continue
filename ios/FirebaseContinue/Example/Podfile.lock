@@ -1,0 +1,45 @@
+PODS:
+  - FirebaseCommunity/Auth (0.0.1):
+    - FirebaseCommunity/Core
+    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseCommunity/Core (0.0.1):
+    - FirebaseCommunity/Root
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseCommunity/Database (0.0.1):
+    - FirebaseCommunity/Core
+    - leveldb-library
+  - FirebaseCommunity/Root (0.0.1)
+  - FirebaseContinue (0.1.0):
+    - FirebaseCommunity/Auth
+    - FirebaseCommunity/Database
+  - GoogleToolboxForMac/DebugUtils (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/NSData+zlib (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.1):
+    - GoogleToolboxForMac/DebugUtils (= 2.1.1)
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
+  - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
+  - GTMSessionFetcher/Core (1.1.11)
+  - leveldb-library (1.18.3)
+
+DEPENDENCIES:
+  - FirebaseContinue (from `../`)
+
+EXTERNAL SOURCES:
+  FirebaseContinue:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FirebaseCommunity: 3180af8da9e96e4e0114999eeebd8896c43e848f
+  FirebaseContinue: 30be04989960c781ec97bd75744ecd757a7bb4e7
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
+  leveldb-library: 10fb39c39e243db4af1828441162405bbcec1404
+
+PODFILE CHECKSUM: bb5218eb027d5ad7efd687c9bb71ac849eb12c63
+
+COCOAPODS: 1.2.1
