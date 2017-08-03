@@ -74,7 +74,52 @@ to use in your Android app:
 
 ## Usage Instructions
 
-**TODO**: List how to use each of the provided APIs here in a realistic way.
+After following the [Installation section](#installation) above, typical
+usage of this library is as follows. Please note that a fleshed out example of usage
+can be found in the [sample Android app](../samples/android), and
+more specific documentation can be found in the
+[Android library itself](FirebaseContinue/library/src/main/java/com/firebasecontinue/FirebaseContinue.java).
+
+-   When the user is signed in via Firebase Authentication and may wish to continue some activity
+    within your application (such as watching a video or writing a note) elsewhere
+    (i.e. within Chrome), you can use the
+    `FirebaseContinue.broadcastToContinueActivity(activityUrl, applicationName)` API.
+
+    As noted in its documentation, that API returns a
+    [Task](https://developers.google.com/android/guides/tasks)
+    which asynchronously broadcasts an activity (codified as a URL) within the application
+    that the currently signed in user may wish to continue elsewhere (in the immediate future)
+    to all potential clients (i.e. Chrome extension(s)) which could allow the user to do so by
+    opening said URL.
+
+    To learn more about Tasks, including what it means for a Task to have completed successfully
+    or for it to have failed, see:
+    [https://developers.google.com/android/guides/tasks](https://developers.google.com/android/guides/tasks).
+
+    For example:
+
+    ```java
+    FirebaseContinue.broadcastActivityToContinue(
+            "[TODO: YOUR-URL-TO-ALLOW-THE-USER-TO-CONTINUE-THEIR-ACTIVITY-HERE]"),
+            "[TODO: YOUR-APPLICATION-NAME-HERE]")
+    ).addOnSuccessListener(new OnSuccessListener<Void>() {
+        @Override
+        public void onSuccess(Void result) {
+            // This success listener is optional but allows you to react to the user's activity
+            // successfully being broadcast.
+
+            // An example use of this listener could be to inform the user to open Chrome (with
+            // your Chrome extension installed which uses the Firebase Continue for
+            // Chrome Extensions library) if they wish continue their activity there.
+        }
+    }).addOnFailureListener(new OnFailureListener() {
+        @Override
+        public void onFailure(Exception e) {
+            // This failure listener is optional but allows you to react to the user's activity
+            // unsuccessfully being broadcast.
+        }
+    });
+    ```
 
 ## How to Build
 
