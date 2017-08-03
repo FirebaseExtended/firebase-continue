@@ -6,7 +6,7 @@ Firebase Continue enables mobile developers to easily integrate activity transit
 from their mobile apps to the web by way of Chrome extensions.
 
 To learn more about Firebase Continue and the problems it helps developers solve,
-please see the [README at the root of this repository](../).
+please see the [README at the root of this repository](../README.md).
 
 There is one notable difference between this and the [Android library](../android).
 When possible, the Firebase Continue for iOS library will not only
