@@ -10,7 +10,7 @@ from their apps to the web by way of Chrome extensions.
 
   s.homepage         = 'https://github.com/firebase/firebase-continue'
   s.license          = { :type => 'Apache 2.0', :file => '../../LICENSE' }
-  s.author           = { 'Andreas Ricci' => 'ricciandreas@gmail.com' }
+  s.authors          = 'Google, Inc'
   s.source           = { :git => 'https://github.com/firebase/firebase-continue.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
