@@ -24,6 +24,7 @@
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJL-C1-alU" customClass="MDCRaisedButton">
                                 <rect key="frame" x="16" y="228.5" width="343" height="64"/>
+                                <accessibility key="accessibilityConfiguration" hint="Tap this button to view a list of your notes." label="My Notes button"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="k1F-fY-jnA"/>
                                 </constraints>
@@ -36,12 +37,14 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auth label message." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttl-fy-Ghi">
                                 <rect key="frame" x="16" y="104" width="343" height="20.5"/>
+                                <accessibility key="accessibilityConfiguration" hint="Displays a message based on your current authentication state." label="Authentication message"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ntc-tm-D6S" customClass="MDCRaisedButton">
                                 <rect key="frame" x="16" y="144.5" width="343" height="64"/>
+                                <accessibility key="accessibilityConfiguration" hint="Tap this button to sign in or sign out." label="Authentication button"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="i8C-OA-a2Z"/>
                                 </constraints>
@@ -95,6 +98,7 @@
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4x-Jg-azH" customClass="MDCRaisedButton">
                                 <rect key="frame" x="8" y="595" width="359" height="64"/>
+                                <accessibility key="accessibilityConfiguration" hint="Tap this button to write a new note." label="Write a new note button"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="ao0-6o-ZcS"/>
                                 </constraints>
@@ -179,26 +183,108 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjU-nh-ze9">
-                                <rect key="frame" x="16" y="104" width="343" height="175"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ay3-9G-BPm">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NE1-7R-SIt">
+                                        <rect key="frame" x="16" y="16" width="343" height="81.5"/>
+                                        <string key="text">Note not found.
+
+Please go back to the My Notes screen and try again.</string>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="175" id="qvc-Sb-fyo"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="NE1-7R-SIt" secondAttribute="trailing" constant="8" id="BPt-AW-Y8s"/>
+                                    <constraint firstItem="NE1-7R-SIt" firstAttribute="leading" secondItem="Ay3-9G-BPm" secondAttribute="leadingMargin" constant="8" id="Eqz-hu-XPg"/>
+                                    <constraint firstItem="NE1-7R-SIt" firstAttribute="top" secondItem="Ay3-9G-BPm" secondAttribute="topMargin" constant="8" id="Lo5-em-vjh"/>
                                 </constraints>
-                                <string key="text">Major TODO list for initial version (remove this when development picks up):  - Finish this "Edit Note" screen, for the user to write/edit an individual note. Within that screen the user could tap to "Continue Writing Elsewhere", which would use Firebase Continue.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3uF-BF-nkj">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6jq-GU-3U6">
+                                        <rect key="frame" x="16" y="16" width="343" height="30"/>
+                                        <accessibility key="accessibilityConfiguration" hint="The title of this note." label="Title"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3P2-UG-iXQ">
+                                        <rect key="frame" x="16" y="54" width="343" height="389"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <accessibility key="accessibilityConfiguration" hint="The main content of this note." label="Content"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQu-tr-f61" customClass="MDCRaisedButton">
+                                        <rect key="frame" x="16" y="451" width="343" height="64"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Tap this button to save this note." label="Save button"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="m2A-Fx-SEV"/>
+                                        </constraints>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveButtonAction:" destination="QXd-XN-85B" eventType="touchUpInside" id="7St-cP-six"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zW-f3-cR6" customClass="MDCRaisedButton">
+                                        <rect key="frame" x="16" y="523" width="343" height="64"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Tap this button to easily continue writing this note in a compatible web browser on your computer." label="Continue Writing on Computer button"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="HMm-7K-4Kn"/>
+                                        </constraints>
+                                        <state key="normal" title="Continue Writing on Computer">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="continueWritingButtonAction:" destination="QXd-XN-85B" eventType="touchUpInside" id="ZpJ-30-Qtg"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="6jq-GU-3U6" firstAttribute="top" secondItem="3uF-BF-nkj" secondAttribute="topMargin" constant="8" id="3Qj-VC-pMx"/>
+                                    <constraint firstItem="uQu-tr-f61" firstAttribute="leading" secondItem="3uF-BF-nkj" secondAttribute="leadingMargin" constant="8" id="3qZ-cN-odh"/>
+                                    <constraint firstItem="3P2-UG-iXQ" firstAttribute="top" secondItem="6jq-GU-3U6" secondAttribute="bottom" constant="8" id="4li-Mb-tzJ"/>
+                                    <constraint firstItem="5zW-f3-cR6" firstAttribute="leading" secondItem="3uF-BF-nkj" secondAttribute="leadingMargin" constant="8" id="6hR-yy-UkR"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="3P2-UG-iXQ" secondAttribute="trailing" constant="8" id="70K-l4-7hY"/>
+                                    <constraint firstItem="6jq-GU-3U6" firstAttribute="leading" secondItem="3uF-BF-nkj" secondAttribute="leadingMargin" constant="8" id="FaR-1R-Omv"/>
+                                    <constraint firstItem="3P2-UG-iXQ" firstAttribute="leading" secondItem="3uF-BF-nkj" secondAttribute="leadingMargin" constant="8" id="IxS-Hd-0qW"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="5zW-f3-cR6" secondAttribute="bottom" constant="8" id="QyH-nA-nC8"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="6jq-GU-3U6" secondAttribute="trailing" constant="8" id="bX9-IH-Vfa"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="5zW-f3-cR6" secondAttribute="trailing" constant="8" id="ftO-ij-Cy2"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="uQu-tr-f61" secondAttribute="trailing" constant="8" id="gbl-JE-gGT"/>
+                                    <constraint firstItem="uQu-tr-f61" firstAttribute="top" secondItem="3P2-UG-iXQ" secondAttribute="bottom" constant="8" id="gfk-is-0Fn"/>
+                                    <constraint firstItem="5zW-f3-cR6" firstAttribute="top" secondItem="uQu-tr-f61" secondAttribute="bottom" constant="8" id="lgw-Ok-6hK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jjU-nh-ze9" firstAttribute="top" secondItem="WgR-hy-4De" secondAttribute="bottom" constant="40" id="LOK-xY-ANm"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="jjU-nh-ze9" secondAttribute="trailing" id="YTL-8d-mQL"/>
-                            <constraint firstItem="jjU-nh-ze9" firstAttribute="leading" secondItem="fQz-v8-nFq" secondAttribute="leadingMargin" id="smb-1y-ZXY"/>
+                            <constraint firstAttribute="trailing" secondItem="Ay3-9G-BPm" secondAttribute="trailing" id="F71-Un-7HT"/>
+                            <constraint firstItem="3uF-BF-nkj" firstAttribute="top" secondItem="WgR-hy-4De" secondAttribute="bottom" id="HR6-vG-1fD"/>
+                            <constraint firstAttribute="trailing" secondItem="3uF-BF-nkj" secondAttribute="trailing" id="KXo-Ur-wwR"/>
+                            <constraint firstItem="3uF-BF-nkj" firstAttribute="leading" secondItem="fQz-v8-nFq" secondAttribute="leading" id="KXp-rD-Toa"/>
+                            <constraint firstItem="9yU-nN-WwM" firstAttribute="top" secondItem="Ay3-9G-BPm" secondAttribute="bottom" id="Oid-HO-9xp"/>
+                            <constraint firstItem="Ay3-9G-BPm" firstAttribute="leading" secondItem="fQz-v8-nFq" secondAttribute="leading" id="YkE-HR-vM2"/>
+                            <constraint firstItem="9yU-nN-WwM" firstAttribute="top" secondItem="3uF-BF-nkj" secondAttribute="bottom" id="bfC-rB-GIE"/>
+                            <constraint firstItem="Ay3-9G-BPm" firstAttribute="top" secondItem="WgR-hy-4De" secondAttribute="bottom" id="uVo-6k-pMb"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="temporaryTodoLabel" destination="jjU-nh-ze9" id="USf-Jz-yh9"/>
+                        <outlet property="continueWritingButton" destination="5zW-f3-cR6" id="Mxw-IR-QG7"/>
+                        <outlet property="noteContentTextView" destination="3P2-UG-iXQ" id="nEi-Hz-1Pw"/>
+                        <outlet property="noteFoundUiContainer" destination="3uF-BF-nkj" id="kWr-he-HQB"/>
+                        <outlet property="noteNotFoundMessageLabel" destination="NE1-7R-SIt" id="HKc-le-XEt"/>
+                        <outlet property="noteNotFoundUiContainer" destination="Ay3-9G-BPm" id="zel-Mb-NTf"/>
+                        <outlet property="noteTitleTextField" destination="6jq-GU-3U6" id="ida-OB-3VV"/>
+                        <outlet property="saveButton" destination="uQu-tr-f61" id="oTy-f1-aDg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U39-FL-3vV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -210,7 +296,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U83-hG-48i" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dgO-E5-Pob">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dgO-E5-Pob">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

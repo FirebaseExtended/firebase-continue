@@ -34,7 +34,7 @@ class MyNotesTableViewCell: UITableViewCell {
                          using: Constants.Theme.LabelKind.titleText.getFont())
       contentLabel.setText(to: note?.content,
                            withPlaceholder: "No Content",
-                           using: Constants.Theme.LabelKind.subheadingText.getFont())
+                           using: Constants.Theme.LabelKind.normalText.getFont())
     }
   }
 
@@ -47,7 +47,7 @@ class MyNotesTableViewCell: UITableViewCell {
 
     // Style all labels.
     titleLabel.applyAppTheme(for: .titleText)
-    contentLabel.applyAppTheme(for: .subheadingText)
+    contentLabel.applyAppTheme(for: .normalText)
   }
   
   required init?(coder aDecoder: NSCoder) {
