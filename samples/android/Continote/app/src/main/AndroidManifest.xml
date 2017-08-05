@@ -46,6 +46,13 @@
             android:parentActivityName=".MainActivity">
         </activity>
 
+        <!-- Edit Note Activity -->
+        <activity
+            android:name=".EditNoteActivity"
+            android:label="@string/title_activity_edit_note"
+            android:parentActivityName=".MyNotesActivity">
+        </activity>
+
     </application>
 
 </manifest>
