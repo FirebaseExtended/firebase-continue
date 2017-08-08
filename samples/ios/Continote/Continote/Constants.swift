@@ -41,6 +41,14 @@ struct Constants {
       static let elevation: CGFloat = 4;
     }
 
+    // All text-based inputs (i.e. UITextField and UITextView).
+    struct TextInput {
+      static let borderColor: CGColor =
+        UIColor(red: 0.76, green: 0.76, blue: 0.76, alpha: 0.5).cgColor
+      static let borderWidth: CGFloat = 1
+      static let borderCornerRadius: CGFloat = 2
+    }
+
     enum LabelKind {
 
       // Labels with text we wish to appear normal/standard (such as longer text content).
@@ -49,20 +57,15 @@ struct Constants {
       // Labels with text we wish to appear as a title.
       case titleText
 
-      // Labels with text we wish to appear as a subheading (such as a subsection under a title).
-      case subheadingText
-
       /**
        - Returns: The font to use for this kind of label.
        */
       func getFont() -> UIFont {
         switch self {
         case .normalText:
-          return MDCTypography.body2Font()
+          return MDCTypography.subheadFont()
         case .titleText:
           return MDCTypography.titleFont()
-        case .subheadingText:
-          return MDCTypography.subheadFont()
         }
       }
 
@@ -72,11 +75,9 @@ struct Constants {
       func getAlpha() -> CGFloat {
         switch self {
         case .normalText:
-          return MDCTypography.body2FontOpacity()
+          return MDCTypography.subheadFontOpacity()
         case .titleText:
           return MDCTypography.titleFontOpacity()
-        case .subheadingText:
-          return MDCTypography.subheadFontOpacity()
         }
       }
     }

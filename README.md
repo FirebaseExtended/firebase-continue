@@ -10,6 +10,13 @@ transition allows the user to conveniently and nearly instantaneously continue t
 activity within the mobile app in the web app instead, by means of a Chrome
 extension.
 
+As an added bonus, the [Firebase Continue for iOS library](ios) will not only
+leverage Firebase to allow users to continue their activity within Chrome on any
+supported platform, but will also make use of
+[Apple Handoff](https://developer.apple.com/handoff/)
+for a more native experience for users with both an iOS device and a macOS computer
+that are Apple Handoff enabled.
+
 Note: this is not an official Google product.
 
 ### Example Use Case

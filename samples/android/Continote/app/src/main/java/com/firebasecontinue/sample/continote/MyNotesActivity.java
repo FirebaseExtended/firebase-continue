@@ -74,11 +74,12 @@ public class MyNotesActivity extends BaseActivity {
      * TODO: Remove this and related library testing code when this sample is more fleshed out.
      *
      * @param v The View that called this triggered this handler.
-     *          This should only be the testFirebaseContinue itself.
+     *          This should only be the testFirebaseContinueButton itself.
      */
     public void handleTestFirebaseContinueButtonTapped(View v) {
         if (currentUserIsSignedIn()) {
-            // The current user is signed in, so allow them to continue writing a Note elsewhere
+            // The current user is signed in, so allow them to easily continue writing a Note
+            // within Chrome via the Continote Chrome extension and Continote web app
             // by using Firebase Continue to broadcast the URL to edit the Note.
 
             // We use what's known as "activity-scoped listeners" here to react to the broadcast
@@ -94,12 +95,12 @@ public class MyNotesActivity extends BaseActivity {
             ).addOnSuccessListener(this, new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void result) {
-                    showSnackbar(R.string.broadcast_to_write_note_elsewhere_successful);
+                    showSnackbar(R.string.broadcast_to_continue_writing_note_in_chrome_successful);
                 }
             }).addOnFailureListener(this, new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    showSnackbar(R.string.error_broadcast_to_write_note_elsewhere_failed);
+                    showSnackbar(R.string.broadcast_to_continue_writing_note_in_chrome_failed);
                 }
             });
         }

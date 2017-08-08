@@ -123,7 +123,7 @@ public class MainActivity extends BaseActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (!task.isSuccessful()) {
                                 // Inform the user that signing out failed.
-                                showSnackbar(R.string.error_sign_out_failed);
+                                showSnackbar(R.string.sign_out_failed);
                             }
                         }
                     });
