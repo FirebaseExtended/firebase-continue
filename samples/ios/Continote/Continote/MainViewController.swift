@@ -50,7 +50,7 @@ class MainViewController: BaseViewController {
     title = Constants.appName
 
     // Style all labels.
-    authLabel.applyAppTheme(for: .subheadingText)
+    authLabel.applyAppTheme(for: .normalText)
 
     // Style all buttons.
     authButton.applyAppTheme()

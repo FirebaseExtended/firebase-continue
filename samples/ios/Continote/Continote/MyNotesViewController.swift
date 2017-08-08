@@ -56,6 +56,12 @@ class MyNotesViewController: BaseViewController {
     notesRef = nil
   }
 
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+
+    tableView.flashScrollIndicators()
+  }
+
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let identifierString = segue.identifier,
           let segueIdentifier = Constants.Segue(rawValue: identifierString),
@@ -130,8 +136,8 @@ class MyNotesViewController: BaseViewController {
     let newNote: Note = Note(title: "", content: "")
     let newNoteRef: DatabaseReference = notesRef.childByAutoId()
     newNoteRef.setValue(newNote.firebaseData) { [weak self] (error, ref) -> Void in
-      if error != nil {
-        MDCSnackbarManager.show(Constants.Text.ErrorMessage.couldNotCreateNewNote)
+      guard error == nil else {
+        MDCSnackbarManager.show(Constants.AppError.couldNotCreateNewNote.rawValue)
         return
       }
 
@@ -153,10 +159,10 @@ class MyNotesViewController: BaseViewController {
 private extension Constants {
   struct Text {
     static let screenTitle: String = "My Notes"
+  }
 
-    struct ErrorMessage {
-      static let couldNotCreateNewNote: String = "Could not create a new Note. Please try again."
-    }
+  enum AppError: String, Error {
+    case couldNotCreateNewNote = "Could not create a new note. Please try again."
   }
 
   // These segue identifiers must match the identifiers defined in the Main storyboard.

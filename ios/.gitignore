@@ -1,0 +1,5 @@
+# For libraries, this should not be checked in
+Podfile.lock
+
+# The workspace is generated
+*.xcworkspace
