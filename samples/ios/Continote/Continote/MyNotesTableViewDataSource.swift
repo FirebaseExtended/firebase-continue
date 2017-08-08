@@ -40,8 +40,8 @@ class MyNotesTableViewDataSource: FUITableViewDataSource {
     // Attempt to delete the corresponding Note from the Firebase Realtime Database.
     if (UInt(indexPath.row) < count) {
       snapshot(at: indexPath.row).ref.removeValue { (error, ref) in
-        if error != nil {
-          MDCSnackbarManager.show(Constants.Text.ErrorMessage.couldNotDeleteNote)
+        guard error == nil else {
+          MDCSnackbarManager.show(Constants.AppError.couldNotDeleteNote.rawValue)
           return
         }
       }
@@ -54,9 +54,7 @@ class MyNotesTableViewDataSource: FUITableViewDataSource {
  for clarity and a cleaner namespace.
  */
 private extension Constants {
-  struct Text {
-    struct ErrorMessage {
-      static let couldNotDeleteNote: String = "Could not delete Note. Please try again."
-    }
+  enum AppError: String, Error {
+    case couldNotDeleteNote = "Could not delete note. Please try again."
   }
 }

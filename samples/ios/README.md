@@ -7,6 +7,11 @@ Users can begin writing a note in this app and then continue writing in Chrome
 from exactly where they are using the
 [sample Chrome extension](../chrome-extension) and [sample web app](../web).
 
+For users with a macOS computer that is paired with their iOS device to be
+[Apple Handoff](https://developer.apple.com/handoff/) enabled,
+this app also leverages that technology (via Firebase Continue) to provide users with
+the option to continue writing directly within Safari.
+
 **Important Notice**: This is currently a work-in-progress.
 Expect frequent updates as an initial, complete v0.1.0 is fleshed out.
 See [Development Progress](#development-progress) for details.
@@ -164,6 +169,6 @@ initial, released v0.1.0 of this sample.
 - [x] User authentication (via Firebase Authentication and FirebaseUI)
 - [x] "My Notes" screen, allowing signed in users to view a list of their notes with
 the option to add a note, delete a note, or open to edit a note
-- [ ] "Edit Note" screen, allowing signed in users to edit a particular note with the
-option to "Continue Writing Elsewhere" (i.e. within Chrome, made possible by Firebase
-Continue)
+- [x] "Edit Note" screen, allowing signed in users to edit a particular note
+- [] Use of Firebase Continue within the "Edit Note" screen to allow the user to
+continue writing the note elsewhere (i.e. within Chrome or Safari).

@@ -44,19 +44,6 @@ extension MDCRaisedButton {
   }
 }
 
-extension MDCSnackbarManager {
-  /**
-   Shows the provided text in a snackbar message.
-   
-   See: https://material.io/components/ios/catalog/snackbars/
-
-   - Parameter text: The text to show.
-   */
-  static func show(_ text: String) {
-    MDCSnackbarManager.show(MDCSnackbarMessage(text: text))
-  }
-}
-
 extension UILabel {
   /**
    Applies a standardized visual style to this label of a certain kind.
@@ -87,5 +74,46 @@ extension UILabel {
       text = placeholder;
       font = MDCTypography.italicFont(from: desiredFont)
     }
+  }
+}
+
+extension UITextField {
+  /**
+   Applies a standardized visual style to this TextField.
+   */
+  func applyAppTheme() {
+    font = Constants.Theme.LabelKind.titleText.getFont()
+
+    // Set the border.
+    layer.borderColor = Constants.Theme.TextInput.borderColor
+    layer.borderWidth = Constants.Theme.TextInput.borderWidth
+    layer.cornerRadius = Constants.Theme.TextInput.borderCornerRadius
+  }
+}
+
+extension UITextView {
+  /**
+   Applies a standardized visual style to this TextView.
+   */
+  func applyAppTheme() {
+    font = Constants.Theme.LabelKind.normalText.getFont()
+
+    // Set the border.
+    layer.borderColor = Constants.Theme.TextInput.borderColor
+    layer.borderWidth = Constants.Theme.TextInput.borderWidth
+    layer.cornerRadius = Constants.Theme.TextInput.borderCornerRadius
+  }
+}
+
+extension MDCSnackbarManager {
+  /**
+   Shows the provided text in a snackbar message.
+
+   See: https://material.io/components/ios/catalog/snackbars/
+
+   - Parameter text: The text to show.
+   */
+  static func show(_ text: String) {
+    MDCSnackbarManager.show(MDCSnackbarMessage(text: text))
   }
 }
