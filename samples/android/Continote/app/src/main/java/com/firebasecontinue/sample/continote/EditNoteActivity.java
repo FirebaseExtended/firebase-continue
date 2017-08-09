@@ -76,7 +76,7 @@ public class EditNoteActivity extends BaseActivity {
 
         if (user == null) {
             // This should never happen, but just in case.
-            return;
+            throw new AssertionError("user must be non-null");
         }
 
         // TODO
@@ -100,7 +100,7 @@ public class EditNoteActivity extends BaseActivity {
     public void handleContinueWritingElsewhereButtonTapped(@Nullable View v) {
         if (!currentUserIsSignedIn() || mDatabaseKey == null) {
             // This should never happen, but just in case.
-            return;
+            throw new AssertionError("User must be signed in and database key must be non-null");
         }
 
         // The current user is signed in, so allow them to easily continue writing this Note

@@ -49,7 +49,6 @@
         android:id="@+id/newNoteButton"
         style="@style/MyButtonStyle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
         android:onClick="handleWriteNoteButtonTapped"
         android:text="@string/write_note_button_text"
         android:visibility="gone"

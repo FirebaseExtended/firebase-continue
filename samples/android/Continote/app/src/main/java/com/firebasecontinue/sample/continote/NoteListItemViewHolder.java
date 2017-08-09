@@ -46,7 +46,7 @@ public class NoteListItemViewHolder {
                                   @NonNull String databaseKey) {
         if (itemView == null || note == null || databaseKey == null || databaseKey.length() == 0) {
             // This should not happen, but just in case.
-            return;
+            throw new AssertionError("itemView, note, and database key must be non-null/non-empty");
         }
 
         update(itemView, note, databaseKey);
@@ -63,7 +63,7 @@ public class NoteListItemViewHolder {
     public void update(@NonNull View itemView, @NonNull Note note, @NonNull String databaseKey) {
         if (itemView == null || note == null || databaseKey == null || databaseKey.length() == 0) {
             // This should not happen, but just in case.
-            return;
+            throw new AssertionError("itemView, note, and database key must be non-null/non-empty");
         }
 
         mNoteDatabaseKey = databaseKey;
@@ -100,7 +100,7 @@ public class NoteListItemViewHolder {
                                                @Nullable String placeholder) {
         if (textView == null) {
             // This should not happen, but just in case.
-            return;
+            throw new AssertionError("textView must be non-null");
         }
 
         if (value != null && value.length() > 0) {

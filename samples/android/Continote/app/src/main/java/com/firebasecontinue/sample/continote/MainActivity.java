@@ -76,7 +76,7 @@ public class MainActivity extends BaseActivity {
 
         if (user == null) {
             // This should never happen, but just in case.
-            return;
+            throw new AssertionError("user must be non-null");
         }
 
         // Update the UI to reflect the user now being signed in.
@@ -160,7 +160,7 @@ public class MainActivity extends BaseActivity {
     public void handleMyNotesButtonTapped(@Nullable View v) {
         if (!currentUserIsSignedIn()) {
             // This should never happen, but just in case.
-            return;
+            throw new AssertionError("User must be signed in");
         }
 
         // The current user is signed in, so allow them to go to the My Notes screen.

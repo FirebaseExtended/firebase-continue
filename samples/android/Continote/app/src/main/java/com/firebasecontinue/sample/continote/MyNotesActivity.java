@@ -83,7 +83,7 @@ public class MyNotesActivity extends BaseActivity {
 
         if (user == null) {
             // This should never happen, but just in case.
-            return;
+            throw new AssertionError("user must be non-null");
         }
 
         // Set up our ListView up to sync with the Notes for the current user from the Firebase
@@ -121,7 +121,7 @@ public class MyNotesActivity extends BaseActivity {
                 NoteListItemViewHolder viewHolder = (NoteListItemViewHolder) view.getTag();
                 if (viewHolder == null) {
                     // This should never happen, but just in case.
-                    return;
+                    throw new AssertionError("viewHolder must be non-null");
                 }
 
                 // Since the item was tapped, open to edit the Note.
@@ -139,7 +139,7 @@ public class MyNotesActivity extends BaseActivity {
                 final NoteListItemViewHolder viewHolder = (NoteListItemViewHolder) view.getTag();
                 if (viewHolder == null) {
                     // This should never happen, but just in case.
-                    return true;
+                    throw new AssertionError("viewHolder must be non-null");
                 }
 
                 // Show a dialog with an option for the user to delete this Note.
@@ -205,7 +205,7 @@ public class MyNotesActivity extends BaseActivity {
     private void openEditScreenForNoteWithKey(@NonNull final String databaseKey) {
         if (databaseKey == null || databaseKey.length() == 0) {
             // This should never happen, but just in case.
-            return;
+            throw new AssertionError("databaseKey must be non-empty");
         }
 
         runOnUiThread(new Runnable() {
@@ -229,7 +229,8 @@ public class MyNotesActivity extends BaseActivity {
     public void handleWriteNoteButtonTapped(@Nullable View v) {
         if (!currentUserIsSignedIn() || mNotesRef == null) {
             // This should never happen, but just in case.
-            return;
+            throw new AssertionError(
+                    "User must be signed in and their notes database reference must be non-null");
         }
 
         // Try to add a new, empty Note to the Firebase Realtime Database for the current user.
