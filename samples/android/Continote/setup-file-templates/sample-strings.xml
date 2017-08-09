@@ -48,6 +48,14 @@
         fb[TODO: YOUR-FACEBOOK-APP-ID-HERE]
     </string>
 
+    <!--
+        Various Intent "extra" keys.
+        See: https://developer.android.com/reference/android/content/Intent.html
+    -->
+    <string name="extra_note_database_key" translatable="false">
+        databaseKey
+    </string>
+
     <!-- The text of the main auth message shown to the user in the MainActivity. -->
     <string name="auth_message_when_signed_out">
         Please sign in below to use %1$s.

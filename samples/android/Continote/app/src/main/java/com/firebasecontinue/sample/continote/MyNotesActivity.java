@@ -16,10 +16,11 @@ package com.firebasecontinue.sample.continote;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -43,6 +44,8 @@ import com.google.firebase.database.FirebaseDatabase;
  */
 public class MyNotesActivity extends BaseActivity {
 
+    private static final String TAG = "MyNotesActivity";
+
     // Firebase Realtime Database reference for the current user's Notes within Continote.
     @Nullable
     private DatabaseReference mNotesRef = null;
@@ -64,8 +67,18 @@ public class MyNotesActivity extends BaseActivity {
         setContentView(R.layout.activity_my_notes);
 
         // Gather the UI elements for this Activity for future manipulation.
+
         mListView = (ListView) findViewById(R.id.listView);
+        if (mListView == null) {
+            // This should never happen, but just in case.
+            throw new AssertionError("mListView must be non-null");
+        }
+
         mNewNoteButton = (Button) findViewById(R.id.newNoteButton);
+        if (mNewNoteButton == null) {
+            // This should never happen, but just in case.
+            throw new AssertionError("mNewNoteButton must be non-null");
+        }
     }
 
     @Override
@@ -78,7 +91,7 @@ public class MyNotesActivity extends BaseActivity {
     }
 
     @Override
-    protected void handleUserSignedIn(@NonNull FirebaseUser user) {
+    protected void handleUserSignedIn(FirebaseUser user) {
         super.handleUserSignedIn(user);
 
         if (user == null) {
@@ -143,7 +156,8 @@ public class MyNotesActivity extends BaseActivity {
                 }
 
                 // Show a dialog with an option for the user to delete this Note.
-                new AlertDialog.Builder(MyNotesActivity.this)
+                final MyNotesActivity myNotesActivity = (MyNotesActivity) view.getContext();
+                new AlertDialog.Builder(myNotesActivity)
                     .setTitle(R.string.delete_note_dialog_title)
                     .setMessage(R.string.delete_note_dialog_message)
                     .setPositiveButton(
@@ -154,13 +168,14 @@ public class MyNotesActivity extends BaseActivity {
                                     // something goes wrong.
                                     deleteNoteFromDatabase(viewHolder.getNoteDatabaseKey())
                                         .addOnFailureListener(
-                                            MyNotesActivity.this,
-                                            new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(Exception e) {
-                                                    showSnackbar(R.string.delete_note_failed);
-                                                }
-                                            });
+                                                myNotesActivity,
+                                                new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(Exception e) {
+                                                        Log.e(TAG, e.getMessage(), e);
+                                                        showSnackbar(R.string.delete_note_failed);
+                                                    }
+                                                });
 
                                     // Regardless of whether or not the Note successfully
                                     // gets deleted, close the dialog immediately.
@@ -202,8 +217,8 @@ public class MyNotesActivity extends BaseActivity {
      *
      * @param databaseKey The Firebase Realtime Database key of the Note to edit.
      */
-    private void openEditScreenForNoteWithKey(@NonNull final String databaseKey) {
-        if (databaseKey == null || databaseKey.length() == 0) {
+    private void openEditScreenForNoteWithKey(final String databaseKey) {
+        if (TextUtils.isEmpty(databaseKey)) {
             // This should never happen, but just in case.
             throw new AssertionError("databaseKey must be non-empty");
         }
@@ -211,7 +226,7 @@ public class MyNotesActivity extends BaseActivity {
         runOnUiThread(new Runnable() {
             public void run() {
                 Intent intent = new Intent(MyNotesActivity.this, EditNoteActivity.class);
-                intent.putExtra("databaseKey", databaseKey);
+                intent.putExtra(getString(R.string.extra_note_database_key), databaseKey);
                 startActivity(intent);
             }
         });
@@ -253,6 +268,7 @@ public class MyNotesActivity extends BaseActivity {
                         new OnFailureListener() {
                             @Override
                             public void onFailure(Exception e) {
+                                Log.e(TAG, e.getMessage(), e);
                                 showSnackbar(R.string.create_new_note_failed);
                             }
                         });
@@ -268,8 +284,7 @@ public class MyNotesActivity extends BaseActivity {
      * @return A Task which, upon completion, signals whether or not the Note was successfully
      * added to the database. Upon success, the Task provides the database key of the new Note.
      */
-    @NonNull
-    private Task<String> addNoteToDatabase(@NonNull Note note) {
+    private Task<String> addNoteToDatabase(Note note) {
         final TaskCompletionSource<String> taskCompletion = new TaskCompletionSource<>();
         Task<String> task = taskCompletion.getTask();
 
@@ -326,13 +341,12 @@ public class MyNotesActivity extends BaseActivity {
      * @return A Task which, upon completion, signals whether or not the Note with the provided key
      * was successfully deleted from the database.
      */
-    @NonNull
-    private Task<Void> deleteNoteFromDatabase(@NonNull String databaseKey) {
+    private Task<Void> deleteNoteFromDatabase(String databaseKey) {
         final TaskCompletionSource<Void> taskCompletion = new TaskCompletionSource<>();
         Task<Void> task = taskCompletion.getTask();
 
         // First, ensure the database key could be valid.
-        if (databaseKey == null || databaseKey.length() == 0) {
+        if (TextUtils.isEmpty(databaseKey)) {
             taskCompletion.setException(new IllegalArgumentException("databaseKey is invalid"));
 
             return task;

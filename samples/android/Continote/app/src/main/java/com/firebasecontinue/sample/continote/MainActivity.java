@@ -15,7 +15,6 @@
 package com.firebasecontinue.sample.continote;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.view.View;
@@ -65,13 +64,28 @@ public class MainActivity extends BaseActivity {
         LoginManager.getInstance().setLoginBehavior(LoginBehavior.WEB_ONLY);
 
         // Gather the UI elements for this Activity for future manipulation.
+
         mAuthMessageTextView = (TextView) findViewById(R.id.authMessageTextView);
+        if (mAuthMessageTextView == null) {
+            // This should never happen, but just in case.
+            throw new AssertionError("mAuthMessageTextView must be non-null");
+        }
+
         mAuthButton = (Button) findViewById(R.id.authButton);
+        if (mAuthButton == null) {
+            // This should never happen, but just in case.
+            throw new AssertionError("mAuthButton must be non-null");
+        }
+
         mMyNotesButton = (Button) findViewById(R.id.myNotesButton);
+        if (mMyNotesButton == null) {
+            // This should never happen, but just in case.
+            throw new AssertionError("mMyNotesButton must be non-null");
+        }
     }
 
     @Override
-    protected void handleUserSignedIn(@NonNull FirebaseUser user) {
+    protected void handleUserSignedIn(FirebaseUser user) {
         super.handleUserSignedIn(user);
 
         if (user == null) {
@@ -80,21 +94,12 @@ public class MainActivity extends BaseActivity {
         }
 
         // Update the UI to reflect the user now being signed in.
-
-        if (mAuthMessageTextView != null) {
-            mAuthMessageTextView.setText(
-                    getString(R.string.auth_message_when_signed_in,
-                              user.getDisplayName(),
-                              user.getEmail()));
-        }
-
-        if (mAuthButton != null) {
-            mAuthButton.setText(R.string.auth_button_text_when_signed_in);
-        }
-
-        if (mMyNotesButton != null) {
-            mMyNotesButton.setVisibility(View.VISIBLE);
-        }
+        mAuthMessageTextView.setText(
+                getString(R.string.auth_message_when_signed_in,
+                          user.getDisplayName(),
+                          user.getEmail()));
+        mAuthButton.setText(R.string.auth_button_text_when_signed_in);
+        mMyNotesButton.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -102,20 +107,11 @@ public class MainActivity extends BaseActivity {
         super.handleUserSignedOut();
 
         // Update the UI to reflect the user now being signed out.
-
-        if (mAuthMessageTextView != null) {
-            mAuthMessageTextView.setText(
-                    getString(R.string.auth_message_when_signed_out,
-                              getString(R.string.app_name)));
-        }
-
-        if (mAuthButton != null) {
-            mAuthButton.setText(R.string.auth_button_text_when_signed_out);
-        }
-
-        if (mMyNotesButton != null) {
-            mMyNotesButton.setVisibility(View.GONE);
-        }
+        mAuthMessageTextView.setText(
+                getString(R.string.auth_message_when_signed_out,
+                          getString(R.string.app_name)));
+        mAuthButton.setText(R.string.auth_button_text_when_signed_out);
+        mMyNotesButton.setVisibility(View.GONE);
     }
 
     /**
@@ -131,7 +127,7 @@ public class MainActivity extends BaseActivity {
                     .signOut(this)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
-                        public void onComplete(@NonNull Task<Void> task) {
+                        public void onComplete(Task<Void> task) {
                             if (!task.isSuccessful()) {
                                 // Inform the user that signing out failed.
                                 showSnackbar(R.string.sign_out_failed);

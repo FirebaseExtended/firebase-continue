@@ -22,10 +22,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="@dimen/activity_padding"
     tools:context=".EditNoteActivity"
     tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="0dp">
 
     <Button
         android:id="@+id/continueWritingElsewhereButton"
@@ -33,7 +33,7 @@
         android:layout_width="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="0dp"
         android:onClick="handleContinueWritingElsewhereButtonTapped"
         android:text="@string/continue_writing_elsewhere_button_text"
         app:layout_constraintLeft_toLeftOf="parent"

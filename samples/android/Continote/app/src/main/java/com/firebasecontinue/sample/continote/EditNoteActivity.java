@@ -16,8 +16,8 @@ package com.firebasecontinue.sample.continote;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -34,6 +34,8 @@ import com.google.firebase.database.DatabaseReference;
  * TODO: Finish this Activity.
  */
 public class EditNoteActivity extends BaseActivity {
+
+    private static final String TAG = "EditNoteActivity";
 
     // The key from the Firebase Realtime Database of the Note the user wants to edit.
     // The Note the user wants to edit will be gathered from the Firebase Realtime Database
@@ -56,7 +58,8 @@ public class EditNoteActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        mDatabaseKey = (intent != null) ? intent.getStringExtra("databaseKey") : null;
+        mDatabaseKey = (intent != null) ?
+                intent.getStringExtra(getString(R.string.extra_note_database_key)) : null;
         if (mDatabaseKey == null) {
             // We must have a database key to be on this screen.
             finish();
@@ -66,12 +69,17 @@ public class EditNoteActivity extends BaseActivity {
         setContentView(R.layout.activity_edit_note);
 
         // Gather the UI elements for this Activity for future manipulation.
+
         mContinueWritingElsewhereButton =
                 (Button) findViewById(R.id.continueWritingElsewhereButton);
+        if (mContinueWritingElsewhereButton == null) {
+            // This should never happen, but just in case.
+            throw new AssertionError("mContinueWritingElsewhereButton must be non-null");
+        }
     }
 
     @Override
-    protected void handleUserSignedIn(@NonNull FirebaseUser user) {
+    protected void handleUserSignedIn(FirebaseUser user) {
         super.handleUserSignedIn(user);
 
         if (user == null) {
@@ -127,6 +135,7 @@ public class EditNoteActivity extends BaseActivity {
         }).addOnFailureListener(this, new OnFailureListener() {
             @Override
             public void onFailure(Exception e) {
+                Log.e(TAG, e.getMessage(), e);
                 showSnackbar(R.string.broadcast_to_continue_writing_note_in_chrome_failed);
             }
         });

@@ -22,21 +22,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="@dimen/activity_padding"
     tools:context=".MyNotesActivity"
     tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="0dp">
 
     <ListView
         android:id="@+id/listView"
         style="@style/Widget.AppCompat.ListView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="@dimen/element_spacing"
         android:choiceMode="singleChoice"
         android:clickable="true"
         android:divider="?attr/dividerHorizontal"
-        android:dividerHeight="1dp"
+        android:dividerHeight="@dimen/list_item_divider_height"
         android:listSelector="@android:drawable/list_selector_background"
         android:longClickable="true"
         android:visibility="gone"
@@ -55,4 +55,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

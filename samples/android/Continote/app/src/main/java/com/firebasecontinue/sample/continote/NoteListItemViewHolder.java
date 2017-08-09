@@ -15,8 +15,8 @@
 package com.firebasecontinue.sample.continote;
 
 import android.graphics.Typeface;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -41,10 +41,8 @@ public class NoteListItemViewHolder {
      * @param note The Note this ViewHolder is for.
      * @param databaseKey The database key of the Note this ViewHolder is for.
      */
-    public NoteListItemViewHolder(@NonNull View itemView,
-                                  @NonNull Note note,
-                                  @NonNull String databaseKey) {
-        if (itemView == null || note == null || databaseKey == null || databaseKey.length() == 0) {
+    public NoteListItemViewHolder(View itemView, Note note, String databaseKey) {
+        if (itemView == null || note == null || TextUtils.isEmpty(databaseKey)) {
             // This should not happen, but just in case.
             throw new AssertionError("itemView, note, and database key must be non-null/non-empty");
         }
@@ -60,8 +58,8 @@ public class NoteListItemViewHolder {
      * @param note The Note this ViewHolder is for (to update the UI based on).
      * @param databaseKey The database key of the Note this ViewHolder is for.
      */
-    public void update(@NonNull View itemView, @NonNull Note note, @NonNull String databaseKey) {
-        if (itemView == null || note == null || databaseKey == null || databaseKey.length() == 0) {
+    public void update(View itemView, Note note, String databaseKey) {
+        if (itemView == null || note == null || TextUtils.isEmpty(databaseKey)) {
             // This should not happen, but just in case.
             throw new AssertionError("itemView, note, and database key must be non-null/non-empty");
         }
@@ -95,15 +93,10 @@ public class NoteListItemViewHolder {
      * @param value The value to set the text to.
      * @param placeholder The placeholder text to use if the value above is null or empty.
      */
-    private static void setTextWithPlaceholder(@NonNull TextView textView,
+    private static void setTextWithPlaceholder(TextView textView,
                                                @Nullable String value,
                                                @Nullable String placeholder) {
-        if (textView == null) {
-            // This should not happen, but just in case.
-            throw new AssertionError("textView must be non-null");
-        }
-
-        if (value != null && value.length() > 0) {
+        if (!TextUtils.isEmpty(value)) {
             // The provided value is nonempty, so use it.
             textView.setText(value);
             textView.setTypeface(textView.getTypeface(), Typeface.NORMAL);
