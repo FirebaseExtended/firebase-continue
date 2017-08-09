@@ -189,19 +189,19 @@ PODS:
   - nanopb/encode (0.3.8)
 
 DEPENDENCIES:
-  - Firebase/Auth (~> 4.0.0)
-  - Firebase/Core (~> 4.0.0)
-  - Firebase/Database (~> 4.0.0)
-  - FirebaseUI/Auth (~> 4.0.0)
-  - FirebaseUI/Database (~> 4.0.0)
-  - FirebaseUI/Facebook (~> 4.0.0)
-  - FirebaseUI/Google (~> 4.0.0)
-  - MaterialComponents/AppBar (~> 29.0.0)
-  - MaterialComponents/AppBar/ColorThemer (~> 29.0.0)
-  - MaterialComponents/Buttons (~> 29.0.0)
-  - MaterialComponents/Buttons/ColorThemer (~> 29.0.0)
-  - MaterialComponents/Snackbar (~> 29.0.0)
-  - MaterialComponents/Typography (~> 29.0.0)
+  - Firebase/Auth (~> 4.0)
+  - Firebase/Core (~> 4.0)
+  - Firebase/Database (~> 4.0)
+  - FirebaseUI/Auth (~> 4.0)
+  - FirebaseUI/Database (~> 4.0)
+  - FirebaseUI/Facebook (~> 4.0)
+  - FirebaseUI/Google (~> 4.0)
+  - MaterialComponents/AppBar (~> 29.0)
+  - MaterialComponents/AppBar/ColorThemer (~> 29.0)
+  - MaterialComponents/Buttons (~> 29.0)
+  - MaterialComponents/Buttons/ColorThemer (~> 29.0)
+  - MaterialComponents/Snackbar (~> 29.0)
+  - MaterialComponents/Typography (~> 29.0)
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -222,6 +222,6 @@ SPEC CHECKSUMS:
   MDFTextAccessibility: 94098925e0853551c5a311ce7c1ecefbe297cdb6
   nanopb: 22bc080fa3955e2116b6ff3ee6c2cb3c15ab97cb
 
-PODFILE CHECKSUM: c29b8f64290ce28e8a05b3491c7713a4346f0ffa
+PODFILE CHECKSUM: 828d55b23f5ab0ec2b7fd6bffe639fb2a834cc18
 
 COCOAPODS: 1.2.1

@@ -4,22 +4,22 @@ target 'Continote' do
   use_frameworks!
 
   # Firebase (https://github.com/firebase/firebase-ios-sdk)
-  pod 'Firebase/Core', '~> 4.0.0'
-  pod 'Firebase/Auth', '~> 4.0.0'
-  pod 'Firebase/Database', '~> 4.0.0'
+  pod 'Firebase/Core', '~> 4.0'
+  pod 'Firebase/Auth', '~> 4.0'
+  pod 'Firebase/Database', '~> 4.0'
 
   # FirebaseUI (https://github.com/firebase/FirebaseUI-iOS)
-  pod 'FirebaseUI/Auth', '~> 4.0.0'
-  pod 'FirebaseUI/Database', '~> 4.0.0'
-  pod 'FirebaseUI/Google', '~> 4.0.0'
-  pod 'FirebaseUI/Facebook', '~> 4.0.0'
+  pod 'FirebaseUI/Auth', '~> 4.0'
+  pod 'FirebaseUI/Database', '~> 4.0'
+  pod 'FirebaseUI/Google', '~> 4.0'
+  pod 'FirebaseUI/Facebook', '~> 4.0'
 
   # Material Components (https://github.com/material-components/material-components-ios/)
-  pod 'MaterialComponents/AppBar', '~> 29.0.0'
-  pod 'MaterialComponents/AppBar/ColorThemer', '~> 29.0.0'
-  pod 'MaterialComponents/Buttons', '~> 29.0.0'
-  pod 'MaterialComponents/Buttons/ColorThemer', '~> 29.0.0'
-  pod 'MaterialComponents/Snackbar', '~> 29.0.0'
-  pod 'MaterialComponents/Typography', '~> 29.0.0'
+  pod 'MaterialComponents/AppBar', '~> 29.0'
+  pod 'MaterialComponents/AppBar/ColorThemer', '~> 29.0'
+  pod 'MaterialComponents/Buttons', '~> 29.0'
+  pod 'MaterialComponents/Buttons/ColorThemer', '~> 29.0'
+  pod 'MaterialComponents/Snackbar', '~> 29.0'
+  pod 'MaterialComponents/Typography', '~> 29.0'
 
 end
