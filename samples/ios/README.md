@@ -12,12 +12,6 @@ For users with a macOS computer that is paired with their iOS device to be
 this app also leverages that technology (via Firebase Continue) to provide users with
 the option to continue writing directly within Safari.
 
-**Important Notice**: This is currently a work-in-progress.
-Expect frequent updates as an initial, complete v0.1.0 is fleshed out.
-See [Development Progress](#development-progress) for details.
-This notice will be removed when v0.1.0 is officially ready and released
-in the Releases page of this repo.
-
 ## Table of Contents
 
 1. [Prerequisites](#prerequisites)
@@ -26,7 +20,6 @@ in the Releases page of this repo.
 4. [Compatibility](#compatibility)
 5. [Dependencies](#dependencies)
 6. [Disclaimer](#disclaimer)
-7. [Development Progress](#development-progress)
 
 ## Prerequisites
 
@@ -97,18 +90,37 @@ this sample to build and install to try out:
     3.  Replace *[TODO: YOUR-GOOGLESERVICE-INFO.PLIST-RESERVED_CLIENT_ID-HERE]*
         with the `RESERVED_CLIENT_ID` value in your `GoogleService-Info.plist` file.
 
-10. If you have not already done so, [install CocoaPods](https://cocoapods.org/).
+10. Copy the `Sample-Constants.swift` file from the
+    [`Continote/Continote/`](Continote/Continote)
+    directory and paste a copy of it also in
+    [`Continote/Continote/`](Continote/Continote).
+
+11. Rename the `Sample-Constants.swift` copy to `Constants.swift`.
+
+12. Open `Constants.swift` in a text editor and fill out the clearly marked
+    *[TODO: YOUR-VALUE-HERE]* details:
+
+    1.  Replace *[TODO: YOUR-FIREBASE-HOSTING-URL-FOR-CONTINOTE-WEB-HERE]* with the
+        Firebase Hosting URL of the Continote sample web app your project from the
+        [Prerequisites section](#prerequisites) above.
+
+        For example: `https://SomeDeployedFirebaseProjectName.firebaseapp.com`
+
+13. Copy the `FCNContinue.h` and `FCNContinue.m` Firebase Continue for iOS library files from the
+    [`../../ios/FirebaseContinue/FirebaseContinue/Classes/`](../../ios/FirebaseContinue/FirebaseContinue/Classes)
+    directory, and paste a copy of them in the
+    [`Continote/Continote/`](Continote/Continote) directory.
+
+14. If you have not already done so, [install CocoaPods](https://cocoapods.org/).
 
     CocoaPods is used for dependency management for this sample.
 
-11. Use CocoaPods to install all dependencies by running the `pod install` command
+15. Use CocoaPods to install all remaining dependencies by using the `pod install` command
     in the [`Continote/`](Continote) directory.
 
-12. Open
-    [`Continote/Continote.xcworkspace`](Continote/Continote.xcworkspace)
-    in Xcode.
+16. Open [`Continote/Continote.xcworkspace`](Continote/Continote.xcworkspace) in Xcode.
 
-13. Done!
+17. Done!
 
     You should now be able to build and then install the sample on any compatible iOS
     device or simulator.
@@ -148,7 +160,7 @@ This sample is dependent on the following libraries/SDKs:
 - [FirebaseUI iOS v4.0+](https://github.com/firebase/FirebaseUI-iOS)
 
 ### Material Components
-- [Material Components iOS v29.0+](https://material.io/components/ios/)
+- [Material Components iOS v31.0+](https://material.io/components/ios/)
 
 ## Disclaimer
 
@@ -158,16 +170,3 @@ to use Firebase and FirebaseUI in an iOS app.
 
 The focus is *not*, however, to have a perfect user interface or user
 experience. Please keep that in mind when trying out this sample.
-
-## Development Progress
-
-This section will be removed when each of the items below are complete for an
-initial, released v0.1.0 of this sample.
-
-### Major Features Completed
-- [x] User authentication (via Firebase Authentication and FirebaseUI)
-- [x] "My Notes" screen, allowing signed in users to view a list of their notes with
-the option to add a note, delete a note, or open to edit a note
-- [x] "Edit Note" screen, allowing signed in users to edit a particular note
-- [] Use of Firebase Continue within the "Edit Note" screen to allow the user to
-continue writing the note elsewhere (i.e. within Chrome or Safari).

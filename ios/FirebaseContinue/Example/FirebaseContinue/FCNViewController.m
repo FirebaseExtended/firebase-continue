@@ -16,22 +16,41 @@
 
 #import "FCNViewController.h"
 
+@import FirebaseContinue;
+
+/**
+ * Important Note: This is not a working example of using Firebase Continue.
+ *
+ * The Firebase Continue for iOS library is planned to eventually be available via Cocoapods
+ * (rather than being required to manually copy-paste its source into your project), so this
+ * Cocoapods-provided development environment lays the groundwork for that.
+ *
+ * For an actual, working sample of Firebase Continue, see the samples/ios subdirectory
+ * from the root of the repository at:
+ * https://github.com/firebase/firebase-continue/tree/master/samples/ios
+ */
 @interface FCNViewController ()
 
 @end
 
 @implementation FCNViewController
 
-- (void)viewDidLoad
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}
+  [super viewDidAppear:animated];
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  // Attempt to use Firebase Continue here. This should fail for any number of reasons,
+  // including that Firebase has not been set up for this app.
+  [FCNContinue broadcastToContinueActivityWithUrl: @"http://some.url.com"
+                        withinApplicationWithName: @"SomeApplicationName"
+                                       onComplete:^(NSError* error) {
+                                         if (error) {
+                                           printf("FirebaseContinue: Broadcast failed");
+                                           return;
+                                         }
+
+                                         printf("FirebaseContinue: Broadcast successful");
+                                       }];
 }
 
 @end

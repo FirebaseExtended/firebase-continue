@@ -121,6 +121,6 @@ See subdirectory README files for more specific v0.1.0 development progress list
 
 ### Samples Completed
 - [x] [Chrome extension sample](chrome-extension)
-- [ ] iOS sample
+- [x] [iOS sample](ios)
 - [ ] Android sample
 - [x] [Web sample](web)

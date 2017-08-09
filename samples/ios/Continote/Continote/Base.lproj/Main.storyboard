@@ -206,20 +206,16 @@ Please go back to the My Notes screen and try again.</string>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3uF-BF-nkj">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6jq-GU-3U6">
-                                        <rect key="frame" x="16" y="16" width="343" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6jq-GU-3U6" customClass="MDCTextField">
+                                        <rect key="frame" x="16" y="16" width="343" height="32"/>
                                         <accessibility key="accessibilityConfiguration" hint="The title of this note." label="Title"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="m2C-yE-mEJ"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textField>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3P2-UG-iXQ">
-                                        <rect key="frame" x="16" y="54" width="343" height="389"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <accessibility key="accessibilityConfiguration" hint="The main content of this note." label="Content"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQu-tr-f61" customClass="MDCRaisedButton">
                                         <rect key="frame" x="16" y="451" width="343" height="64"/>
                                         <accessibility key="accessibilityConfiguration" hint="Tap this button to save this note." label="Save button"/>
@@ -249,19 +245,15 @@ Please go back to the My Notes screen and try again.</string>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="6jq-GU-3U6" firstAttribute="top" secondItem="3uF-BF-nkj" secondAttribute="topMargin" constant="8" id="3Qj-VC-pMx"/>
-                                    <constraint firstItem="uQu-tr-f61" firstAttribute="leading" secondItem="3uF-BF-nkj" secondAttribute="leadingMargin" constant="8" id="3qZ-cN-odh"/>
-                                    <constraint firstItem="3P2-UG-iXQ" firstAttribute="top" secondItem="6jq-GU-3U6" secondAttribute="bottom" constant="8" id="4li-Mb-tzJ"/>
-                                    <constraint firstItem="5zW-f3-cR6" firstAttribute="leading" secondItem="3uF-BF-nkj" secondAttribute="leadingMargin" constant="8" id="6hR-yy-UkR"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="3P2-UG-iXQ" secondAttribute="trailing" constant="8" id="70K-l4-7hY"/>
-                                    <constraint firstItem="6jq-GU-3U6" firstAttribute="leading" secondItem="3uF-BF-nkj" secondAttribute="leadingMargin" constant="8" id="FaR-1R-Omv"/>
-                                    <constraint firstItem="3P2-UG-iXQ" firstAttribute="leading" secondItem="3uF-BF-nkj" secondAttribute="leadingMargin" constant="8" id="IxS-Hd-0qW"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="5zW-f3-cR6" secondAttribute="bottom" constant="8" id="QyH-nA-nC8"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="6jq-GU-3U6" secondAttribute="trailing" constant="8" id="bX9-IH-Vfa"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="5zW-f3-cR6" secondAttribute="trailing" constant="8" id="ftO-ij-Cy2"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="uQu-tr-f61" secondAttribute="trailing" constant="8" id="gbl-JE-gGT"/>
-                                    <constraint firstItem="uQu-tr-f61" firstAttribute="top" secondItem="3P2-UG-iXQ" secondAttribute="bottom" constant="8" id="gfk-is-0Fn"/>
-                                    <constraint firstItem="5zW-f3-cR6" firstAttribute="top" secondItem="uQu-tr-f61" secondAttribute="bottom" constant="8" id="lgw-Ok-6hK"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="uQu-tr-f61" secondAttribute="trailing" constant="8" id="2Vk-Ka-YS3"/>
+                                    <constraint firstItem="5zW-f3-cR6" firstAttribute="top" secondItem="uQu-tr-f61" secondAttribute="bottom" constant="8" id="4dB-tt-UfK"/>
+                                    <constraint firstItem="6jq-GU-3U6" firstAttribute="top" secondItem="3uF-BF-nkj" secondAttribute="topMargin" constant="8" id="Avl-fY-Znb"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="5zW-f3-cR6" secondAttribute="bottom" constant="8" id="CsS-vb-oMq"/>
+                                    <constraint firstItem="6jq-GU-3U6" firstAttribute="leading" secondItem="3uF-BF-nkj" secondAttribute="leadingMargin" constant="8" id="KEh-Pl-JaD"/>
+                                    <constraint firstItem="uQu-tr-f61" firstAttribute="leading" secondItem="3uF-BF-nkj" secondAttribute="leadingMargin" constant="8" id="Ke4-CI-Gxw"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="6jq-GU-3U6" secondAttribute="trailing" constant="8" id="Zsc-oW-Xwu"/>
+                                    <constraint firstItem="5zW-f3-cR6" firstAttribute="leading" secondItem="3uF-BF-nkj" secondAttribute="leadingMargin" constant="8" id="gWB-xV-yC8"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="5zW-f3-cR6" secondAttribute="trailing" constant="8" id="hbV-La-CHe"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -279,11 +271,10 @@ Please go back to the My Notes screen and try again.</string>
                     </view>
                     <connections>
                         <outlet property="continueWritingButton" destination="5zW-f3-cR6" id="Mxw-IR-QG7"/>
-                        <outlet property="noteContentTextView" destination="3P2-UG-iXQ" id="nEi-Hz-1Pw"/>
                         <outlet property="noteFoundUiContainer" destination="3uF-BF-nkj" id="kWr-he-HQB"/>
                         <outlet property="noteNotFoundMessageLabel" destination="NE1-7R-SIt" id="HKc-le-XEt"/>
                         <outlet property="noteNotFoundUiContainer" destination="Ay3-9G-BPm" id="zel-Mb-NTf"/>
-                        <outlet property="noteTitleTextField" destination="6jq-GU-3U6" id="ida-OB-3VV"/>
+                        <outlet property="noteTitleTextField" destination="6jq-GU-3U6" id="aqD-8M-4Vz"/>
                         <outlet property="saveButton" destination="uQu-tr-f61" id="oTy-f1-aDg"/>
                     </connections>
                 </viewController>
@@ -296,7 +287,7 @@ Please go back to the My Notes screen and try again.</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U83-hG-48i" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dgO-E5-Pob">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dgO-E5-Pob">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

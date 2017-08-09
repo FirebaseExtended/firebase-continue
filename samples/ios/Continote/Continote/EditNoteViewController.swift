@@ -18,6 +18,7 @@ import UIKit
 import Firebase
 import MaterialComponents.MDCRaisedButton
 import MaterialComponents.MaterialSnackbar
+import MaterialComponents.MaterialTextFields
 
 /**
  The ViewController that presents the user with a Note editor to edit a specific Note, if
@@ -37,12 +38,12 @@ class EditNoteViewController: BaseViewController {
   // Firebase Realtime Database reference for the current user's Note to edit, based on the key.
   private var databaseRef: DatabaseReference?
 
-  // UI outlets
+  // UI elements
   @IBOutlet var noteNotFoundUiContainer: UIView!
   @IBOutlet var noteNotFoundMessageLabel: UILabel!
   @IBOutlet var noteFoundUiContainer: UIView!
-  @IBOutlet var noteTitleTextField: UITextField!
-  @IBOutlet var noteContentTextView: UITextView!
+  @IBOutlet var noteTitleTextField: MDCTextField!
+  var noteContentMultilineTextField: MDCMultilineTextField!
   @IBOutlet var saveButton: MDCRaisedButton!
   @IBOutlet var continueWritingButton: MDCRaisedButton!
 
@@ -55,13 +56,60 @@ class EditNoteViewController: BaseViewController {
     // Style all labels.
     noteNotFoundMessageLabel.applyAppTheme(for: .normalText)
 
-    // Style all text inputs.
+    // Set up the title text input.
     noteTitleTextField.applyAppTheme()
-    noteContentTextView.applyAppTheme()
+    noteTitleTextField.placeholder = Constants.Text.InputPlaceholder.title
 
     // Style all buttons.
     saveButton.applyAppTheme()
     continueWritingButton.applyAppTheme()
+
+    // Create the main content multiline text input.
+    // This could be improved by allowing the input to expand up to a maximum height, but for the
+    // sake of simplicity the height is kept static based on the minimumLines property.
+    noteContentMultilineTextField = MDCMultilineTextField()
+    noteContentMultilineTextField.applyAppTheme()
+    noteContentMultilineTextField.placeholder = Constants.Text.InputPlaceholder.content
+    noteContentMultilineTextField.clearButtonMode = .never
+    noteContentMultilineTextField.minimumLines = 7
+    noteContentMultilineTextField.expandsOnOverflow = false
+
+    // Add the main content text input to the screen.
+    noteFoundUiContainer.addSubview(noteContentMultilineTextField)
+    noteContentMultilineTextField.translatesAutoresizingMaskIntoConstraints = false
+
+    // Top constraint for the content text input.
+    view.addConstraint(
+      NSLayoutConstraint(
+        item: noteContentMultilineTextField,
+        attribute: .top,
+        relatedBy: .equal,
+        toItem: noteTitleTextField,
+        attribute: .bottom,
+        multiplier: 1,
+        constant: 8))
+
+    // Leading constraint for the content text input.
+    view.addConstraint(
+      NSLayoutConstraint(
+        item: noteContentMultilineTextField,
+        attribute: .leading,
+        relatedBy: .equal,
+        toItem: view,
+        attribute: .leadingMargin,
+        multiplier: 1,
+        constant: 0))
+
+    // Trailing constraint for the content text input.
+    view.addConstraint(
+      NSLayoutConstraint(
+        item: noteContentMultilineTextField,
+        attribute: .trailing,
+        relatedBy: .equal,
+        toItem: view,
+        attribute: .trailingMargin,
+        multiplier: 1,
+        constant: 0))
 
     resetUiToInitialState()
   }
@@ -75,6 +123,12 @@ class EditNoteViewController: BaseViewController {
       navigationController?.popViewController(animated: true)
       return
     }
+  }
+
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    // This allows the user to stop editing a Note value when they tap outside of the input element.
+    // It would be more ideal to also have "Next" and "Done" buttons on screen when appropriate.
+    view.endEditing(true)
   }
 
   override func handleUserSignedIn(_ user: User) {
@@ -125,7 +179,7 @@ class EditNoteViewController: BaseViewController {
     resetUiToInitialState()
     setNoteEditorInputsToUseValuesFrom(note: note)
     noteTitleTextField.isEnabled = true
-    noteContentTextView.isEditable = true
+    noteContentMultilineTextField.isEnabled = true
     saveButton.isEnabled = true
     continueWritingButton.isEnabled = true
     noteFoundUiContainer.isHidden = false
@@ -151,7 +205,7 @@ class EditNoteViewController: BaseViewController {
     noteFoundUiContainer.isHidden = true
     noteNotFoundUiContainer.isHidden = true
     noteTitleTextField.isEnabled = false
-    noteContentTextView.isEditable = false
+    noteContentMultilineTextField.isEnabled = false
     saveButton.isEnabled = false
     continueWritingButton.isEnabled = false
     setNoteEditorInputsToUseValuesFrom(note: nil)
@@ -164,8 +218,7 @@ class EditNoteViewController: BaseViewController {
    */
   func setNoteEditorInputsToUseValuesFrom(note: Note?) {
     noteTitleTextField.text = note?.title ?? ""
-    noteContentTextView.text = note?.content ?? ""
-    noteContentTextView.flashScrollIndicators()
+    noteContentMultilineTextField.text = note?.content ?? ""
   }
 
   /**
@@ -178,7 +231,7 @@ class EditNoteViewController: BaseViewController {
   func saveNoteToDatabase(completionCallback: @escaping (Error?) -> Void) {
     guard let databaseRef = databaseRef,
           let noteTitle = noteTitleTextField.text,
-          let noteContent = noteContentTextView.text else {
+          let noteContent = noteContentMultilineTextField.text else {
         completionCallback(Constants.AppError.couldNotSaveNote)
         return
     }
@@ -233,8 +286,17 @@ class EditNoteViewController: BaseViewController {
         return
       }
 
-      // TODO: When Firebase Continue for iOS library is complete, use it here.
-      MDCSnackbarManager.show(Constants.Text.SuccessMessage.broadcastToContinueWriting)
+      FCNContinue.broadcastToContinueActivity(
+        withUrl: String(format: Constants.FirebaseContinue.urlToEditNoteWithKey, databaseKey),
+        withinApplication: Constants.FirebaseContinue.applicationName) { (error) in
+          guard error == nil else {
+            MDCSnackbarManager.show(Constants.AppError.couldNotBroadcastToContinueWriting.rawValue)
+            return
+          }
+
+          // The broadcast was successful, so inform the user how they can continue writing.
+          MDCSnackbarManager.show(Constants.Text.SuccessMessage.broadcastToContinueWriting)
+      }
     }
   }
 }
@@ -250,7 +312,12 @@ private extension Constants {
     struct SuccessMessage {
       static let noteSaved: String = "Note saved successfully!"
       static let broadcastToContinueWriting: String =
-        "TODO: Finish this feature when the Firebase Continue for iOS library v0.1.0 is complete"
+        "You can now open Chrome and use the Continote extension to continue writing."
+    }
+
+    struct InputPlaceholder {
+      static let title: String = "Title"
+      static let content: String = "Content"
     }
   }
 
