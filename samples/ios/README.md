@@ -138,18 +138,17 @@ you must be using a macOS computer with Xcode 8+.
 This sample is dependent on the following libraries/SDKs:
 
 ### Firebase
-- [Firebase/Core v4.0.0+](https://firebase.google.com/docs/ios/setup#add_the_sdk)
-- [Firebase/Auth v4.0.0+](https://firebase.google.com/docs/auth/ios/start#add_firebase_auth_to_your_xcode_project)
-- [Firebase/Database v4.0.0+](https://firebase.google.com/docs/database/ios/start#add_firebase_database_to_your_app)
+- [Firebase/Auth v4.0+](https://firebase.google.com/docs/auth/ios/start#add_firebase_auth_to_your_xcode_project)
+- [Firebase/Database v4.0+](https://firebase.google.com/docs/database/ios/start#add_firebase_database_to_your_app)
 
 ### Firebase Continue
-- [Firebase Continue for iOS v0.1.0+](../../ios)
+- [Firebase Continue for iOS v0.1+](../../ios)
 
 ### FirebaseUI
-- [FirebaseUI iOS v4.0.0+](https://github.com/firebase/FirebaseUI-iOS)
+- [FirebaseUI iOS v4.0+](https://github.com/firebase/FirebaseUI-iOS)
 
 ### Material Components
-- [Material Components iOS v29.0.0+](https://material.io/components/ios/)
+- [Material Components iOS v29.0+](https://material.io/components/ios/)
 
 ## Disclaimer
 
