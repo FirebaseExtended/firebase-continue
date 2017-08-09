@@ -4,7 +4,6 @@ target 'Continote' do
   use_frameworks!
 
   # Firebase (https://github.com/firebase/firebase-ios-sdk)
-  pod 'Firebase/Core', '~> 4.0'
   pod 'Firebase/Auth', '~> 4.0'
   pod 'Firebase/Database', '~> 4.0'
 

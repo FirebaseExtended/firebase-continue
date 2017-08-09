@@ -190,7 +190,6 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/Auth (~> 4.0)
-  - Firebase/Core (~> 4.0)
   - Firebase/Database (~> 4.0)
   - FirebaseUI/Auth (~> 4.0)
   - FirebaseUI/Database (~> 4.0)
@@ -222,6 +221,6 @@ SPEC CHECKSUMS:
   MDFTextAccessibility: 94098925e0853551c5a311ce7c1ecefbe297cdb6
   nanopb: 22bc080fa3955e2116b6ff3ee6c2cb3c15ab97cb
 
-PODFILE CHECKSUM: 828d55b23f5ab0ec2b7fd6bffe639fb2a834cc18
+PODFILE CHECKSUM: 7620156426be2d8cd6ec765fc858c3252709337f
 
 COCOAPODS: 1.2.1
