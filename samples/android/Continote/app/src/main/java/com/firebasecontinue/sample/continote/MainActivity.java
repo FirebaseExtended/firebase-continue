@@ -15,13 +15,14 @@
 package com.firebasecontinue.sample.continote;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.facebook.login.LoginBehavior;
+import com.facebook.login.LoginManager;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -46,11 +47,11 @@ public class MainActivity extends BaseActivity {
 
     // UI elements
     @Nullable
-    private TextView authMessageTextView = null;
+    private TextView mAuthMessageTextView = null;
     @Nullable
-    private Button authButton = null;
+    private Button mAuthButton = null;
     @Nullable
-    private Button myNotesButton = null;
+    private Button mMyNotesButton = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,32 +59,47 @@ public class MainActivity extends BaseActivity {
 
         setContentView(R.layout.activity_main);
 
+        // Force Facebook authentication to use the web. This simplifies the setup process for this
+        // sample since it requires the minimal amount of configuration within Facebook.
+        LoginManager.getInstance().setLoginBehavior(LoginBehavior.WEB_ONLY);
+
         // Gather the UI elements for this Activity for future manipulation.
-        authMessageTextView = (TextView) findViewById(R.id.authMessageTextView);
-        authButton = (Button) findViewById(R.id.authButton);
-        myNotesButton = (Button) findViewById(R.id.myNotesButton);
+
+        mAuthMessageTextView = (TextView) findViewById(R.id.authMessageTextView);
+        if (mAuthMessageTextView == null) {
+            // This should never happen, but just in case.
+            throw new AssertionError("mAuthMessageTextView must be non-null");
+        }
+
+        mAuthButton = (Button) findViewById(R.id.authButton);
+        if (mAuthButton == null) {
+            // This should never happen, but just in case.
+            throw new AssertionError("mAuthButton must be non-null");
+        }
+
+        mMyNotesButton = (Button) findViewById(R.id.myNotesButton);
+        if (mMyNotesButton == null) {
+            // This should never happen, but just in case.
+            throw new AssertionError("mMyNotesButton must be non-null");
+        }
     }
 
     @Override
-    protected void handleUserSignedIn(@NonNull FirebaseUser user) {
+    protected void handleUserSignedIn(FirebaseUser user) {
         super.handleUserSignedIn(user);
 
+        if (user == null) {
+            // This should never happen, but just in case.
+            throw new AssertionError("user must be non-null");
+        }
+
         // Update the UI to reflect the user now being signed in.
-
-        if (authMessageTextView != null) {
-            authMessageTextView.setText(
-                    getString(R.string.auth_message_when_signed_in,
-                              user.getDisplayName(),
-                              user.getEmail()));
-        }
-
-        if (authButton != null) {
-            authButton.setText(R.string.auth_button_text_when_signed_in);
-        }
-
-        if (myNotesButton != null) {
-            myNotesButton.setVisibility(View.VISIBLE);
-        }
+        mAuthMessageTextView.setText(
+                getString(R.string.auth_message_when_signed_in,
+                          user.getDisplayName(),
+                          user.getEmail()));
+        mAuthButton.setText(R.string.auth_button_text_when_signed_in);
+        mMyNotesButton.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -91,20 +107,11 @@ public class MainActivity extends BaseActivity {
         super.handleUserSignedOut();
 
         // Update the UI to reflect the user now being signed out.
-
-        if (authMessageTextView != null) {
-            authMessageTextView.setText(
-                    getString(R.string.auth_message_when_signed_out,
-                              getString(R.string.app_name)));
-        }
-
-        if (authButton != null) {
-            authButton.setText(R.string.auth_button_text_when_signed_out);
-        }
-
-        if (myNotesButton != null) {
-            myNotesButton.setVisibility(View.GONE);
-        }
+        mAuthMessageTextView.setText(
+                getString(R.string.auth_message_when_signed_out,
+                          getString(R.string.app_name)));
+        mAuthButton.setText(R.string.auth_button_text_when_signed_out);
+        mMyNotesButton.setVisibility(View.GONE);
     }
 
     /**
@@ -113,14 +120,14 @@ public class MainActivity extends BaseActivity {
      * @param v The View that called this triggered this handler.
      *          This should only be the authButton itself.
      */
-    public void handleAuthButtonTapped(View v) {
+    public void handleAuthButtonTapped(@Nullable View v) {
         if (currentUserIsSignedIn()) {
             // The current user is signed in, so attempt to sign them out.
             AuthUI.getInstance()
                     .signOut(this)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
-                        public void onComplete(@NonNull Task<Void> task) {
+                        public void onComplete(Task<Void> task) {
                             if (!task.isSuccessful()) {
                                 // Inform the user that signing out failed.
                                 showSnackbar(R.string.sign_out_failed);
@@ -146,11 +153,14 @@ public class MainActivity extends BaseActivity {
      * @param v The View that called this triggered this handler.
      *          This should only be the myNotesButton itself.
      */
-    public void handleMyNotesButtonTapped(View v) {
-        if (currentUserIsSignedIn()) {
-            // The current user is signed in, so allow them to go to the My Notes screen.
-            Intent intent = new Intent(this, MyNotesActivity.class);
-            startActivity(intent);
+    public void handleMyNotesButtonTapped(@Nullable View v) {
+        if (!currentUserIsSignedIn()) {
+            // This should never happen, but just in case.
+            throw new AssertionError("User must be signed in");
         }
+
+        // The current user is signed in, so allow them to go to the My Notes screen.
+        Intent intent = new Intent(this, MyNotesActivity.class);
+        startActivity(intent);
     }
 }
