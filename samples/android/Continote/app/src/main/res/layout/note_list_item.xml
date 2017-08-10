@@ -21,39 +21,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/activity_padding"
-    tools:context=".MyNotesActivity"
+    android:layout_height="wrap_content"
+    android:clickable="false"
+    android:longClickable="false"
+    android:padding="@dimen/list_item_padding"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="0dp">
 
-    <ListView
-        android:id="@+id/listView"
-        style="@style/Widget.AppCompat.ListView"
+    <TextView
+        android:id="@+id/noteItemTitleTextView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/element_spacing"
-        android:choiceMode="singleChoice"
-        android:clickable="true"
-        android:divider="?attr/dividerHorizontal"
-        android:dividerHeight="@dimen/list_item_divider_height"
-        android:listSelector="@android:drawable/list_selector_background"
-        android:longClickable="true"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/newNoteButton"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/newNoteButton"
-        style="@style/MyButtonStyle"
+    <TextView
+        android:id="@+id/noteItemContentTextView"
         android:layout_width="0dp"
-        android:onClick="handleWriteNoteButtonTapped"
-        android:text="@string/write_note_button_text"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="@dimen/element_spacing"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noteItemTitleTextView" />
 
 </android.support.constraint.ConstraintLayout>

@@ -28,6 +28,9 @@
     <string name="title_activity_my_notes">
         My Notes
     </string>
+    <string name="title_activity_edit_note">
+        Edit Note
+    </string>
 
     <!-- Constants for Firebase Continue use throughout this app. -->
     <string name="app_name_for_firebase_continue" translatable="false">
@@ -43,6 +46,14 @@
     </string>
     <string name="facebook_login_protocol_scheme" translatable="false">
         fb[TODO: YOUR-FACEBOOK-APP-ID-HERE]
+    </string>
+
+    <!--
+        Various Intent "extra" keys.
+        See: https://developer.android.com/reference/android/content/Intent.html
+    -->
+    <string name="extra_note_database_key" translatable="false">
+        databaseKey
     </string>
 
     <!-- The text of the main auth message shown to the user in the MainActivity. -->
@@ -66,9 +77,28 @@
         My Notes
     </string>
 
-    <!-- The text of the testFirebaseContinue button in the MyNotesActivity. -->
-    <string name="test_firebase_continue_button_text">
-        Test Firebase Continue
+    <!-- The text of the writeNote button in the MyNotesActivity. -->
+    <string name="write_note_button_text">
+        + Write a new note
+    </string>
+
+    <!-- The text of the continueWritingElsewhere button in the EditNoteActivity. -->
+    <string name="continue_writing_elsewhere_button_text">
+        Continue writing in Chrome
+    </string>
+
+    <!-- Text for the Delete Note dialog. -->
+    <string name="delete_note_dialog_title">
+        Delete this note?
+    </string>
+    <string name="delete_note_dialog_message">
+        If you choose to delete this note, it will be gone forever!
+    </string>
+    <string name="delete_note_dialog_positive_button_text">
+        Yes, delete it
+    </string>
+    <string name="delete_note_dialog_negative_button_text">
+        No, do not delete it
     </string>
 
     <!-- Various success messages. -->
@@ -79,6 +109,12 @@
     <!-- Various error messages. -->
     <string name="sign_out_failed">
         Signing out failed. Please try again.
+    </string>
+    <string name="create_new_note_failed">
+        Could not create a new note. Please try again.
+    </string>
+    <string name="delete_note_failed">
+        Could not delete note. Please try again.
     </string>
     <string name="broadcast_to_continue_writing_note_in_chrome_failed">
         Something went wrong. Please try again.

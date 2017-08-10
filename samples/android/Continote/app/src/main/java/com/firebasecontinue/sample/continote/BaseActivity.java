@@ -14,7 +14,6 @@
 
 package com.firebasecontinue.sample.continote;
 
-import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -32,11 +31,10 @@ import com.google.firebase.auth.FirebaseUser;
 public abstract class BaseActivity extends AppCompatActivity {
 
     // Firebase-related
-    @NonNull
     private final FirebaseAuth.AuthStateListener mHandleAuthStateChanged =
             new FirebaseAuth.AuthStateListener() {
                 @Override
-                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                public void onAuthStateChanged(FirebaseAuth firebaseAuth) {
                     FirebaseUser user = firebaseAuth.getCurrentUser();
                     if (user != null) {
                         // Since the user object is non-null, the current user is now signed in.
@@ -96,7 +94,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @param user The user who is now signed in.
      */
-    protected void handleUserSignedIn(@NonNull FirebaseUser user) {}
+    protected void handleUserSignedIn(FirebaseUser user) {}
 
     /**
      * Handles when the user signs out.
