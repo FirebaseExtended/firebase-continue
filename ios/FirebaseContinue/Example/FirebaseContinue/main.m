@@ -29,8 +29,7 @@
  * from the root of the repository at:
  * https://github.com/firebase/firebase-continue/tree/master/samples/ios
  */
-int main(int argc, char * argv[])
-{
+int main(int argc, char *argv[]) {
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([FCNAppDelegate class]));
     }

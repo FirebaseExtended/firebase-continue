@@ -29,28 +29,28 @@
  * from the root of the repository at:
  * https://github.com/firebase/firebase-continue/tree/master/samples/ios
  */
-@interface FCNViewController ()
-
-@end
-
 @implementation FCNViewController
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
 
   // Attempt to use Firebase Continue here. This should fail for any number of reasons,
   // including that Firebase has not been set up for this app.
-  [FCNContinue broadcastToContinueActivityWithUrl: @"http://some.url.com"
-                        withinApplicationWithName: @"SomeApplicationName"
-                                       onComplete:^(NSError* error) {
-                                         if (error) {
-                                           printf("FirebaseContinue: Broadcast failed");
-                                           return;
-                                         }
+  [FCNContinue broadcastToContinueActivityWithUrl:[TODO: YOUR-URL-TO-ALLOW-THE-USER-TO-CONTINUE-THEIR-ACTIVITY-HERE]
+                        withinApplicationWithName:[TODO: YOUR-APPLICATION-NAME-HERE]
+                              withCompletionBlock:
+   ^(FCNContinueCompletionError _Nullable error) {
+     if (error == nil) {
+       // The activity was successfully broadcast.
 
-                                         printf("FirebaseContinue: Broadcast successful");
-                                       }];
+       // An example use of this could be to inform the user to open Chrome (with
+       // your Chrome extension installed which uses the Firebase Continue for
+       // Chrome Extensions library), or their macOS computer with Apple Handoff,
+       // if they wish continue their activity there.
+     } else {
+       // The activity failed to broadcast.
+     }
+   }];
 }
 
 @end
