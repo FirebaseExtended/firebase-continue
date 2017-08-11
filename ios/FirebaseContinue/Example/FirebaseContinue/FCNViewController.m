@@ -36,21 +36,22 @@
 
   // Attempt to use Firebase Continue here. This should fail for any number of reasons,
   // including that Firebase has not been set up for this app.
-  [FCNContinue broadcastToContinueActivityWithUrl:[TODO: YOUR-URL-TO-ALLOW-THE-USER-TO-CONTINUE-THEIR-ACTIVITY-HERE]
-                        withinApplicationWithName:[TODO: YOUR-APPLICATION-NAME-HERE]
-                              withCompletionBlock:
-   ^(FCNContinueCompletionError _Nullable error) {
-     if (error == nil) {
-       // The activity was successfully broadcast.
+  [FCNContinue broadcastToContinueActivityWithUrl:[TODO:YOUR-URL-TO-ALLOW-THE-USER-TO-
+                                                        CONTINUE-THEIR-ACTIVITY-HERE]
+                        withinApplicationWithName:[TODO:YOUR-APPLICATION-NAME-HERE]
+                              withCompletionBlock:^(FCNContinueCompletionError _Nullable error) {
+                                if (error == nil) {
+                                  // The activity was successfully broadcast.
 
-       // An example use of this could be to inform the user to open Chrome (with
-       // your Chrome extension installed which uses the Firebase Continue for
-       // Chrome Extensions library), or their macOS computer with Apple Handoff,
-       // if they wish continue their activity there.
-     } else {
-       // The activity failed to broadcast.
-     }
-   }];
+                                  // An example use of this could be to inform the user to open
+                                  // Chrome (with your Chrome extension installed which uses the
+                                  // Firebase Continue for Chrome Extensions library), or their
+                                  // macOS computer with Apple Handoff, if they wish continue their
+                                  // activity there.
+                                } else {
+                                  // The activity failed to broadcast.
+                                }
+                              }];
 }
 
 @end

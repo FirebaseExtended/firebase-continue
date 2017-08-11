@@ -27,8 +27,8 @@
  * from the root of the repository at:
  * https://github.com/firebase/firebase-continue/tree/master/samples/ios
  */
-@interface FCNAppDelegate : UIResponder <UIApplicationDelegate>
+@interface FCNAppDelegate : UIResponder<UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property(strong, nonatomic) UIWindow *window;
 
 @end

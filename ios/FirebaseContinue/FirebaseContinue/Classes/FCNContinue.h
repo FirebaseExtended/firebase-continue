@@ -62,7 +62,7 @@ typedef void (^FCNContinueCompletionBlock)(_Nullable FCNContinueCompletionError 
 + (void)broadcastToContinueActivityWithUrl:(NSString*)activityUrl
                  withinApplicationWithName:(NSString*)applicationName
                        withCompletionBlock:(nullable FCNContinueCompletionBlock)completionBlock
-  NS_SWIFT_NAME(broadcastToContinueActivity(withUrl:withinApplication:onComplete:));
+    NS_SWIFT_NAME(broadcastToContinueActivity(withUrl:withinApplication:onComplete:));
 
 // TODO: Possibly add a "dismissActivityToContinue" method akin to dismissing within the Chrome
 // extensions library. This could be used by mobile apps when an Activity that was broadcast would
