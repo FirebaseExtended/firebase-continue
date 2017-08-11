@@ -82,6 +82,11 @@
         + Write a new note
     </string>
 
+    <!-- The text of the save button in the EditNoteActivity. -->
+    <string name="save_button_text">
+        Save
+    </string>
+
     <!-- The text of the continueWritingElsewhere button in the EditNoteActivity. -->
     <string name="continue_writing_elsewhere_button_text">
         Continue writing in Chrome
@@ -101,8 +106,22 @@
         No, do not delete it
     </string>
 
+    <!-- Text for the Note editor in the EditNoteActivity. -->
+    <string name="note_not_found_message">
+        Note not found.\n\nPlease go back to the My Notes screen and try again.
+    </string>
+    <string name="placeholder_note_title">
+        Title
+    </string>
+    <string name="placeholder_note_content">
+        Content
+    </string>
+
     <!-- Various success messages. -->
-    <string name="broadcast_to_continue_writing_note_in_chrome_successful">
+    <string name="save_note_successful">
+        Note saved successfully!
+    </string>
+    <string name="broadcast_to_continue_successful">
         Please open Chrome now and use the Continote extension to continue writing.
     </string>
 
@@ -116,7 +135,10 @@
     <string name="delete_note_failed">
         Could not delete note. Please try again.
     </string>
-    <string name="broadcast_to_continue_writing_note_in_chrome_failed">
+    <string name="save_note_failed">
+        Could not save note. Please try again.
+    </string>
+    <string name="broadcast_to_continue_failed">
         Something went wrong. Please try again.
     </string>
 

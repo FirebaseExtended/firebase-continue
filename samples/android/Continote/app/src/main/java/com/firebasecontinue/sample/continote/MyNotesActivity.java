@@ -297,8 +297,7 @@ public class MyNotesActivity extends BaseActivity {
 
         // Next, ensure the current user is signed in.
         if (FirebaseAuth.getInstance().getCurrentUser() == null) {
-            taskCompletion.setException(
-                    new IllegalStateException("The current user must be signed in"));
+            taskCompletion.setException(new IllegalStateException("The user must be signed in"));
 
             return task;
         }
@@ -354,8 +353,7 @@ public class MyNotesActivity extends BaseActivity {
 
         // Next, ensure the current user is signed in.
         if (FirebaseAuth.getInstance().getCurrentUser() == null) {
-            taskCompletion.setException(
-                    new IllegalStateException("The current user must be signed in"));
+            taskCompletion.setException(new IllegalStateException("The user must be signed in"));
 
             return task;
         }
