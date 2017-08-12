@@ -62,7 +62,6 @@
 		7DBA7BEDE6DF049C4A8DD639 /* Pods-FirebaseContinue_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseContinue_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseContinue_Example/Pods-FirebaseContinue_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		86F5D3A8AD904EC4ADA638A7 /* Pods_FirebaseContinue_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirebaseContinue_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A77DE2F891A93A7EFE885866 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		B520C7697740DED578884BD7 /* Pods-FirebaseContinue_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseContinue_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseContinue_Tests/Pods-FirebaseContinue_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D39BE98F28625B6314768D31 /* Pods-FirebaseContinue_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseContinue_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseContinue_Tests/Pods-FirebaseContinue_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D6BED0856CB50D352C0E50A9 /* FirebaseContinue.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = FirebaseContinue.podspec; path = ../FirebaseContinue.podspec; sourceTree = "<group>"; };
@@ -178,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				D6BED0856CB50D352C0E50A9 /* FirebaseContinue.podspec */,
-				A77DE2F891A93A7EFE885866 /* README.md */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";

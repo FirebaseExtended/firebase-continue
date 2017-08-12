@@ -5,7 +5,8 @@ Pod::Spec.new do |s|
 
   s.description      = <<-DESC
 Firebase Continue for iOS enables iOS developers to easily integrate activity transitioning
-from their apps to the web by way of Chrome extensions.
+from their apps to the web by way of Chrome extensions (or Apple Handoff for users with both an
+iOS device and macOS computer that are Apple Handoff enabled).
                        DESC
 
   s.homepage         = 'https://github.com/firebase/firebase-continue'
@@ -18,7 +19,4 @@ from their apps to the web by way of Chrome extensions.
   s.source_files = 'FirebaseContinue/Classes/**/*'
 
   s.public_header_files = 'FirebaseContinue/Classes/**/*.h'
-
-  s.dependency 'FirebaseCommunity/Auth'
-  s.dependency 'FirebaseCommunity/Database'
 end

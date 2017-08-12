@@ -16,22 +16,42 @@
 
 #import "FCNViewController.h"
 
-@interface FCNViewController ()
+@import FirebaseContinue;
 
-@end
-
+/**
+ * Important Note: This is not a working example of using Firebase Continue.
+ *
+ * The Firebase Continue for iOS library is planned to eventually be available via Cocoapods
+ * (rather than being required to manually copy-paste its source into your project), so this
+ * Cocoapods-provided development environment lays the groundwork for that.
+ *
+ * For an actual, working sample of Firebase Continue, see the samples/ios subdirectory
+ * from the root of the repository at:
+ * https://github.com/firebase/firebase-continue/tree/master/samples/ios
+ */
 @implementation FCNViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  // Attempt to use Firebase Continue here. This should fail for any number of reasons,
+  // including that Firebase has not been set up for this app.
+  [FCNContinue broadcastToContinueActivityWithUrl:[TODO:YOUR-URL-TO-ALLOW-THE-USER-TO-
+                                                        CONTINUE-THEIR-ACTIVITY-HERE]
+                        withinApplicationWithName:[TODO:YOUR-APPLICATION-NAME-HERE]
+                              withCompletionBlock:^(NSError *_Nullable firebaseContinueError) {
+                                if (firebaseContinueError) {
+                                  // The activity failed to broadcast.
+                                } else {
+                                  // The activity was successfully broadcast.
+
+                                  // An example use of this could be to inform the user to open
+                                  // Chrome (with your Chrome extension installed which uses the
+                                  // Firebase Continue for Chrome Extensions library), or their
+                                  // macOS computer with Apple Handoff, if they wish continue their
+                                  // activity there.
+                                }
+                              }];
 }
 
 @end
