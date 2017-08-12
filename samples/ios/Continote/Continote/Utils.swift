@@ -17,6 +17,7 @@
 import MaterialComponents.MaterialAppBar
 import MaterialComponents.MaterialButtons
 import MaterialComponents.MaterialSnackbar
+import MaterialComponents.MaterialTextFields
 import MaterialComponents.MDCAppBarColorThemer
 import MaterialComponents.MDCButtonColorThemer
 import MaterialComponents.MDCTypography
@@ -77,31 +78,21 @@ extension UILabel {
   }
 }
 
-extension UITextField {
+extension MDCTextField {
   /**
-   Applies a standardized visual style to this TextField.
+   Applies a standardized visual style to this MDCTextField.
    */
   func applyAppTheme() {
     font = Constants.Theme.LabelKind.titleText.getFont()
-
-    // Set the border.
-    layer.borderColor = Constants.Theme.TextInput.borderColor
-    layer.borderWidth = Constants.Theme.TextInput.borderWidth
-    layer.cornerRadius = Constants.Theme.TextInput.borderCornerRadius
   }
 }
 
-extension UITextView {
+extension MDCMultilineTextField {
   /**
-   Applies a standardized visual style to this TextView.
+   Applies a standardized visual style to this MDCMultilineTextField.
    */
   func applyAppTheme() {
     font = Constants.Theme.LabelKind.normalText.getFont()
-
-    // Set the border.
-    layer.borderColor = Constants.Theme.TextInput.borderColor
-    layer.borderWidth = Constants.Theme.TextInput.borderWidth
-    layer.cornerRadius = Constants.Theme.TextInput.borderCornerRadius
   }
 }
 

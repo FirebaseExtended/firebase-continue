@@ -27,6 +27,13 @@ import MaterialComponents.MDCColorScheme
 struct Constants {
   static let appName: String = "Continote"
 
+  // FirebaseContinue usage related.
+  struct FirebaseContinue {
+    static let applicationName: String = "continote"
+    static let urlToEditNoteWithKey: String =
+      "[TODO: YOUR-FIREBASE-HOSTING-URL-FOR-CONTINOTE-WEB-HERE]/edit-note.html?noteKey=%@"
+  }
+
   // UI appearance related constants.
   struct Theme {
 

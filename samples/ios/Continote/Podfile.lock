@@ -65,14 +65,14 @@ PODS:
   - GTMSessionFetcher/Core (1.1.11)
   - GTMSessionFetcher/Full (1.1.11):
     - GTMSessionFetcher/Core (= 1.1.11)
-  - MaterialComponents/AnimationTiming (29.0.0)
-  - MaterialComponents/AppBar (29.0.0):
-    - MaterialComponents/AppBar/ColorThemer (= 29.0.0)
-    - MaterialComponents/AppBar/Component (= 29.0.0)
-  - MaterialComponents/AppBar/ColorThemer (29.0.0):
+  - MaterialComponents/AnimationTiming (31.0.0)
+  - MaterialComponents/AppBar (31.0.0):
+    - MaterialComponents/AppBar/ColorThemer (= 31.0.0)
+    - MaterialComponents/AppBar/Component (= 31.0.0)
+  - MaterialComponents/AppBar/ColorThemer (31.0.0):
     - MaterialComponents/AppBar/Component
     - MaterialComponents/Themes
-  - MaterialComponents/AppBar/Component (29.0.0):
+  - MaterialComponents/AppBar/Component (31.0.0):
     - MaterialComponents/FlexibleHeader
     - MaterialComponents/HeaderStackView
     - MaterialComponents/NavigationBar
@@ -81,20 +81,20 @@ PODS:
     - MaterialComponents/ShadowElevations
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
-  - MaterialComponents/ButtonBar/Component (29.0.0):
+  - MaterialComponents/ButtonBar/Component (31.0.0):
     - MaterialComponents/Buttons
     - MaterialComponents/private/RTL
-  - MaterialComponents/Buttons (29.0.0):
-    - MaterialComponents/Buttons/ColorThemer (= 29.0.0)
-    - MaterialComponents/Buttons/Component (= 29.0.0)
-    - MaterialComponents/Buttons/TitleColorAccessibilityMutator (= 29.0.0)
+  - MaterialComponents/Buttons (31.0.0):
+    - MaterialComponents/Buttons/ColorThemer (= 31.0.0)
+    - MaterialComponents/Buttons/Component (= 31.0.0)
+    - MaterialComponents/Buttons/TitleColorAccessibilityMutator (= 31.0.0)
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
     - MaterialComponents/ShadowElevations
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFTextAccessibility
-  - MaterialComponents/Buttons/ColorThemer (29.0.0):
+  - MaterialComponents/Buttons/ColorThemer (31.0.0):
     - MaterialComponents/Buttons/Component
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
@@ -103,14 +103,14 @@ PODS:
     - MaterialComponents/Themes
     - MaterialComponents/Typography
     - MDFTextAccessibility
-  - MaterialComponents/Buttons/Component (29.0.0):
+  - MaterialComponents/Buttons/Component (31.0.0):
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
     - MaterialComponents/ShadowElevations
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFTextAccessibility
-  - MaterialComponents/Buttons/TitleColorAccessibilityMutator (29.0.0):
+  - MaterialComponents/Buttons/TitleColorAccessibilityMutator (31.0.0):
     - MaterialComponents/Buttons/Component
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
@@ -118,59 +118,60 @@ PODS:
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFTextAccessibility
-  - MaterialComponents/FlexibleHeader (29.0.0):
-    - MaterialComponents/FlexibleHeader/ColorThemer (= 29.0.0)
-    - MaterialComponents/FlexibleHeader/Component (= 29.0.0)
+  - MaterialComponents/FlexibleHeader (31.0.0):
+    - MaterialComponents/FlexibleHeader/ColorThemer (= 31.0.0)
+    - MaterialComponents/FlexibleHeader/Component (= 31.0.0)
     - MaterialComponents/private/Application
     - MDFTextAccessibility
-  - MaterialComponents/FlexibleHeader/ColorThemer (29.0.0):
+  - MaterialComponents/FlexibleHeader/ColorThemer (31.0.0):
     - MaterialComponents/FlexibleHeader/Component
     - MaterialComponents/private/Application
     - MaterialComponents/Themes
     - MDFTextAccessibility
-  - MaterialComponents/FlexibleHeader/Component (29.0.0):
+  - MaterialComponents/FlexibleHeader/Component (31.0.0):
     - MaterialComponents/private/Application
     - MDFTextAccessibility
-  - MaterialComponents/HeaderStackView (29.0.0):
-    - MaterialComponents/HeaderStackView/ColorThemer (= 29.0.0)
-    - MaterialComponents/HeaderStackView/Component (= 29.0.0)
-  - MaterialComponents/HeaderStackView/ColorThemer (29.0.0):
+  - MaterialComponents/HeaderStackView (31.0.0):
+    - MaterialComponents/HeaderStackView/ColorThemer (= 31.0.0)
+    - MaterialComponents/HeaderStackView/Component (= 31.0.0)
+  - MaterialComponents/HeaderStackView/ColorThemer (31.0.0):
     - MaterialComponents/HeaderStackView/Component
     - MaterialComponents/Themes
-  - MaterialComponents/HeaderStackView/Component (29.0.0)
-  - MaterialComponents/Ink (29.0.0):
-    - MaterialComponents/Ink/ColorThemer (= 29.0.0)
-    - MaterialComponents/Ink/Component (= 29.0.0)
-  - MaterialComponents/Ink/ColorThemer (29.0.0):
+  - MaterialComponents/HeaderStackView/Component (31.0.0)
+  - MaterialComponents/Ink (31.0.0):
+    - MaterialComponents/Ink/ColorThemer (= 31.0.0)
+    - MaterialComponents/Ink/Component (= 31.0.0)
+  - MaterialComponents/Ink/ColorThemer (31.0.0):
     - MaterialComponents/Ink/Component
     - MaterialComponents/Themes
-  - MaterialComponents/Ink/Component (29.0.0)
-  - MaterialComponents/NavigationBar (29.0.0):
-    - MaterialComponents/NavigationBar/ColorThemer (= 29.0.0)
-    - MaterialComponents/NavigationBar/Component (= 29.0.0)
-  - MaterialComponents/NavigationBar/ColorThemer (29.0.0):
+  - MaterialComponents/Ink/Component (31.0.0)
+  - MaterialComponents/NavigationBar (31.0.0):
+    - MaterialComponents/NavigationBar/ColorThemer (= 31.0.0)
+    - MaterialComponents/NavigationBar/Component (= 31.0.0)
+  - MaterialComponents/NavigationBar/ColorThemer (31.0.0):
     - MaterialComponents/NavigationBar/Component
     - MaterialComponents/Themes
-  - MaterialComponents/NavigationBar/Component (29.0.0):
+  - MaterialComponents/NavigationBar/Component (31.0.0):
     - MaterialComponents/ButtonBar/Component
     - MaterialComponents/private/Math
     - MaterialComponents/private/RTL
     - MaterialComponents/Typography
     - MDFTextAccessibility
-  - MaterialComponents/OverlayWindow (29.0.0):
+  - MaterialComponents/OverlayWindow (31.0.0):
     - MaterialComponents/private/Application
-  - MaterialComponents/private/Application (29.0.0)
-  - MaterialComponents/private/Icons/Base (29.0.0)
-  - MaterialComponents/private/Icons/ic_arrow_back (29.0.0):
+  - MaterialComponents/Palettes (31.0.0)
+  - MaterialComponents/private/Application (31.0.0)
+  - MaterialComponents/private/Icons/Base (31.0.0)
+  - MaterialComponents/private/Icons/ic_arrow_back (31.0.0):
     - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/KeyboardWatcher (29.0.0):
+  - MaterialComponents/private/KeyboardWatcher (31.0.0):
     - MaterialComponents/private/Application
-  - MaterialComponents/private/Math (29.0.0)
-  - MaterialComponents/private/Overlay (29.0.0)
-  - MaterialComponents/private/RTL (29.0.0)
-  - MaterialComponents/ShadowElevations (29.0.0)
-  - MaterialComponents/ShadowLayer (29.0.0)
-  - MaterialComponents/Snackbar (29.0.0):
+  - MaterialComponents/private/Math (31.0.0)
+  - MaterialComponents/private/Overlay (31.0.0)
+  - MaterialComponents/private/RTL (31.0.0)
+  - MaterialComponents/ShadowElevations (31.0.0)
+  - MaterialComponents/ShadowLayer (31.0.0)
+  - MaterialComponents/Snackbar (31.0.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Buttons
     - MaterialComponents/OverlayWindow
@@ -178,8 +179,20 @@ PODS:
     - MaterialComponents/private/KeyboardWatcher
     - MaterialComponents/private/Overlay
     - MaterialComponents/Typography
-  - MaterialComponents/Themes (29.0.0)
-  - MaterialComponents/Typography (29.0.0):
+  - MaterialComponents/TextFields (31.0.0):
+    - MaterialComponents/TextFields/ColorThemer (= 31.0.0)
+    - MaterialComponents/TextFields/Component (= 31.0.0)
+  - MaterialComponents/TextFields/ColorThemer (31.0.0):
+    - MaterialComponents/TextFields/Component
+    - MaterialComponents/Themes
+  - MaterialComponents/TextFields/Component (31.0.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Math
+    - MaterialComponents/private/RTL
+    - MaterialComponents/Typography
+  - MaterialComponents/Themes (31.0.0)
+  - MaterialComponents/Typography (31.0.0):
     - MaterialComponents/private/Application
   - MDFTextAccessibility (1.2.0)
   - nanopb (0.3.8):
@@ -195,12 +208,13 @@ DEPENDENCIES:
   - FirebaseUI/Database (~> 4.0)
   - FirebaseUI/Facebook (~> 4.0)
   - FirebaseUI/Google (~> 4.0)
-  - MaterialComponents/AppBar (~> 29.0)
-  - MaterialComponents/AppBar/ColorThemer (~> 29.0)
-  - MaterialComponents/Buttons (~> 29.0)
-  - MaterialComponents/Buttons/ColorThemer (~> 29.0)
-  - MaterialComponents/Snackbar (~> 29.0)
-  - MaterialComponents/Typography (~> 29.0)
+  - MaterialComponents/AppBar (~> 31.0)
+  - MaterialComponents/AppBar/ColorThemer (~> 31.0)
+  - MaterialComponents/Buttons (~> 31.0)
+  - MaterialComponents/Buttons/ColorThemer (~> 31.0)
+  - MaterialComponents/Snackbar (~> 31.0)
+  - MaterialComponents/TextFields (~> 31.0)
+  - MaterialComponents/Typography (~> 31.0)
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -217,10 +231,10 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
-  MaterialComponents: d0ae7d9b517a72608caaa609682fe2de41921ba0
+  MaterialComponents: 5ccac89efd35fe4705d172f5b1c645cee7af4a5e
   MDFTextAccessibility: 94098925e0853551c5a311ce7c1ecefbe297cdb6
-  nanopb: 22bc080fa3955e2116b6ff3ee6c2cb3c15ab97cb
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
 
-PODFILE CHECKSUM: 7620156426be2d8cd6ec765fc858c3252709337f
+PODFILE CHECKSUM: 8f85004a4c9821ebc2971a6dc6831ce4a358928e
 
 COCOAPODS: 1.2.1

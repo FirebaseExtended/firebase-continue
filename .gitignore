@@ -75,6 +75,7 @@ Pods/
 database.rules.json
 samples/android/Continote/app/src/main/res/values/strings.xml
 samples/chrome-extension/Continote/scripts/config.js
+samples/ios/Continote/Continote/Constants.swift
 samples/ios/Continote/Continote/Info.plist
 samples/ios/Continote/Continote.xcodeproj/project.pbxproj
 samples/web/Continote/database.rules.json
@@ -83,6 +84,8 @@ samples/web/Continote/public/scripts/config.js
 # Libraries for samples
 samples/android/Continote/app/libs/*.aar
 samples/chrome-extension/Continote/scripts/firebase-continue.js
+samples/ios/Continote/Continote/FCNContinue.h
+samples/ios/Continote/Continote/FCNContinue.m
 
 # Misc.
 .DS_Store

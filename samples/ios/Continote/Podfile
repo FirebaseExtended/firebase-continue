@@ -14,11 +14,12 @@ target 'Continote' do
   pod 'FirebaseUI/Facebook', '~> 4.0'
 
   # Material Components (https://github.com/material-components/material-components-ios/)
-  pod 'MaterialComponents/AppBar', '~> 29.0'
-  pod 'MaterialComponents/AppBar/ColorThemer', '~> 29.0'
-  pod 'MaterialComponents/Buttons', '~> 29.0'
-  pod 'MaterialComponents/Buttons/ColorThemer', '~> 29.0'
-  pod 'MaterialComponents/Snackbar', '~> 29.0'
-  pod 'MaterialComponents/Typography', '~> 29.0'
+  pod 'MaterialComponents/AppBar', '~> 31.0'
+  pod 'MaterialComponents/AppBar/ColorThemer', '~> 31.0'
+  pod 'MaterialComponents/Buttons', '~> 31.0'
+  pod 'MaterialComponents/Buttons/ColorThemer', '~> 31.0'
+  pod 'MaterialComponents/Snackbar', '~> 31.0'
+  pod 'MaterialComponents/TextFields', '~> 31.0'
+  pod 'MaterialComponents/Typography', '~> 31.0'
 
 end

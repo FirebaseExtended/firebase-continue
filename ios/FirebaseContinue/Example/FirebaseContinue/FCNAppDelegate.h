@@ -16,8 +16,19 @@
 
 @import UIKit;
 
-@interface FCNAppDelegate : UIResponder <UIApplicationDelegate>
+/**
+ * Important Note: This is not a working example of using Firebase Continue.
+ *
+ * The Firebase Continue for iOS library is planned to eventually be available via Cocoapods
+ * (rather than being required to manually copy-paste its source into your project), so this
+ * Cocoapods-provided development environment lays the groundwork for that.
+ *
+ * For an actual, working sample of Firebase Continue, see the samples/ios subdirectory
+ * from the root of the repository at:
+ * https://github.com/firebase/firebase-continue/tree/master/samples/ios
+ */
+@interface FCNAppDelegate : UIResponder<UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property(strong, nonatomic) UIWindow *window;
 
 @end
