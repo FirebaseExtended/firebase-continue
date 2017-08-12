@@ -39,8 +39,10 @@
   [FCNContinue broadcastToContinueActivityWithUrl:[TODO:YOUR-URL-TO-ALLOW-THE-USER-TO-
                                                         CONTINUE-THEIR-ACTIVITY-HERE]
                         withinApplicationWithName:[TODO:YOUR-APPLICATION-NAME-HERE]
-                              withCompletionBlock:^(FCNContinueCompletionError _Nullable error) {
-                                if (error == nil) {
+                              withCompletionBlock:^(NSError *_Nullable firebaseContinueError) {
+                                if (firebaseContinueError) {
+                                  // The activity failed to broadcast.
+                                } else {
                                   // The activity was successfully broadcast.
 
                                   // An example use of this could be to inform the user to open
@@ -48,8 +50,6 @@
                                   // Firebase Continue for Chrome Extensions library), or their
                                   // macOS computer with Apple Handoff, if they wish continue their
                                   // activity there.
-                                } else {
-                                  // The activity failed to broadcast.
                                 }
                               }];
 }

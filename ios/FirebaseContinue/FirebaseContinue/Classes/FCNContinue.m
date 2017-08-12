@@ -24,18 +24,18 @@
  * Asynchronously executes the provided completion block on the main thread with the provided error.
  *
  * @param completionBlock The optional completion block to execute.
- * @param error The optional error to invoke the completion block with.
+ * @param firebaseContinueError The optional error to invoke the completion block with.
  */
 + (void)executeCompletionBlockOnMainThread:(nullable FCNContinueCompletionBlock)completionBlock
-                                 withError:(nullable FCNContinueCompletionError)error;
+                                 withError:(nullable NSError *)firebaseContinueError;
 
 /**
- * Creates an FCNContinueCompletionError object with the provided reason.
+ * Creates an NSError, within the context of FirebaseContinue, with the provided reason.
  *
  * @param reason The reason to use for the error.
  * @return An error for use with Firebase Continue completion blocks.
  */
-+ (FCNContinueCompletionError)createErrorWithReason:(NSString *)reason;
++ (nullable NSError *)createErrorWithReason:(NSString *)reason;
 
 /**
  * Determines and then returns whether or not the provided string value is nil or only whitespace.
@@ -83,7 +83,7 @@ static NSUserActivity *_Nullable lastBroadcastActivityForHandoff = nil;
 
     // Next, ensure the current user is signed in.
     FIRUser *currentUser = [FIRAuth auth].currentUser;
-    if (currentUser == nil) {
+    if (!currentUser) {
       [self executeCompletionBlockOnMainThread:completionBlock
                                      withError:[self createErrorWithReason:
                                                          @"The current user must be signed in"]];
@@ -103,7 +103,7 @@ static NSUserActivity *_Nullable lastBroadcastActivityForHandoff = nil;
     // before setting a value any existing value must first be deleted.
     [mostRecentActivityRef removeValueWithCompletionBlock:^(NSError *_Nullable error,
                                                             FIRDatabaseReference *_Nonnull ref) {
-      if (error != nil) {
+      if (error) {
         [self executeCompletionBlockOnMainThread:completionBlock
                                        withError:
                                            [self createErrorWithReason:error.localizedDescription]];
@@ -117,12 +117,13 @@ static NSUserActivity *_Nullable lastBroadcastActivityForHandoff = nil;
       // the user may wish to continue within the application.
       // The schema of each Activity is defined in
       // sample-firebase-continue-database.rules.json.
-      NSDictionary *activityMetadata = @{@"addedAt" : [FIRServerValue timestamp]};
-      NSDictionary *activity = @{@"url" : activityUrl, @"metadata" : activityMetadata};
+      NSDictionary<NSString *, id> *activityMetadata = @{@"addedAt" : [FIRServerValue timestamp]};
+      NSDictionary<NSString *, id> *activity =
+          @{@"url" : activityUrl, @"metadata" : activityMetadata};
 
       [ref setValue:activity
           withCompletionBlock:^(NSError *_Nullable error, FIRDatabaseReference *_Nonnull ref) {
-            if (error != nil) {
+            if (error) {
               [self executeCompletionBlockOnMainThread:completionBlock
                                              withError:[self createErrorWithReason:
                                                                  error.localizedDescription]];
@@ -152,8 +153,8 @@ static NSUserActivity *_Nullable lastBroadcastActivityForHandoff = nil;
 }
 
 + (void)executeCompletionBlockOnMainThread:(nullable FCNContinueCompletionBlock)completionBlock
-                                 withError:(nullable FCNContinueCompletionError)error {
-  if (completionBlock == nil) {
+                                 withError:(nullable NSError *)error {
+  if (!completionBlock) {
     // No completion block to execute.
     return;
   }
@@ -163,7 +164,7 @@ static NSUserActivity *_Nullable lastBroadcastActivityForHandoff = nil;
   });
 }
 
-+ (FCNContinueCompletionError)createErrorWithReason:(NSString *)reason {
++ (NSError *)createErrorWithReason:(NSString *)reason {
   // The library does not currently provide error codes for specific issues that can occur, so the
   // error code is hardcoded below.
   return [NSError errorWithDomain:@"FirebaseContinue"

@@ -23,8 +23,6 @@ import MaterialComponents.MaterialTextFields
 /**
  The ViewController that presents the user with a Note editor to edit a specific Note, if
  said Note is found for the user.
- 
- TODO: Finish this ViewController.
  */
 class EditNoteViewController: BaseViewController {
 
@@ -288,8 +286,8 @@ class EditNoteViewController: BaseViewController {
 
       FCNContinue.broadcastToContinueActivity(
         withUrl: String(format: Constants.FirebaseContinue.urlToEditNoteWithKey, databaseKey),
-        withinApplication: Constants.FirebaseContinue.applicationName) { (error) in
-          guard error == nil else {
+        withinApplication: Constants.FirebaseContinue.applicationName) { (firebaseContinueError) in
+          guard firebaseContinueError == nil else {
             MDCSnackbarManager.show(Constants.AppError.couldNotBroadcastToContinueWriting.rawValue)
             return
           }

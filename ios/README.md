@@ -90,19 +90,19 @@ more specific documentation can be found in the
     ```swift
     FCNContinue.broadcastToContinueActivity(
         withUrl: [TODO: YOUR-URL-TO-ALLOW-THE-USER-TO-CONTINUE-THEIR-ACTIVITY-HERE],
-        withinApplication: [TODO: YOUR-APPLICATION-NAME-HERE] { (error) in
+        withinApplication: [TODO: YOUR-APPLICATION-NAME-HERE] { (firebaseContinueError) in
             // This completion callback block is optional but allows you to react to the user's
             // activity either successfully being broadcast or failing to broadcast.
 
-            if (error == nil) {
+            if (firebaseContinueError != nil) {
+                // The activity failed to broadcast.
+            } else {
                 // The activity was successfully broadcast.
 
                 // An example use of this could be to inform the user to open Chrome (with
                 // your Chrome extension installed which uses the Firebase Continue for
                 // Chrome Extensions library), or their macOS computer with Apple Handoff,
                 // if they wish continue their activity there.
-            } else {
-                // The activity failed to broadcast.
             }
         }
     ```
@@ -113,16 +113,19 @@ more specific documentation can be found in the
     [FCNContinue broadcastToContinueActivityWithUrl:[TODO: YOUR-URL-TO-ALLOW-THE-USER-TO-CONTINUE-THEIR-ACTIVITY-HERE]
                           withinApplicationWithName:[TODO: YOUR-APPLICATION-NAME-HERE]
                                 withCompletionBlock:
-        ^(FCNContinueCompletionError _Nullable error) {
-            if (error == nil) {
+        ^(NSError *_Nullable firebaseCompleteError) {
+            // This completion callback block is optional but allows you to react to the user's
+            // activity either successfully being broadcast or failing to broadcast.
+
+            if (firebaseContinueError) {
+                // The activity failed to broadcast.
+            } else {
                 // The activity was successfully broadcast.
 
                 // An example use of this could be to inform the user to open Chrome (with
                 // your Chrome extension installed which uses the Firebase Continue for
                 // Chrome Extensions library), or their macOS computer with Apple Handoff,
                 // if they wish continue their activity there.
-            } else {
-                // The activity failed to broadcast.
             }
         }];
     ```

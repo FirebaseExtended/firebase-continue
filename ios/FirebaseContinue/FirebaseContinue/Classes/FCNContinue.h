@@ -18,12 +18,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-// A block (with an accompanying optional error) which is invoked on the main thread
-// when something the Firebase Continue library attempted to do asynchronously completed.
-// The error provided to the block will be non-nil if the it was unsuccessful.
-// See the library method documentation below for more details.
-typedef NSError* FCNContinueCompletionError;
-typedef void (^FCNContinueCompletionBlock)(_Nullable FCNContinueCompletionError error);
+/**
+ * A block which is invoked on the main thread when something the Firebase Continue library
+ * attempted to do asynchronously completed. The error provided to the block will be non-nil if
+ * the it was unsuccessful. See the library method documentation below for more details.
+ */
+typedef void (^FCNContinueCompletionBlock)(NSError *_Nullable firebaseContinueError);
 
 /**
  * @class FCNContinue
@@ -59,15 +59,17 @@ typedef void (^FCNContinueCompletionBlock)(_Nullable FCNContinueCompletionError 
  * broadcast attempt is complete. The error provided to the block will be non-nil if the broadcast
  * was unsuccessful.
  */
-+ (void)broadcastToContinueActivityWithUrl:(NSString*)activityUrl
-                 withinApplicationWithName:(NSString*)applicationName
++ (void)broadcastToContinueActivityWithUrl:(NSString *)activityUrl
+                 withinApplicationWithName:(NSString *)applicationName
                        withCompletionBlock:(nullable FCNContinueCompletionBlock)completionBlock
     NS_SWIFT_NAME(broadcastToContinueActivity(withUrl:withinApplication:onComplete:));
 
-// TODO: Possibly add a "dismissActivityToContinue" method akin to dismissing within the Chrome
-// extensions library. This could be used by mobile apps when an Activity that was broadcast would
-// certainly no longer be relevant to the user (rather than letting the Chrome extension library
-// itself (or the user within a Chrome extension) decide that).
+/**
+ * TODO: Possibly add a "dismissActivityToContinue" method akin to dismissing within the Chrome
+ * extensions library. This could be used by mobile apps when an Activity that was broadcast would
+ * certainly no longer be relevant to the user (rather than letting the Chrome extension library
+ * itself (or the user within a Chrome extension) decide that).
+ */
 
 - (id)init __attribute__((unavailable("FCNContinue cannot be instantiated")));
 
