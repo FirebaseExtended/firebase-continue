@@ -22,6 +22,7 @@
 		99E9772B1F0EB65500808120 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9772A1F0EB65500808120 /* BaseViewController.swift */; };
 		99E9772D1F0EC32300808120 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9772C1F0EC32300808120 /* Constants.swift */; };
 		99E9772F1F0ED02400808120 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9772E1F0ED02400808120 /* Utils.swift */; };
+		99EC9B061F3BFF520013675D /* FCNContinue.m in Sources */ = {isa = PBXBuildFile; fileRef = 99EC9B051F3BFF520013675D /* FCNContinue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,9 @@
 		99E9772A1F0EB65500808120 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		99E9772C1F0EC32300808120 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		99E9772E1F0ED02400808120 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		99EC9B001F3BF9AA0013675D /* Continote-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Continote-Bridging-Header.h"; sourceTree = "<group>"; };
+		99EC9B041F3BFF520013675D /* FCNContinue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCNContinue.h; sourceTree = "<group>"; };
+		99EC9B051F3BFF520013675D /* FCNContinue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCNContinue.m; sourceTree = "<group>"; };
 		A2E046B919A49E4850964E98 /* Pods_Continote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Continote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB61835141013748BED196CF /* Pods-Continote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Continote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Continote/Pods-Continote.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +100,9 @@
 				99E9772A1F0EB65500808120 /* BaseViewController.swift */,
 				99E9772C1F0EC32300808120 /* Constants.swift */,
 				9971E7D01F2919E7009535C8 /* EditNoteViewController.swift */,
+				99EC9B041F3BFF520013675D /* FCNContinue.h */,
+				99EC9B051F3BFF520013675D /* FCNContinue.m */,
+				99EC9B001F3BF9AA0013675D /* Continote-Bridging-Header.h */,
 				995CE1CB1EF8398F0067DDF5 /* MainViewController.swift */,
 				997D17B51F16A57200DD949D /* MyNotesViewController.swift */,
 				999FFF9C1F27E916001B55E0 /* MyNotesTableViewCell.swift */,
@@ -150,6 +157,7 @@
 					995CE1C51EF8398F0067DDF5 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = EQHXZ8M8AV;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -254,6 +262,7 @@
 				997D17B61F16A57200DD949D /* MyNotesViewController.swift in Sources */,
 				999FFF9D1F27E916001B55E0 /* MyNotesTableViewCell.swift in Sources */,
 				99E9772B1F0EB65500808120 /* BaseViewController.swift in Sources */,
+				99EC9B061F3BFF520013675D /* FCNContinue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,12 +389,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = EQHXZ8M8AV;
 				INFOPLIST_FILE = Continote/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = [TODO: YOUR-IOS-BUNDLE-ID-HERE];
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Continote/Continote-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -396,12 +408,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = EQHXZ8M8AV;
 				INFOPLIST_FILE = Continote/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = [TODO: YOUR-IOS-BUNDLE-ID-HERE];
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Continote/Continote-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -18,19 +18,12 @@ It is strongly recommended that you create a new Firebase project specifically
 for the "Continote" samples.
 See the [Initial Setup guide](#initial-setup) below for more details.
 
-**Important Notice**: "Continote" is currently a work-in-progress.
-Expect frequent updates as an initial, complete v0.1.0 is fleshed out.
-See [Development Progress](#development-progress) for details.
-This notice will be removed when v0.1.0 is officially ready
-and released in the Releases page of this repo.
-
 ## Table of Contents
 
 1. [Initial Setup](#initial-setup)
 2. [Usage](#usage)
 3. [Compatibility](#compatibility)
 4. [Dependencies](#dependencies)
-5. [Development Progress](#development-progress)
 
 ## Initial Setup
 
@@ -111,16 +104,3 @@ Please see each sample subdirectory for relevant compatibility information.
 ## Dependencies
 
 Please see each sample subdirectory for relevant dependency information.
-
-## Development Progress
-
-This section will be removed when each of the items below are complete for an
-initial, released v0.1.0 of "Continote".
-
-See subdirectory README files for more specific v0.1.0 development progress lists.
-
-### Samples Completed
-- [x] [Chrome extension sample](chrome-extension)
-- [ ] iOS sample
-- [x] [Android sample](android)
-- [x] [Web sample](web)

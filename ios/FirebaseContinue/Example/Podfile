@@ -6,6 +6,5 @@ target 'FirebaseContinue_Example' do
   target 'FirebaseContinue_Tests' do
     inherit! :search_paths
 
-    
   end
 end

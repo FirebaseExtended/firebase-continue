@@ -3,7 +3,9 @@
 This directory contains the Firebase Continue for iOS library.
 
 Firebase Continue enables mobile developers to easily integrate activity transitioning
-from their mobile apps to the web by way of Chrome extensions.
+from their mobile apps to the web by way of Chrome extensions
+(or [Apple Handoff](https://developer.apple.com/handoff/),
+for users with both an iOS device and macOS computer that are Apple Handoff enabled).
 
 To learn more about Firebase Continue and the problems it helps developers solve,
 please see the [README at the root of this repository](../README.md).
@@ -15,22 +17,14 @@ supported platform, but will also make use of
 [Apple Handoff](https://developer.apple.com/handoff/)
 for a more native experience for users with both an iOS device and a macOS computer.
 
-**Important Notice**: This is currently a work-in-progress.
-Expect frequent updates as an initial, complete v0.1.0 is fleshed out.
-See [Development Progress](#development-progress) for details.
-This notice will be removed when v0.1.0 is officially ready and released
-in the Releases page of this repo.
-
 ## Table of Contents
 
 1. [Prerequisites](#prerequisites)
 2. [Installation](#installation)
 3. [Usage Instructions](#usage-instructions)
-4. [How to Build](#how-to-build)
-5. [Compatibility](#compatibility)
-6. [Dependencies](#dependencies)
-7. [Sample App](#sample-app)
-8. [Development Progress](#development-progress)
+4. [Compatibility](#compatibility)
+5. [Dependencies](#dependencies)
+6. [Sample App](#sample-app)
 
 ## Prerequisites
 
@@ -59,68 +53,82 @@ to use in your iOS app:
     for instructions on how to add Firebase, including the required
     Firebase Authentication and Firebase Realtime Database SDKs, to your app.
 
-5.  **TODO**
+5. Drag the `FCNContinue.h` and `FCNContinue.m` Firebase Continue for iOS library files from the
+    [`FirebaseContinue/FirebaseContinue/Classes/`](FirebaseContinue/FirebaseContinue/Classes)
+    directory into your Xcode project, where all of your app's code is.
 
-6.  Import the library wherever you would like to use it in your app.
+    Allow Xcode to copy the files for you.
+
+    1.  If you are using Swift in your app, remember to import
+        `FCNContinue.h` in your app's
+        [bridging header](https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html)
+        like so:
+
+        ```objective-c
+        #import "FCNContinue.h"
+        ```
+
+6.  Done!
+
+    You can now use the library in your app.
+    See the [usage instructions](#usage-instructions) below to learn how.
+
+## Usage Instructions
+
+After following the [Installation section](#installation) above, typical
+usage of this library is as follows. Please note that a fleshed out example of usage
+can be found in the [sample iOS app](../samples/ios), and
+more specific documentation can be found in the
+[iOS library itself](FirebaseContinue/FirebaseContinue/Classes/FCNContinue.h).
+
+-   When the user is signed in via Firebase Authentication and may wish to continue some activity
+    within your application (such as watching a video or writing a note) elsewhere
+    (ex. within Chrome), you can use the broadcast API.
 
     For example, in Swift:
 
     ```swift
-    // Other imports here
-    ...
+    FCNContinue.broadcastToContinueActivity(
+        withUrl: [TODO: YOUR-URL-TO-ALLOW-THE-USER-TO-CONTINUE-THEIR-ACTIVITY-HERE],
+        withinApplication: [TODO: YOUR-APPLICATION-NAME-HERE] { (firebaseContinueError) in
+            // This completion callback block is optional but allows you to react to the user's
+            // activity either successfully being broadcast or failing to broadcast.
 
-    // Import the Firebase Continue library.
-    import FirebaseContinue
+            if (firebaseContinueError != nil) {
+                // The activity failed to broadcast.
+            } else {
+                // The activity was successfully broadcast.
 
-    class MyViewControllerThatUsesFirebaseContinue: UIViewController {
-
-      ...
-
-      // Some code that uses FirebaseContinue here.
-
-    }
+                // An example use of this could be to inform the user to open Chrome (with
+                // your Chrome extension installed which uses the Firebase Continue for
+                // Chrome Extensions library), or their macOS computer with Apple Handoff,
+                // if they wish continue their activity there.
+            }
+        }
     ```
 
     Or, in Objective-C:
 
     ```objective-c
-    // Other imports here
-    ...
+    [FCNContinue broadcastToContinueActivityWithUrl:[TODO: YOUR-URL-TO-ALLOW-THE-USER-TO-CONTINUE-THEIR-ACTIVITY-HERE]
+                          withinApplicationWithName:[TODO: YOUR-APPLICATION-NAME-HERE]
+                                withCompletionBlock:
+        ^(NSError *_Nullable firebaseCompleteError) {
+            // This completion callback block is optional but allows you to react to the user's
+            // activity either successfully being broadcast or failing to broadcast.
 
-    // Import the Firebase Continue library.
-    @import FirebaseContinue;
+            if (firebaseContinueError) {
+                // The activity failed to broadcast.
+            } else {
+                // The activity was successfully broadcast.
 
-    @interface MyViewControllerThatUsesFirebaseContinue ()
-
-      ...
-
-    @end
-
-    @implementation MyViewControllerThatUsesFirebaseContinue
-
-      ...
-
-      // Some code that uses FirebaseContinue here.
-
-    @end
+                // An example use of this could be to inform the user to open Chrome (with
+                // your Chrome extension installed which uses the Firebase Continue for
+                // Chrome Extensions library), or their macOS computer with Apple Handoff,
+                // if they wish continue their activity there.
+            }
+        }];
     ```
-
-7.  Done!
-
-**TODO**: Finish listing installation instructions here to include this library in an
-iOS app. In particular, provide instructions on how to use CocoaPods to
-include it when released on CocoaPods, as well as how to include it manually.
-
-## Usage Instructions
-
-**TODO**: List how to use each of the provided APIs here in a realistic way.
-
-## How to Build
-
-After completing the following steps, you will have properly built this library
-from its source:
-
-1.  **TODO**
 
 ## Compatibility
 
@@ -145,14 +153,3 @@ The Firebase Continue for iOS library is dependent on the following libraries/SD
 
 See the [iOS sample folder](../samples/ios) for a sample iOS app and
 instructions on how you can configure and install it.
-
-## Development Progress
-
-This section will be removed when each of the items below are complete for an
-initial, released v0.1.0 of this library.
-
-### Major Features Completed
-- [ ] User authentication state management (via Firebase Authentication) to ensure
-only signed in users can "continue" their activity elsewhere (i.e. within Chrome, or
-within a native macOS application)
-- [ ] API to allow "continuing" user activities elsewhere
