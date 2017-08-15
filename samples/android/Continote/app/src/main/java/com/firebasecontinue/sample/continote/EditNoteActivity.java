@@ -144,10 +144,11 @@ public class EditNoteActivity extends BaseActivity {
                 "notes/" + user.getUid() + "/" + mDatabaseKey);
         mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(final DataSnapshot snapshot) {
+            public void onDataChange(DataSnapshot snapshot) {
+                final Note note = snapshot.getValue(Note.class);
                 runOnUiThread(new Runnable() {
                     public void run() {
-                        handleNoteToEditFound(snapshot.getValue(Note.class));
+                        handleNoteToEditFound(note);
                     }
                 });
             }
@@ -174,6 +175,9 @@ public class EditNoteActivity extends BaseActivity {
 
     /**
      * Handles when the Note the user wants to edit has been found.
+     *
+     * Sets up the UI to allow the user to edit said Note by enabling and making visible the
+     * Note editor UI elements, and populating the editor text inputs with the values from the Note.
      *
      * @param note The Note that the user wishes to edit.
      */
@@ -227,6 +231,10 @@ public class EditNoteActivity extends BaseActivity {
     /**
      * Attempts to asynchronously set the value of the Note currently being edited in the Firebase
      * Realtime Database based on the Note editor inputs.
+     *
+     * This can fail if, for example, the user is not signed in, or for any number of other
+     * Firebase Realtime Database errors that could possibly occur.
+     * See: https://firebase.google.com/docs/reference/android/com/google/firebase/database/DatabaseError
      *
      * This could be modified to go into the Note class, but this is the only place it is used,
      * so this is sufficient for this sample app.

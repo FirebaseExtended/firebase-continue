@@ -223,10 +223,10 @@ public class MyNotesActivity extends BaseActivity {
             throw new AssertionError("databaseKey must be non-empty");
         }
 
+        final Intent intent = new Intent(this, EditNoteActivity.class);
+        intent.putExtra(getString(R.string.extra_note_database_key), databaseKey);
         runOnUiThread(new Runnable() {
             public void run() {
-                Intent intent = new Intent(MyNotesActivity.this, EditNoteActivity.class);
-                intent.putExtra(getString(R.string.extra_note_database_key), databaseKey);
                 startActivity(intent);
             }
         });
