@@ -69,7 +69,7 @@ this sample to build and install to try out:
     *[TODO: YOUR-VALUE-HERE]* details:
 
     1.  Replace the two instances of *[TODO: YOUR-IOS-BUNDLE-ID-HERE]* with your
-        iOS bundle ID from above.
+        iOS bundle ID from above (without any quotes).
 
 7.  Copy the `sample-Info.plist` file from the
     [`Continote/Continote/`](Continote/Continote)

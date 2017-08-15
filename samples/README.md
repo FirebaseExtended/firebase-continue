@@ -18,19 +18,12 @@ It is strongly recommended that you create a new Firebase project specifically
 for the "Continote" samples.
 See the [Initial Setup guide](#initial-setup) below for more details.
 
-**Important Notice**: "Continote" is currently a work-in-progress.
-Expect frequent updates as an initial, complete v0.1.0 is fleshed out.
-See [Development Progress](#development-progress) for details.
-This notice will be removed when v0.1.0 is officially ready
-and released in the Releases page of this repo.
-
 ## Table of Contents
 
 1. [Initial Setup](#initial-setup)
 2. [Usage](#usage)
 3. [Compatibility](#compatibility)
 4. [Dependencies](#dependencies)
-5. [Development Progress](#development-progress)
 
 ## Initial Setup
 
@@ -80,7 +73,7 @@ project to be able to try the Firebase Continue samples, collectively titled
     3.  In the [Firebase console](https://console.firebase.google.com/)
         for your project, open the Authentication section.
 
-    4.  On the Sign in method tab, enable the Facebook sign-in method and
+    4.  On the SIGN-IN METHOD tab, enable the Facebook sign-in method and
         specify the App ID and App Secret from above, and click **Save**.
 
     5.  Within that same Facebook sign-in method dialog, copy your OAuth redirect URI
@@ -111,16 +104,3 @@ Please see each sample subdirectory for relevant compatibility information.
 ## Dependencies
 
 Please see each sample subdirectory for relevant dependency information.
-
-## Development Progress
-
-This section will be removed when each of the items below are complete for an
-initial, released v0.1.0 of "Continote".
-
-See subdirectory README files for more specific v0.1.0 development progress lists.
-
-### Samples Completed
-- [x] [Chrome extension sample](chrome-extension)
-- [x] [iOS sample](ios)
-- [ ] Android sample
-- [x] [Web sample](web)
