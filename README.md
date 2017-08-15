@@ -35,21 +35,14 @@ periodically while writing), the user would receive a prompt within Chrome on
 their computer (via a Chrome extension using the Firebase Continue library)
 to continue writing the note there, with one click.
 
-**Important Notice**: Firebase Continue is currently a work-in-progress.
-Expect frequent updates as an initial, complete v0.1.0 is fleshed out for all
-supported platforms. See [Development Progress](#development-progress) for
-details. This notice will be removed when v0.1.0 is officially
-ready and released for each platform in the Releases page of this repo.
-
 ## Table of Contents
 
 1. [Directory Structure](#directory-structure)
 2. [Overall Design](#overall-design)
 3. [Initial Setup](#initial-setup)
 4. [Samples](#samples)
-5. [Development Progress](#development-progress)
-6. [Making Contributions](#making-contributions)
-7. [License](#license)
+5. [Making Contributions](#making-contributions)
+6. [License](#license)
 
 ## Directory Structure
 
@@ -180,22 +173,6 @@ that includes the
 [suggested Firebase Realtime Database rules](sample-firebase-continue-database.rules.json)
 after setting up and deploying it to your
 Firebase project.
-
-## Development Progress
-
-This section will be removed when each of the items below are complete for an
-initial, released v0.1.0 of Firebase Continue for each supported platform.
-
-See subdirectory README files for more specific v0.1.0 development progress lists.
-
-### Libraries Completed
-- [x] [Chrome extensions library](chrome-extensions)
-- [ ] iOS library
-- [x] [Android library](android)
-
-### Samples Completed
-See the
-[Development Progress section of the `samples/` README](samples/#development-progress).
 
 ## Making Contributions
 
