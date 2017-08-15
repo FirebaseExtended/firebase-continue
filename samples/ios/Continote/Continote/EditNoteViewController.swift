@@ -321,6 +321,6 @@ private extension Constants {
 
   enum AppError: String, Error {
     case couldNotSaveNote = "Could not save note. Please try again."
-    case couldNotBroadcastToContinueWriting = "Something went wtong. Please try again."
+    case couldNotBroadcastToContinueWriting = "Something went wrong. Please try again."
   }
 }
