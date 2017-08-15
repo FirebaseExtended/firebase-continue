@@ -73,7 +73,7 @@ project to be able to try the Firebase Continue samples, collectively titled
     3.  In the [Firebase console](https://console.firebase.google.com/)
         for your project, open the Authentication section.
 
-    4.  On the Sign in method tab, enable the Facebook sign-in method and
+    4.  On the SIGN-IN METHOD tab, enable the Facebook sign-in method and
         specify the App ID and App Secret from above, and click **Save**.
 
     5.  Within that same Facebook sign-in method dialog, copy your OAuth redirect URI

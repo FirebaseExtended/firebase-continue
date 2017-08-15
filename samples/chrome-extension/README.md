@@ -45,8 +45,20 @@ this sample packaged and installed to try out:
 4.  Rename the `sample-config.js` copy to `config.js`.
 
 5.  Open `config.js` and fill out the clearly marked *[TODO: YOUR-VALUE-HERE]* details
-    with the
-    [values for your Firebase project](https://firebase.google.com/docs/web/setup#add_firebase_to_your_app).
+    with the values for your Firebase project which should be listed in the
+    [initialization code snippet](https://firebase.google.com/docs/web/setup#add_firebase_to_your_app)
+    for it.
+
+    For example:
+
+    ```javascript
+    var config_ = {
+        apiKey: "abcdef123456",
+        authDomain: "SomeFirebaseProjectName.firebaseapp.com",
+        databaseURL: "https://SomeFirebaseProjectName.firebaseio.com",
+        projectId: "SomeFirebaseProjectName"
+    };
+    ```
 
 6.  Package and install the extension to Chrome:
 
