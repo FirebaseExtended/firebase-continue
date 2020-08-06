@@ -1,6 +1,14 @@
 # Firebase Continue
 
-### What is Firebase Continue?
+## Status
+
+![Status: Archived](https://img.shields.io/badge/Status-Archived-red)
+
+This library is no longer actively maintained. We **do not recommend** using this library in production.
+
+If you maintain a fork of this library that you believe is healthier than the official version, we may consider recommending your fork.  Please open a Pull Request if you believe that is the case.
+
+## What is Firebase Continue?
 
 In the general sense, when leveraged by a developer in
 their [Firebase](https://firebase.google.com/)-enabled Android and/or iOS
